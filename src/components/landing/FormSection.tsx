@@ -106,7 +106,7 @@ export function FormSection() {
                     className="w-10 h-10 object-contain"
                  />
               </div>
-              <h2 className="text-2xl font-bold mb-1">MAULI Wedding Photography and Films</h2>
+              <h2 className="text-2xl font-bold mb-1 uppercase tracking-wide">MAULI WEDDING PHOTOGRAPHY AND FILMS</h2>
               <p className="text-white/70 text-sm">We capture amazing moments worldwide.</p>
             </div>
             
