@@ -36,6 +36,9 @@ const schema = defineSchema(
     contacts: defineTable({
       name: v.string(),
       email: v.string(),
+      phone: v.optional(v.string()),
+      service: v.optional(v.string()),
+      state: v.optional(v.string()),
       message: v.string(),
       type: v.string(), // "booking" or "general"
     }),

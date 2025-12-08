@@ -5,6 +5,9 @@ export const submit = mutation({
   args: {
     name: v.string(),
     email: v.string(),
+    phone: v.optional(v.string()),
+    service: v.optional(v.string()),
+    state: v.optional(v.string()),
     message: v.string(),
     type: v.string(),
   },
@@ -12,6 +15,9 @@ export const submit = mutation({
     await ctx.db.insert("contacts", {
       name: args.name,
       email: args.email,
+      phone: args.phone,
+      service: args.service,
+      state: args.state,
       message: args.message,
       type: args.type,
     });
@@ -19,12 +25,7 @@ export const submit = mutation({
 });
 
 export const get = query({
-  args: {},
   handler: async (ctx) => {
-    // In a real app, you would check for authentication here
-    // const identity = await ctx.auth.getUserIdentity();
-    // if (!identity) throw new Error("Unauthenticated");
-    
     return await ctx.db.query("contacts").order("desc").take(100);
   },
 });
