@@ -42,21 +42,6 @@ export function Navbar() {
           isScrolled ? "bg-black/60 border-white/20" : "bg-black/40 border-white/10"
         }`}
       >
-        <a
-          href="#"
-          onClick={(e) => {
-            e.preventDefault();
-            scrollToSection("#home");
-          }}
-          className="block shrink-0"
-        >
-          <img 
-            src="https://harmless-tapir-303.convex.cloud/api/storage/39b51302-f16f-4aa3-82dd-a665fd645321" 
-            alt="MWP Logo" 
-            className="h-8 md:h-10 w-auto object-contain" 
-          />
-        </a>
-
         {/* Desktop Nav */}
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (
@@ -75,11 +60,21 @@ export function Navbar() {
           ))}
         </div>
 
+        {/* Book Meeting Button (Desktop) */}
+        <div className="hidden md:block">
+          <Button 
+            onClick={() => scrollToSection("#form")}
+            className="rounded-full bg-primary hover:bg-primary/90 text-primary-foreground"
+          >
+            Book Meeting
+          </Button>
+        </div>
+
         {/* Mobile Menu Toggle */}
         <Button
           variant="ghost"
           size="icon"
-          className="md:hidden text-white hover:bg-white/10 hover:text-white rounded-full"
+          className="md:hidden text-white hover:bg-white/10 hover:text-white rounded-full ml-auto"
           onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
         >
           {isMobileMenuOpen ? <X /> : <Menu />}
@@ -109,6 +104,12 @@ export function Navbar() {
                     {link.name}
                   </a>
                 ))}
+                <Button 
+                  onClick={() => scrollToSection("#form")}
+                  className="w-full rounded-xl bg-primary hover:bg-primary/90 text-primary-foreground mt-2"
+                >
+                  Book Meeting
+                </Button>
               </div>
             </motion.div>
           )}

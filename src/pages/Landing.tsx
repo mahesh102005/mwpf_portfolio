@@ -54,13 +54,6 @@ export default function Landing() {
           >
             <div className="flex justify-center mb-8">
               <img 
-                src="https://harmless-tapir-303.convex.cloud/api/storage/39b51302-f16f-4aa3-82dd-a665fd645321" 
-                alt="MWP Logo" 
-                className="h-40 md:h-56 w-auto object-contain drop-shadow-2xl" 
-              />
-            </div>
-            <div className="flex justify-center mb-8">
-              <img 
                 src="https://harmless-tapir-303.convex.cloud/api/storage/1fe32574-6aee-4ffb-9b9e-a3fb5a3036d0" 
                 alt="Creative Typography" 
                 className="h-auto w-full max-w-2xl object-contain drop-shadow-lg" 
@@ -71,7 +64,7 @@ export default function Landing() {
                 View Gallery
               </Button>
               <Button size="lg" variant="outline" className="rounded-full text-lg px-8 bg-white/10 hover:bg-white/20 border-white/20 backdrop-blur-md" onClick={() => document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' })}>
-                Book Now
+                Book Meeting
               </Button>
             </div>
           </motion.div>
