@@ -44,23 +44,27 @@ export function Navbar() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className="pointer-events-auto relative flex items-center justify-between px-6 py-3 w-full max-w-5xl bg-[#121212]/80 backdrop-blur-md border border-white/10 rounded-full shadow-2xl transition-all duration-300"
+        className={`pointer-events-auto relative flex items-center justify-between px-8 py-4 w-full max-w-7xl transition-all duration-300 ${
+          isScrolled 
+            ? "bg-black/80 backdrop-blur-xl shadow-2xl rounded-full border border-white/10" 
+            : "bg-transparent"
+        }`}
       >
         {/* Logo */}
         <div className="flex items-center gap-3">
           <img 
             src="https://harmless-tapir-303.convex.cloud/api/storage/12f3af3e-9161-4b2f-bfd5-081de370261e" 
             alt="Logo" 
-            className="w-10 h-10 object-contain rounded-full bg-white/5 p-1" 
+            className="w-12 h-12 object-contain rounded-full bg-white/10" 
           />
           <div className="flex flex-col">
-            <span className="text-sm font-bold tracking-widest text-white leading-none">MAULI</span>
-            <span className="text-[8px] tracking-[0.2em] text-white/50 uppercase">Wedding Photography</span>
+            <span className="text-lg font-bold tracking-[0.2em] text-white leading-none">MAULI</span>
+            <span className="text-[10px] tracking-[0.3em] text-white/50 uppercase">Wedding Photography</span>
           </div>
         </div>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8 ml-auto">
+        <div className="hidden md:flex items-center gap-12 ml-auto">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -69,16 +73,17 @@ export function Navbar() {
                 e.preventDefault();
                 scrollToSection(link.href);
               }}
-              className={`text-sm font-medium tracking-wide transition-colors relative group ${
-                link.active ? "text-primary" : "text-white/90 hover:text-primary"
+              className={`text-xs font-bold tracking-[0.2em] uppercase transition-colors relative group ${
+                link.active ? "text-primary" : "text-white hover:text-primary"
               }`}
             >
-              {link.name}
-              {link.active && (
-                <motion.div
-                  layoutId="activeNav"
-                  className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full"
-                />
+              {link.active ? (
+                <span>[ {link.name} ]</span>
+              ) : (
+                <>
+                  <span className="group-hover:hidden">{link.name}</span>
+                  <span className="hidden group-hover:inline text-primary">[ {link.name} ]</span>
+                </>
               )}
             </a>
           ))}
@@ -89,9 +94,10 @@ export function Navbar() {
                 e.preventDefault();
                 navigate("/dashboard");
               }}
-              className="text-sm font-medium tracking-wide text-white/90 hover:text-primary transition-colors"
+              className="text-xs font-bold tracking-[0.2em] uppercase text-white hover:text-primary transition-colors relative group"
             >
-              Dashboard
+              <span className="group-hover:hidden">Dashboard</span>
+              <span className="hidden group-hover:inline text-primary">[ Dashboard ]</span>
             </a>
           )}
         </div>
@@ -114,7 +120,7 @@ export function Navbar() {
               animate={{ opacity: 1, y: 0, scale: 1 }}
               exit={{ opacity: 0, y: -20, scale: 0.95 }}
               transition={{ duration: 0.2 }}
-              className="absolute top-full left-0 right-0 mt-4 p-4 rounded-3xl bg-[#121212]/95 backdrop-blur-xl border border-white/10 shadow-2xl md:hidden overflow-hidden"
+              className="absolute top-full left-0 right-0 mt-4 p-4 rounded-3xl bg-black/90 backdrop-blur-xl border border-white/10 shadow-2xl md:hidden overflow-hidden"
             >
               <div className="flex flex-col gap-2">
                 {navLinks.map((link) => (
