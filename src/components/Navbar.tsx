@@ -52,10 +52,14 @@ export function Navbar() {
       >
         {/* Logo */}
         <div className="flex items-center gap-3">
-          <Camera className="w-8 h-8 text-primary" strokeWidth={1.5} />
+          <img 
+            src="https://harmless-tapir-303.convex.cloud/api/storage/12f3af3e-9161-4b2f-bfd5-081de370261e" 
+            alt="Logo" 
+            className="w-12 h-12 object-contain rounded-full bg-white/10" 
+          />
           <div className="flex flex-col">
-            <span className="text-lg font-bold tracking-[0.2em] text-white leading-none">PHOTOSTUDIO</span>
-            <span className="text-[10px] tracking-[0.3em] text-white/50 uppercase">Lorem Ipsum Dolor</span>
+            <span className="text-lg font-bold tracking-[0.2em] text-white leading-none">MAULI</span>
+            <span className="text-[10px] tracking-[0.3em] text-white/50 uppercase">Wedding Photography</span>
           </div>
         </div>
 

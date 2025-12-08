@@ -109,11 +109,11 @@ function Auth({ redirectAfterAuth }: AuthProps = {}) {
               <CardHeader className="text-center">
               <div className="flex justify-center">
                     <img
-                      src="https://harmless-tapir-303.convex.cloud/api/storage/39b51302-f16f-4aa3-82dd-a665fd645321"
+                      src="https://harmless-tapir-303.convex.cloud/api/storage/12f3af3e-9161-4b2f-bfd5-081de370261e"
                       alt="MWP Logo"
                       width={100}
                       height={100}
-                      className="rounded-lg mb-4 mt-4 cursor-pointer object-contain"
+                      className="rounded-full mb-4 mt-4 cursor-pointer object-contain bg-white/5 p-2"
                       onClick={() => navigate("/")}
                     />
                   </div>
