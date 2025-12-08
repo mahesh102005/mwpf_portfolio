@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { motion } from "framer-motion";
-import { Camera, Film, Mail, MapPin, Phone, Play, Send } from "lucide-react";
+import { Camera, Film, Mail, MapPin, Phone, Play, Send, Twitter, Linkedin, Instagram, ArrowRight, Sparkles } from "lucide-react";
 import { useState } from "react";
 import { useMutation } from "convex/react";
 import { api } from "@/convex/_generated/api";
@@ -286,41 +286,62 @@ export default function Landing() {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 relative">
-        <div className="container mx-auto px-4">
+      <section id="contact" className="py-24 relative min-h-[80vh] flex flex-col justify-between">
+        <div className="container mx-auto px-4 flex-1 flex flex-col items-center justify-center text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-8"
+            className="space-y-8"
           >
-            <div className="flex flex-col items-center text-center p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors">
-              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4 text-primary">
-                <Mail className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Email Us</h3>
-              <p className="text-muted-foreground">hello@mwp.com</p>
-            </div>
+            <p className="text-muted-foreground italic font-serif text-lg">Available to work</p>
+            
+            <h2 className="text-6xl md:text-8xl font-bold tracking-tighter bg-gradient-to-b from-white to-white/50 bg-clip-text text-transparent">
+              Let's Connect
+            </h2>
+            
+            <p className="text-muted-foreground max-w-md mx-auto text-lg">
+              Feel free to contact me if having any questions.
+              <br />
+              I'm available for new projects or just for chatting.
+            </p>
 
-            <div className="flex flex-col items-center text-center p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors">
-              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4 text-primary">
-                <Phone className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Call Us</h3>
-              <p className="text-muted-foreground">+1 (555) 123-4567</p>
-            </div>
-
-            <div className="flex flex-col items-center text-center p-8 rounded-3xl bg-white/5 border border-white/10 backdrop-blur-sm hover:bg-white/10 transition-colors">
-              <div className="w-12 h-12 rounded-full bg-primary/20 flex items-center justify-center mb-4 text-primary">
-                <MapPin className="w-6 h-6" />
-              </div>
-              <h3 className="text-xl font-bold mb-2">Visit Us</h3>
-              <p className="text-muted-foreground">123 Creative Ave, Art City</p>
+            <div className="pt-8">
+              <Button 
+                size="lg" 
+                className="rounded-full h-16 px-8 text-lg bg-white/5 hover:bg-white/10 border border-white/10 backdrop-blur-sm transition-all group"
+                onClick={() => document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' })}
+              >
+                <div className="bg-white text-black rounded-full p-1 mr-3">
+                  <Sparkles className="w-4 h-4" />
+                </div>
+                Book a Meeting
+                <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+              </Button>
             </div>
           </motion.div>
+        </div>
 
-          <div className="mt-24 pt-8 border-t border-white/10 text-center text-muted-foreground">
-            <p>&copy; {new Date().getFullYear()} mwp Photography. All rights reserved.</p>
+        {/* Footer */}
+        <div className="container mx-auto px-4 mt-24">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-6 pt-8 border-t border-white/10 text-sm text-muted-foreground">
+            <div className="flex items-center gap-6">
+              <p>&copy; mwp, {new Date().getFullYear()}</p>
+              <a href="#" className="hover:text-white transition-colors">Legal Notice</a>
+              <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
+            </div>
+            
+            <div className="flex items-center gap-4">
+              {[Mail, Twitter, Linkedin, Instagram].map((Icon, i) => (
+                <a 
+                  key={i} 
+                  href="#" 
+                  className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center hover:bg-white hover:text-black transition-all"
+                >
+                  <Icon className="w-4 h-4" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </section>
