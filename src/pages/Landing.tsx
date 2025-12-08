@@ -59,11 +59,13 @@ export default function Landing() {
                 className="h-40 md:h-56 w-auto object-contain drop-shadow-2xl" 
               />
             </div>
-            <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto font-light">
-              Capturing moments through the lens of creativity.
-              <br />
-              Photography & Videography
-            </p>
+            <div className="flex justify-center mb-8">
+              <img 
+                src="https://harmless-tapir-303.convex.cloud/api/storage/1fe32574-6aee-4ffb-9b9e-a3fb5a3036d0" 
+                alt="Creative Typography" 
+                className="h-auto w-full max-w-2xl object-contain drop-shadow-lg" 
+              />
+            </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Button size="lg" className="rounded-full text-lg px-8 bg-primary/80 hover:bg-primary backdrop-blur-md shadow-lg" onClick={() => document.getElementById('photo')?.scrollIntoView({ behavior: 'smooth' })}>
                 View Gallery
