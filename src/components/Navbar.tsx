@@ -2,10 +2,14 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { useAuth } from "@/hooks/use-auth";
+import { useNavigate } from "react-router";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { isAuthenticated } = useAuth();
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -26,6 +30,10 @@ export function Navbar() {
 
   const scrollToSection = (href: string) => {
     setIsMobileMenuOpen(false);
+    if (href.startsWith("/")) {
+      navigate(href);
+      return;
+    }
     const element = document.querySelector(href);
     if (element) {
       element.scrollIntoView({ behavior: "smooth" });
@@ -58,6 +66,19 @@ export function Navbar() {
               <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
             </a>
           ))}
+          {isAuthenticated && (
+            <a
+              href="/dashboard"
+              onClick={(e) => {
+                e.preventDefault();
+                navigate("/dashboard");
+              }}
+              className="text-sm font-medium text-white/80 hover:text-white transition-colors relative group"
+            >
+              Dashboard
+              <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-primary transition-all group-hover:w-full" />
+            </a>
+          )}
         </div>
 
         {/* Book Meeting Button (Desktop) */}
