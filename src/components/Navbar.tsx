@@ -21,8 +21,9 @@ export function Navbar() {
 
   const navLinks = [
     { name: "Home", href: "#home", active: true },
-    { name: "Classes", href: "#video", active: false },
-    { name: "About", href: "#about", active: false },
+    { name: "Photo", href: "#photo", active: false },
+    { name: "Video", href: "#video", active: false },
+    { name: "Form", href: "#form", active: false },
     { name: "Contact", href: "#contact", active: false },
   ];
 
