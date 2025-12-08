@@ -51,12 +51,12 @@ export function Navbar() {
         }`}
       >
         {/* Logo */}
-        <div className="flex items-center gap-3 cursor-pointer" onClick={() => scrollToSection("#home")}>
-          <img 
-            src="https://harmless-tapir-303.convex.cloud/api/storage/52096f8c-cdc4-48fc-9fbf-8f3ddf74205d" 
-            alt="MWP Logo" 
-            className="h-12 w-auto object-contain"
-          />
+        <div className="flex items-center gap-3">
+          <Camera className="w-8 h-8 text-primary" strokeWidth={1.5} />
+          <div className="flex flex-col">
+            <span className="text-lg font-bold tracking-[0.2em] text-white leading-none">PHOTOSTUDIO</span>
+            <span className="text-[10px] tracking-[0.3em] text-white/50 uppercase">Lorem Ipsum Dolor</span>
+          </div>
         </div>
 
         {/* Desktop Nav */}
