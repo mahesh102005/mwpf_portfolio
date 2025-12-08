@@ -54,9 +54,16 @@ export default function Landing() {
           >
             <div className="flex justify-center mb-8">
               <img 
-                src="https://harmless-tapir-303.convex.cloud/api/storage/4113a090-933c-40cb-aaf8-07890d6e5a50" 
-                alt="Wedding and Portrait Photographer" 
-                className="h-auto w-full max-w-4xl object-contain drop-shadow-lg" 
+                src="https://harmless-tapir-303.convex.cloud/api/storage/39b51302-f16f-4aa3-82dd-a665fd645321" 
+                alt="MWP Logo" 
+                className="h-40 md:h-56 w-auto object-contain drop-shadow-2xl" 
+              />
+            </div>
+            <div className="flex justify-center mb-8">
+              <img 
+                src="https://harmless-tapir-303.convex.cloud/api/storage/1fe32574-6aee-4ffb-9b9e-a3fb5a3036d0" 
+                alt="Creative Typography" 
+                className="h-auto w-full max-w-2xl object-contain drop-shadow-lg" 
               />
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
