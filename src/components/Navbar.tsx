@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Camera } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/use-auth";
 import { useNavigate } from "react-router";
@@ -20,12 +20,10 @@ export function Navbar() {
   }, []);
 
   const navLinks = [
-    { name: "Home", href: "#home" },
-    { name: "Video", href: "#video" },
-    { name: "Photo", href: "#photo" },
-    { name: "About", href: "#about" },
-    { name: "Form", href: "#form" },
-    { name: "Contact", href: "#contact" },
+    { name: "Home", href: "#home", active: true },
+    { name: "Classes", href: "#video", active: false },
+    { name: "About", href: "#about", active: false },
+    { name: "Contact", href: "#contact", active: false },
   ];
 
   const scrollToSection = (href: string) => {
@@ -46,14 +44,23 @@ export function Navbar() {
         initial={{ y: -100, opacity: 0 }}
         animate={{ y: 0, opacity: 1 }}
         transition={{ duration: 0.5 }}
-        className={`pointer-events-auto relative flex items-center justify-between px-8 py-4 rounded-full border transition-all duration-300 w-full max-w-6xl ${
+        className={`pointer-events-auto relative flex items-center justify-between px-8 py-4 w-full max-w-7xl transition-all duration-300 ${
           isScrolled 
-            ? "bg-black/80 border-white/10 backdrop-blur-xl shadow-2xl" 
-            : "bg-transparent border-transparent"
+            ? "bg-black/80 backdrop-blur-xl shadow-2xl rounded-full border border-white/10" 
+            : "bg-transparent"
         }`}
       >
+        {/* Logo */}
+        <div className="flex items-center gap-3">
+          <Camera className="w-8 h-8 text-primary" strokeWidth={1.5} />
+          <div className="flex flex-col">
+            <span className="text-lg font-bold tracking-[0.2em] text-white leading-none">PHOTOSTUDIO</span>
+            <span className="text-[10px] tracking-[0.3em] text-white/50 uppercase">Lorem Ipsum Dolor</span>
+          </div>
+        </div>
+
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-8 mx-auto">
+        <div className="hidden md:flex items-center gap-12 ml-auto">
           {navLinks.map((link) => (
             <a
               key={link.name}
@@ -62,10 +69,18 @@ export function Navbar() {
                 e.preventDefault();
                 scrollToSection(link.href);
               }}
-              className="text-sm font-bold tracking-widest uppercase text-white/70 hover:text-primary transition-colors relative group"
+              className={`text-xs font-bold tracking-[0.2em] uppercase transition-colors relative group ${
+                link.active ? "text-primary" : "text-white hover:text-primary"
+              }`}
             >
-              <span className="group-hover:hidden">{link.name}</span>
-              <span className="hidden group-hover:inline text-primary">[ {link.name} ]</span>
+              {link.active ? (
+                <span>[ {link.name} ]</span>
+              ) : (
+                <>
+                  <span className="group-hover:hidden">{link.name}</span>
+                  <span className="hidden group-hover:inline text-primary">[ {link.name} ]</span>
+                </>
+              )}
             </a>
           ))}
           {isAuthenticated && (
@@ -75,7 +90,7 @@ export function Navbar() {
                 e.preventDefault();
                 navigate("/dashboard");
               }}
-              className="text-sm font-bold tracking-widest uppercase text-white/70 hover:text-primary transition-colors relative group"
+              className="text-xs font-bold tracking-[0.2em] uppercase text-white hover:text-primary transition-colors relative group"
             >
               <span className="group-hover:hidden">Dashboard</span>
               <span className="hidden group-hover:inline text-primary">[ Dashboard ]</span>
@@ -121,7 +136,7 @@ export function Navbar() {
                   onClick={() => scrollToSection("#form")}
                   className="w-full rounded-xl bg-primary hover:bg-primary/90 text-black font-bold mt-2"
                 >
-                  Book Meeting
+                  REGISTER NOW
                 </Button>
               </div>
             </motion.div>
