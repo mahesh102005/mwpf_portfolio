@@ -49,9 +49,13 @@ export function Navbar() {
             e.preventDefault();
             scrollToSection("#home");
           }}
-          className="text-2xl font-bold tracking-tighter bg-clip-text text-transparent bg-gradient-to-r from-pink-500 to-violet-500"
+          className="block"
         >
-          mwp
+          <img 
+            src="https://harmless-tapir-303.convex.cloud/api/storage/39b51302-f16f-4aa3-82dd-a665fd645321" 
+            alt="MWP Logo" 
+            className="h-12 w-auto object-contain" 
+          />
         </a>
 
         {/* Desktop Nav */}

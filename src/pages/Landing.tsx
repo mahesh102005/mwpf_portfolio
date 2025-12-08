@@ -52,9 +52,13 @@ export default function Landing() {
             transition={{ duration: 0.8 }}
             className="backdrop-blur-sm bg-white/5 p-8 rounded-3xl border border-white/10 shadow-2xl inline-block"
           >
-            <h1 className="text-6xl md:text-8xl font-bold tracking-tighter mb-6 bg-clip-text text-transparent bg-gradient-to-r from-pink-600 via-purple-600 to-indigo-600 drop-shadow-sm">
-              mwp
-            </h1>
+            <div className="flex justify-center mb-8">
+              <img 
+                src="https://harmless-tapir-303.convex.cloud/api/storage/39b51302-f16f-4aa3-82dd-a665fd645321" 
+                alt="MWP Logo" 
+                className="h-40 md:h-56 w-auto object-contain drop-shadow-2xl" 
+              />
+            </div>
             <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto font-light">
               Capturing moments through the lens of creativity.
               <br />
