@@ -28,7 +28,7 @@ export function HeroSection() {
               PHOTOGRAPHY
             </h1>
             <h2 className="text-5xl md:text-7xl font-serif text-primary italic mb-12 transform -rotate-2 origin-left inline-block">
-              Workshop
+              Capturing moment
             </h2>
 
             <div className="flex flex-col items-center lg:items-start gap-2 mb-12 text-sm tracking-[0.2em] uppercase text-white/70 font-medium">
