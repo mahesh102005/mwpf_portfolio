@@ -8,8 +8,8 @@ export function HeroSection() {
       {/* Noise Texture Overlay */}
       <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
 
-      {/* Yellow Diagonal Background Shape */}
-      <div className="absolute top-0 right-0 w-[40%] h-full bg-primary skew-x-[-15deg] translate-x-[20%] z-0 hidden lg:block" />
+      {/* White Diagonal Background Shape */}
+      <div className="absolute top-0 right-0 w-[40%] h-full bg-white skew-x-[-15deg] translate-x-[20%] z-0 hidden lg:block" />
       
       {/* Content Container */}
       <div className="container mx-auto px-4 z-10 relative h-full flex flex-col justify-center min-h-[80vh]">
