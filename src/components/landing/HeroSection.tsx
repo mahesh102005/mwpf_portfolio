@@ -4,10 +4,9 @@ import { ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const heroImages = [
-  "https://images.unsplash.com/photo-1605218427368-35b0f996d916?q=80&w=1920&auto=format&fit=crop", // Indian wedding couple
-  "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1920&auto=format&fit=crop", // Cinematic pre-wedding
-  "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1920&auto=format&fit=crop", // Professional camera
-  "https://images.unsplash.com/photo-1519225468359-2996bc01c32c?q=80&w=1920&auto=format&fit=crop", // Wedding decor
+  "https://harmless-tapir-303.convex.cloud/api/storage/c40cd9ae-b9fd-4a2a-a094-a7cfef43c500",
+  "https://harmless-tapir-303.convex.cloud/api/storage/0ae9be60-fb0f-41b4-8eb9-23e597a1d2f9",
+  "https://harmless-tapir-303.convex.cloud/api/storage/9bcf76bb-7ace-41a2-a090-41ad4b88b2b9",
 ];
 
 export function HeroSection() {
