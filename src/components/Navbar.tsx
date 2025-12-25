@@ -85,8 +85,12 @@ export function Navbar() {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
-          <div className={`relative w-10 h-10 flex items-center justify-center rounded-full border overflow-hidden transition-colors ${isScrolled ? "bg-black/5 border-black/10 group-hover:border-primary/50" : "bg-white/10 border-white/20 group-hover:border-primary/50"}`}>
-             <span className="text-xl font-serif font-bold text-primary">M</span>
+          <div className={`relative w-12 h-12 flex items-center justify-center rounded-full border overflow-hidden transition-colors ${isScrolled ? "bg-black/5 border-black/10 group-hover:border-primary/50" : "bg-white/10 border-white/20 group-hover:border-primary/50"}`}>
+             <img 
+               src="https://harmless-tapir-303.convex.cloud/api/storage/2c18c70f-4dfb-4399-b2c8-a9ebf3589d8e" 
+               alt="Mauli Photography Logo" 
+               className="w-full h-full object-cover"
+             />
           </div>
           <div className="flex flex-col">
             <span className={`text-sm font-bold tracking-[0.2em] leading-none transition-colors ${isScrolled ? "text-foreground group-hover:text-primary" : "text-white group-hover:text-primary"}`}>MAULI</span>
