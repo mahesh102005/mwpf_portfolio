@@ -37,6 +37,13 @@ export function FormSection() {
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
+  const indianStates = [
+    "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", 
+    "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", 
+    "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", 
+    "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal", "Delhi"
+  ];
+
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     
@@ -189,11 +196,12 @@ export function FormSection() {
                       <SelectTrigger className="h-12 bg-muted/20">
                         <SelectValue placeholder="Select your state" />
                       </SelectTrigger>
-                      <SelectContent>
-                        <SelectItem value="maharashtra">Maharashtra</SelectItem>
-                        <SelectItem value="delhi">Delhi</SelectItem>
-                        <SelectItem value="karnataka">Karnataka</SelectItem>
-                        <SelectItem value="gujarat">Gujarat</SelectItem>
+                      <SelectContent className="max-h-[300px]">
+                        {indianStates.map((state) => (
+                          <SelectItem key={state} value={state.toLowerCase().replace(/\s+/g, '-')}>
+                            {state}
+                          </SelectItem>
+                        ))}
                         <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
                     </Select>
