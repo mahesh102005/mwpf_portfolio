@@ -1,139 +1,91 @@
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import { Facebook, Instagram, Phone, Twitter } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
+import { useState, useEffect } from "react";
+
+const heroImages = [
+  "https://images.unsplash.com/photo-1605218427368-35b0f996d916?q=80&w=1920&auto=format&fit=crop", // Indian wedding couple
+  "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1920&auto=format&fit=crop", // Cinematic pre-wedding
+  "https://images.unsplash.com/photo-1516035069371-29a1b244cc32?q=80&w=1920&auto=format&fit=crop", // Professional camera
+  "https://images.unsplash.com/photo-1519225468359-2996bc01c32c?q=80&w=1920&auto=format&fit=crop", // Wedding decor
+];
 
 export function HeroSection() {
+  const [currentImage, setCurrentImage] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentImage((prev) => (prev + 1) % heroImages.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, []);
+
   return (
-    <section id="home" className="relative min-h-screen flex items-center overflow-hidden pt-20 bg-[#1a1a1a]">
-      {/* Noise Texture Overlay */}
-      <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }}></div>
+    <section id="home" className="relative h-screen w-full overflow-hidden bg-black">
+      {/* Background Slideshow */}
+      <AnimatePresence mode="popLayout">
+        <motion.div
+          key={currentImage}
+          initial={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
+          animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
+          exit={{ opacity: 0, filter: "blur(10px)" }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
+          className="absolute inset-0 z-0"
+        >
+          <img
+            src={heroImages[currentImage]}
+            alt="Cinematic Photography"
+            className="w-full h-full object-cover"
+          />
+          {/* Dark Overlay for Readability */}
+          <div className="absolute inset-0 bg-black/40 bg-gradient-to-b from-black/70 via-transparent to-black/80" />
+        </motion.div>
+      </AnimatePresence>
 
-      {/* Yellow Diagonal Background Shape */}
-      <div className="absolute top-0 right-0 w-[40%] h-full bg-primary skew-x-[-15deg] translate-x-[20%] z-0 hidden lg:block" />
-      
-      {/* Content Container */}
-      <div className="container mx-auto px-4 z-10 relative h-full flex flex-col justify-center min-h-[80vh]">
-        
-        {/* Main Content Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+      {/* Content */}
+      <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
+        <motion.div
+          initial={{ opacity: 0, y: 30, filter: "blur(5px)" }}
+          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
+          className="flex flex-col items-center"
+        >
+          <h1 className="text-5xl md:text-7xl lg:text-9xl font-bold text-white tracking-tighter mb-4 drop-shadow-2xl">
+            CAPTURING
+          </h1>
+          <h2 className="text-4xl md:text-6xl lg:text-8xl font-serif text-primary italic -mt-2 md:-mt-6 mb-8 drop-shadow-lg">
+            moments
+          </h2>
           
-          {/* Left Text Content */}
-          <motion.div 
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
-            className="lg:col-span-6 text-center lg:text-left pt-10 lg:pt-0"
+          <p className="text-sm md:text-lg text-white/80 max-w-xl mb-12 font-light tracking-[0.2em] uppercase border-t border-b border-white/10 py-4">
+            Luxury Wedding Photography & Films
+          </p>
+
+          <Button 
+            size="lg" 
+            className="group relative overflow-hidden rounded-full bg-white/5 backdrop-blur-sm border border-white/20 hover:bg-white/10 text-white px-10 py-8 text-sm tracking-[0.2em] uppercase transition-all duration-500 hover:border-primary/50"
+            onClick={() => document.getElementById('photo')?.scrollIntoView({ behavior: 'smooth' })}
           >
-            <h1 className="text-5xl md:text-7xl lg:text-[5.5rem] font-bold text-white leading-[0.9] mb-2 tracking-tight">
-              PHOTOGRAPHY
-            </h1>
-            <h2 className="text-5xl md:text-7xl font-serif text-primary italic mb-12 transform -rotate-2 origin-left inline-block">
-              Capturing moment
-            </h2>
-
-            <div className="flex flex-col items-center lg:items-start gap-2 mb-12 text-sm tracking-[0.2em] uppercase text-white/70 font-medium">
-              <p>Nov. 10, 2025 <span className="mx-2">|</span> 10 AM</p>
-              <p>At Building Name, Country</p>
-            </div>
-
-            <Button 
-              size="lg" 
-              className="rounded-full text-sm tracking-[0.15em] px-10 py-7 bg-primary hover:bg-primary/90 text-black font-bold shadow-lg hover:shadow-xl transition-all uppercase"
-              onClick={() => document.getElementById('form')?.scrollIntoView({ behavior: 'smooth' })}
-            >
-              Register Now
-            </Button>
-
-            <p className="mt-12 text-white/50 text-xs tracking-[0.2em] uppercase">
-              Contact 1400 555 8888
-            </p>
-          </motion.div>
-
-          {/* Right Image Composition */}
-          <div className="lg:col-span-6 relative h-[500px] lg:h-[700px] w-full hidden md:block">
-            {/* Main Lens */}
-            <motion.div 
-              initial={{ opacity: 0, scale: 0.8, rotate: 20 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              transition={{ duration: 1, delay: 0.2 }}
-              className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 lg:translate-x-0 lg:-translate-y-1/2 z-20"
-            >
-              <div className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full bg-black border-[10px] border-[#222] shadow-2xl flex items-center justify-center overflow-hidden">
-                 {/* Lens Reflection Effect */}
-                 <div className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/5 to-transparent z-30 rounded-full"></div>
-                 <img 
-                  src="https://images.unsplash.com/photo-1616423664045-60dd55b87d36?q=80&w=1000&auto=format&fit=crop" 
-                  alt="Camera Lens" 
-                  className="w-full h-full object-cover scale-150"
-                />
-                <div className="absolute inset-0 border-[20px] border-black/50 rounded-full z-20"></div>
-                
-                {/* Lens Text Ring */}
-                <div className="absolute inset-4 border border-white/20 rounded-full z-20 flex items-center justify-center">
-                   <span className="absolute top-2 text-[8px] text-white/60 tracking-widest">24-105mm 1:4</span>
-                   <span className="absolute bottom-2 text-[8px] text-white/60 tracking-widest rotate-180">LENS</span>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Tripod Head (Bottom Left) */}
-            <motion.div 
-              initial={{ opacity: 0, x: -50, y: 50 }}
-              animate={{ opacity: 1, x: 0, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.4 }}
-              className="absolute bottom-10 left-0 lg:-left-10 z-10"
-            >
-               <img 
-                  src="https://images.unsplash.com/photo-1589872378322-6e925580d5a7?q=80&w=300&auto=format&fit=crop" 
-                  alt="Tripod" 
-                  className="w-32 h-32 object-cover rounded-xl grayscale opacity-60 hover:opacity-100 transition-opacity mask-image-gradient"
-                  style={{ maskImage: 'radial-gradient(circle, black 50%, transparent 100%)' }}
-                />
-            </motion.div>
-
-            {/* Remote (Bottom Right) */}
-            <motion.div 
-              initial={{ opacity: 0, x: 50, y: 50 }}
-              animate={{ opacity: 1, x: 0, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.6 }}
-              className="absolute bottom-0 right-0 lg:right-10 z-30"
-            >
-              <div className="bg-[#222] p-4 rounded-xl border border-white/10 shadow-2xl transform rotate-12">
-                <div className="w-24 h-32 bg-black rounded-lg flex flex-col items-center justify-center gap-2 p-2">
-                  <div className="w-full h-1/2 bg-[#333] rounded flex items-center justify-center text-[8px] text-white/50 font-mono">
-                    ALL 1 2 3 4
-                  </div>
-                  <div className="grid grid-cols-2 gap-1 w-full">
-                    <div className="h-8 bg-[#333] rounded"></div>
-                    <div className="h-8 bg-[#333] rounded"></div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Lens Cap (Bottom Center) */}
-            <motion.div 
-              initial={{ opacity: 0, y: 50 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.5 }}
-              className="absolute bottom-20 left-1/2 transform -translate-x-1/2 z-10"
-            >
-              <div className="w-24 h-24 rounded-full bg-[#111] border border-white/5 shadow-xl flex items-center justify-center">
-                <div className="w-20 h-4 bg-[#222] rounded-full"></div>
-              </div>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Footer Socials */}
-        <div className="absolute bottom-8 left-4 lg:left-8 flex items-center gap-4 text-primary">
-          <Instagram className="w-5 h-5 cursor-pointer hover:text-white transition-colors" />
-          <Facebook className="w-5 h-5 cursor-pointer hover:text-white transition-colors" />
-          <Twitter className="w-5 h-5 cursor-pointer hover:text-white transition-colors" />
-          <Phone className="w-5 h-5 cursor-pointer hover:text-white transition-colors" />
-          <span className="text-[10px] text-white/40 ml-4 tracking-wider">© Company Name 2020. All rights reserved.</span>
-        </div>
+            <span className="relative z-10 group-hover:text-primary transition-colors duration-300">View Portfolio</span>
+            <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
+          </Button>
+        </motion.div>
       </div>
+
+      {/* Scroll Indicator */}
+      <motion.div 
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 1.5, duration: 1 }}
+        className="absolute bottom-12 left-1/2 transform -translate-x-1/2 z-10 flex flex-col items-center gap-2"
+      >
+        <span className="text-[10px] text-white/40 uppercase tracking-[0.3em]">Scroll</span>
+        <motion.div
+          animate={{ y: [0, 8, 0] }}
+          transition={{ repeat: Infinity, duration: 2, ease: "easeInOut" }}
+          className="w-[1px] h-12 bg-gradient-to-b from-primary to-transparent"
+        />
+      </motion.div>
     </section>
   );
 }

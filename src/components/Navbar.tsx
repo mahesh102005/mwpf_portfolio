@@ -1,9 +1,9 @@
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence, useScroll, useMotionValueEvent } from "framer-motion";
+import { useState } from "react";
+import { motion, AnimatePresence, useScroll, useMotionValueEvent, Variants } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useAuth } from "@/hooks/use-auth";
-import { useNavigate, useLocation } from "react-router";
+import { useNavigate } from "react-router";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -13,7 +13,6 @@ export function Navbar() {
   
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
-  const location = useLocation();
   const { scrollY } = useScroll();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
@@ -28,9 +27,8 @@ export function Navbar() {
 
   const navLinks = [
     { name: "Home", href: "#home" },
-    { name: "Photo", href: "#photo" },
-    { name: "Video", href: "#video" },
-    { name: "Form", href: "#form" },
+    { name: "Photos", href: "#photo" },
+    { name: "Videos", href: "#video" },
     { name: "Contact", href: "#contact" },
   ];
 
@@ -46,23 +44,17 @@ export function Navbar() {
     }
   };
 
-  const navVariants = {
+  const navVariants: Variants = {
     hidden: { y: -100, opacity: 0 },
     visible: { 
       y: 0, 
       opacity: 1,
       transition: {
-        type: "spring" as const,
+        type: "spring",
         stiffness: 260,
         damping: 20,
-        staggerChildren: 0.1,
       }
     }
-  };
-
-  const itemVariants = {
-    hidden: { y: -20, opacity: 0 },
-    visible: { y: 0, opacity: 1 }
   };
 
   return (
@@ -79,52 +71,46 @@ export function Navbar() {
         initial="hidden"
         animate="visible"
         variants={navVariants}
-        className={`pointer-events-auto relative flex items-center justify-between px-6 py-3 w-full max-w-7xl transition-all duration-500 ${
+        className={`pointer-events-auto relative flex items-center justify-between px-8 py-4 w-full max-w-6xl transition-all duration-500 ${
           isScrolled 
-            ? "bg-black/80 backdrop-blur-xl shadow-2xl rounded-full border border-white/10" 
-            : "bg-transparent"
+            ? "bg-black/60 backdrop-blur-xl shadow-2xl rounded-full border border-white/10" 
+            : "bg-transparent rounded-full"
         }`}
       >
         {/* Logo */}
         <motion.div 
-          variants={itemVariants}
           className="flex items-center gap-3 cursor-pointer group"
           onClick={() => navigate("/")}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
         >
-          <motion.img 
-            src="https://harmless-tapir-303.convex.cloud/api/storage/12f3af3e-9161-4b2f-bfd5-081de370261e" 
-            alt="Logo" 
-            className="w-10 h-10 object-contain rounded-full bg-white/10 border border-white/10" 
-            whileHover={{ rotate: 360 }}
-            transition={{ duration: 0.6, ease: "circOut" }}
-          />
+          <div className="relative w-10 h-10 flex items-center justify-center bg-white/5 rounded-full border border-white/10 overflow-hidden group-hover:border-primary/50 transition-colors">
+             <span className="text-xl font-serif font-bold text-primary">M</span>
+          </div>
           <div className="flex flex-col">
-            <span className="text-lg font-bold tracking-[0.2em] text-white leading-none group-hover:text-primary transition-colors">MAULI</span>
-            <span className="text-[10px] tracking-[0.3em] text-white/50 uppercase">Wedding Photography</span>
+            <span className="text-sm font-bold tracking-[0.2em] text-white leading-none group-hover:text-primary transition-colors">MAULI</span>
+            <span className="text-[8px] tracking-[0.3em] text-white/50 uppercase">Photography</span>
           </div>
         </motion.div>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center gap-2 ml-auto">
+        <div className="hidden md:flex items-center gap-1 ml-auto">
           {navLinks.map((link, index) => (
             <motion.a
               key={link.name}
               href={link.href}
-              variants={itemVariants}
               onClick={(e) => {
                 e.preventDefault();
                 scrollToSection(link.href);
               }}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
-              className="relative px-4 py-2 text-xs font-bold tracking-[0.2em] uppercase text-white transition-colors hover:text-primary"
+              className="relative px-5 py-2 text-xs font-medium tracking-[0.15em] uppercase text-white/80 transition-colors hover:text-white"
             >
               {hoveredIndex === index && (
                 <motion.span
                   layoutId="nav-hover-bg"
-                  className="absolute inset-0 bg-white/10 rounded-full -z-10"
+                  className="absolute inset-0 bg-white/5 rounded-full -z-10 border border-white/5"
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -138,12 +124,11 @@ export function Navbar() {
           {isAuthenticated && (
             <motion.a
               href="/dashboard"
-              variants={itemVariants}
               onClick={(e) => {
                 e.preventDefault();
                 navigate("/dashboard");
               }}
-              className="ml-4 px-5 py-2 bg-primary text-black text-xs font-bold tracking-[0.2em] uppercase rounded-full hover:bg-primary/90 transition-colors"
+              className="ml-4 px-6 py-2 bg-primary/90 text-black text-xs font-bold tracking-[0.15em] uppercase rounded-full hover:bg-primary transition-colors shadow-[0_0_15px_rgba(255,215,0,0.3)]"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -153,7 +138,7 @@ export function Navbar() {
         </div>
 
         {/* Mobile Menu Toggle */}
-        <motion.div variants={itemVariants} className="md:hidden ml-auto">
+        <div className="md:hidden ml-auto">
           <Button
             variant="ghost"
             size="icon"
@@ -162,7 +147,7 @@ export function Navbar() {
           >
             {isMobileMenuOpen ? <X /> : <Menu />}
           </Button>
-        </motion.div>
+        </div>
 
         {/* Mobile Nav Dropdown */}
         <AnimatePresence>
@@ -191,18 +176,6 @@ export function Navbar() {
                     {link.name}
                   </motion.a>
                 ))}
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.3 }}
-                >
-                  <Button 
-                    onClick={() => scrollToSection("#form")}
-                    className="w-full rounded-xl bg-primary hover:bg-primary/90 text-black font-bold mt-2"
-                  >
-                    REGISTER NOW
-                  </Button>
-                </motion.div>
               </div>
             </motion.div>
           )}
