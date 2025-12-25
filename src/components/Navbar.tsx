@@ -74,7 +74,7 @@ export function Navbar() {
         variants={navVariants}
         className={`pointer-events-auto relative flex items-center justify-between px-8 py-4 w-full max-w-6xl transition-all duration-500 ${
           isScrolled 
-            ? "bg-black/60 backdrop-blur-xl shadow-2xl rounded-full border border-white/10" 
+            ? "bg-white/80 backdrop-blur-xl shadow-2xl rounded-full border border-black/5" 
             : "bg-transparent rounded-full"
         }`}
       >
@@ -85,12 +85,12 @@ export function Navbar() {
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
         >
-          <div className="relative w-10 h-10 flex items-center justify-center bg-white/5 rounded-full border border-white/10 overflow-hidden group-hover:border-primary/50 transition-colors">
+          <div className={`relative w-10 h-10 flex items-center justify-center rounded-full border overflow-hidden transition-colors ${isScrolled ? "bg-black/5 border-black/10 group-hover:border-primary/50" : "bg-white/10 border-white/20 group-hover:border-primary/50"}`}>
              <span className="text-xl font-serif font-bold text-primary">M</span>
           </div>
           <div className="flex flex-col">
-            <span className="text-sm font-bold tracking-[0.2em] text-white leading-none group-hover:text-primary transition-colors">MAULI</span>
-            <span className="text-[8px] tracking-[0.3em] text-white/50 uppercase">Photography</span>
+            <span className={`text-sm font-bold tracking-[0.2em] leading-none transition-colors ${isScrolled ? "text-foreground group-hover:text-primary" : "text-white group-hover:text-primary"}`}>MAULI</span>
+            <span className={`text-[8px] tracking-[0.3em] uppercase ${isScrolled ? "text-muted-foreground" : "text-white/60"}`}>Photography</span>
           </div>
         </motion.div>
 
@@ -106,12 +106,12 @@ export function Navbar() {
               }}
               onMouseEnter={() => setHoveredIndex(index)}
               onMouseLeave={() => setHoveredIndex(null)}
-              className="relative px-5 py-2 text-xs font-medium tracking-[0.15em] uppercase text-white/80 transition-colors hover:text-white"
+              className={`relative px-5 py-2 text-xs font-medium tracking-[0.15em] uppercase transition-colors ${isScrolled ? "text-foreground/80 hover:text-foreground" : "text-white/80 hover:text-white"}`}
             >
               {hoveredIndex === index && (
                 <motion.span
                   layoutId="nav-hover-bg"
-                  className="absolute inset-0 bg-white/5 rounded-full -z-10 border border-white/5"
+                  className={`absolute inset-0 rounded-full -z-10 border ${isScrolled ? "bg-black/5 border-black/5" : "bg-white/10 border-white/10"}`}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
@@ -129,7 +129,7 @@ export function Navbar() {
                 e.preventDefault();
                 navigate("/dashboard");
               }}
-              className="ml-4 px-6 py-2 bg-primary/90 text-black text-xs font-bold tracking-[0.15em] uppercase rounded-full hover:bg-primary transition-colors shadow-[0_0_15px_rgba(255,215,0,0.3)]"
+              className="ml-4 px-6 py-2 bg-primary text-white text-xs font-bold tracking-[0.15em] uppercase rounded-full hover:bg-primary/90 transition-colors shadow-lg"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
@@ -143,7 +143,7 @@ export function Navbar() {
           <Button
             variant="ghost"
             size="icon"
-            className="text-white hover:bg-white/10 hover:text-primary rounded-full"
+            className={`rounded-full ${isScrolled ? "text-foreground hover:bg-black/5" : "text-white hover:bg-white/10"}`}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X /> : <Menu />}
@@ -158,7 +158,7 @@ export function Navbar() {
               animate={{ opacity: 1, y: 0, scale: 1, height: "auto" }}
               exit={{ opacity: 0, y: -20, scale: 0.95, height: 0 }}
               transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="absolute top-full left-0 right-0 mt-4 p-4 rounded-3xl bg-black/90 backdrop-blur-xl border border-white/10 shadow-2xl md:hidden overflow-hidden"
+              className="absolute top-full left-0 right-0 mt-4 p-4 rounded-3xl bg-white/90 backdrop-blur-xl border border-black/5 shadow-2xl md:hidden overflow-hidden"
             >
               <div className="flex flex-col gap-2">
                 {navLinks.map((link, i) => (
@@ -172,7 +172,7 @@ export function Navbar() {
                       e.preventDefault();
                       scrollToSection(link.href);
                     }}
-                    className="text-lg font-bold tracking-widest uppercase text-white/90 hover:text-primary hover:bg-white/5 px-4 py-3 rounded-xl transition-all"
+                    className="text-lg font-bold tracking-widest uppercase text-foreground/90 hover:text-primary hover:bg-black/5 px-4 py-3 rounded-xl transition-all"
                   >
                     {link.name}
                   </motion.a>
