@@ -137,7 +137,7 @@ export function VideoSection() {
               exit={{ opacity: 0, scale: 1.05 }}
               transition={{ duration: 0.5 }}
               className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl group cursor-pointer"
-              onClick={handleFullScreen}
+              onClick={handleVideoClick}
               onMouseEnter={handleInteraction}
               onMouseMove={handleInteraction}
             >
@@ -179,7 +179,7 @@ export function VideoSection() {
               {/* Navigation Arrows (Hover) */}
               <div className="absolute inset-y-0 left-0 w-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <button
-                  onClick={(e) => { e.stopPropagation(); handlePrev(); }}
+                  onClick={(e) => { e.stopPropagation(); handleManualPrev(e); }}
                   className="p-3 rounded-full bg-black/20 backdrop-blur-md text-white hover:bg-black/40 transition-colors"
                 >
                   <ArrowLeft className="w-6 h-6" />
@@ -187,7 +187,7 @@ export function VideoSection() {
               </div>
               <div className="absolute inset-y-0 right-0 w-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <button
-                  onClick={(e) => { e.stopPropagation(); handleNext(); }}
+                  onClick={(e) => { e.stopPropagation(); handleManualNext(e); }}
                   className="p-3 rounded-full bg-black/20 backdrop-blur-md text-white hover:bg-black/40 transition-colors"
                 >
                   <ArrowRight className="w-6 h-6" />
@@ -217,7 +217,7 @@ export function VideoSection() {
            <Button 
             variant="outline" 
             size="lg"
-            onClick={handleNext}
+            onClick={(e) => handleManualNext(e)}
             className="group border-primary/20 hover:bg-primary/5 hover:text-primary"
           >
             Next Video
@@ -256,10 +256,10 @@ export function VideoSection() {
                     <p className="text-white/70">{videos[currentIndex].category}</p>
                   </div>
                   <div className="flex gap-4">
-                    <button onClick={handlePrev} className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors">
+                    <button onClick={(e) => handleManualPrev(e)} className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors">
                       <ArrowLeft className="w-6 h-6" />
                     </button>
-                    <button onClick={handleNext} className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors">
+                    <button onClick={(e) => handleManualNext(e)} className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors">
                       <ArrowRight className="w-6 h-6" />
                     </button>
                   </div>
