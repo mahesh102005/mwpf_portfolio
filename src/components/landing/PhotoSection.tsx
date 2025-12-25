@@ -102,13 +102,13 @@ export function PhotoSection() {
   };
 
   return (
-    <section id="photo" className="py-24 px-4 bg-zinc-950 relative overflow-hidden min-h-screen flex items-center justify-center">
+    <section id="photo" className="py-24 px-4 bg-white relative overflow-hidden min-h-screen flex items-center justify-center">
       {/* Ambient Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-zinc-900 via-zinc-950 to-black opacity-80" />
-      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[128px] pointer-events-none" />
-      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-white/5 rounded-full blur-[128px] pointer-events-none" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-zinc-50 to-zinc-100 opacity-80" />
+      <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[128px] pointer-events-none" />
+      <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[128px] pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-6xl mx-auto flex flex-col items-center gap-12">
+      <div className="relative z-10 w-full max-w-[90rem] mx-auto flex flex-col items-center gap-12">
         
         {/* Header */}
         <div className="text-center space-y-4">
@@ -116,7 +116,7 @@ export function PhotoSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-bold text-white tracking-tight"
+            className="text-4xl md:text-6xl font-bold text-zinc-900 tracking-tight"
           >
             Selected <span className="text-primary font-serif italic">Works</span>
           </motion.h2>
@@ -125,7 +125,7 @@ export function PhotoSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-zinc-400 max-w-lg mx-auto"
+            className="text-zinc-500 max-w-lg mx-auto"
           >
             A curated collection of moments frozen in time.
           </motion.p>
@@ -133,7 +133,7 @@ export function PhotoSection() {
 
         {/* Main Photo Panel */}
         <motion.div 
-          className="relative group w-full max-w-4xl aspect-[4/3] md:aspect-[16/9] rounded-[2rem] overflow-hidden bg-zinc-900/50 border border-white/10 shadow-2xl backdrop-blur-sm"
+          className="relative group w-full max-w-7xl aspect-[4/3] md:aspect-[16/9] rounded-[2rem] overflow-hidden bg-white/30 border border-white/50 shadow-2xl backdrop-blur-md"
           onMouseEnter={() => setIsAutoPlaying(false)}
           onMouseLeave={() => setIsAutoPlaying(true)}
           initial={{ opacity: 0, scale: 0.95 }}
@@ -207,7 +207,7 @@ export function PhotoSection() {
         <div className="flex items-center gap-4">
           <Button
             variant="outline"
-            className="h-12 px-8 rounded-full bg-white/5 border-white/10 text-white hover:bg-white/10 hover:text-white backdrop-blur-md transition-all hover:scale-105"
+            className="h-12 px-8 rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm"
             onClick={nextPhoto}
           >
             <ImageIcon className="w-4 h-4 mr-2" />
