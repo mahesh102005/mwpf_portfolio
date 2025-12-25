@@ -27,8 +27,7 @@ export function AboutSection() {
             viewport={{ once: true }}
             className="w-full md:w-1/2 space-y-6"
           >
-            <h2 className="text-4xl font-bold text-white">About <span className="text-primary">mwp</span></h2>
-            <div className="h-1 w-20 bg-primary rounded-full" />
+            <h2 className="text-4xl font-bold text-white">About <span className="text-primary">mwpf</span></h2>
             <p className="text-lg text-muted-foreground leading-relaxed">
               I am a passionate photographer and videographer dedicated to capturing the essence of every moment. With a keen eye for detail and a love for storytelling, I strive to create visual masterpieces that resonate with emotion and beauty.
             </p>
