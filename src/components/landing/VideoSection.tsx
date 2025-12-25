@@ -195,52 +195,51 @@ export function VideoSection() {
               </div>
             </motion.div>
           </AnimatePresence>
-
         </div>
-      </div>
 
-      {/* Full Screen Modal */}
-      <AnimatePresence>
-        {isFullScreen && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-10"
-          >
-            <button
-              onClick={handleCloseFullScreen}
-              className="absolute top-6 right-6 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors z-50"
+        {/* Full Screen Modal */}
+        <AnimatePresence>
+          {isFullScreen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-10"
             >
-              <X className="w-6 h-6" />
-            </button>
+              <button
+                onClick={handleCloseFullScreen}
+                className="absolute top-6 right-6 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors z-50"
+              >
+                <X className="w-6 h-6" />
+              </button>
 
-            <div className="relative w-full max-w-7xl aspect-video bg-black rounded-lg overflow-hidden shadow-2xl border border-white/10">
-               <div className="absolute inset-0 flex flex-col items-center justify-center text-white/50">
-                  <Play className="w-16 h-16 mb-4 opacity-50" />
-                  <p className="text-lg">Video Source Empty</p>
-                  <p className="text-sm opacity-70">({videos[currentIndex].title})</p>
-               </div>
-               
-               {/* Controls */}
-               <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/80 to-transparent flex justify-between items-end">
-                  <div>
-                    <h3 className="text-2xl font-bold text-white mb-1">{videos[currentIndex].title}</h3>
-                    <p className="text-white/70">{videos[currentIndex].category}</p>
-                  </div>
-                  <div className="flex gap-4">
-                    <button onClick={(e) => handleManualPrev(e)} className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors">
-                      <ArrowLeft className="w-6 h-6" />
-                    </button>
-                    <button onClick={(e) => handleManualNext(e)} className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors">
-                      <ArrowRight className="w-6 h-6" />
-                    </button>
-                  </div>
-               </div>
-            </div>
-          </motion.div>
-        )}
-      </AnimatePresence>
+              <div className="relative w-full max-w-7xl aspect-video bg-black rounded-lg overflow-hidden shadow-2xl border border-white/10">
+                 <div className="absolute inset-0 flex flex-col items-center justify-center text-white/50">
+                    <Play className="w-16 h-16 mb-4 opacity-50" />
+                    <p className="text-lg">Video Source Empty</p>
+                    <p className="text-sm opacity-70">({videos[currentIndex].title})</p>
+                 </div>
+                 
+                 {/* Controls */}
+                 <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/80 to-transparent flex justify-between items-end">
+                    <div>
+                      <h3 className="text-2xl font-bold text-white mb-1">{videos[currentIndex].title}</h3>
+                      <p className="text-white/70">{videos[currentIndex].category}</p>
+                    </div>
+                    <div className="flex gap-4">
+                      <button onClick={(e) => handleManualPrev(e)} className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors">
+                        <ArrowLeft className="w-6 h-6" />
+                      </button>
+                      <button onClick={(e) => handleManualNext(e)} className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors">
+                        <ArrowRight className="w-6 h-6" />
+                      </button>
+                    </div>
+                 </div>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </section>
   );
 }

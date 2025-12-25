@@ -154,7 +154,7 @@ export function PhotoSection() {
 
         {/* Main Photo Panel */}
         <motion.div 
-          className="relative group w-full max-w-4xl aspect-[4/3] md:aspect-[16/9] rounded-[2rem] overflow-hidden bg-white/30 border border-white/50 shadow-2xl backdrop-blur-md"
+          className="relative group w-full max-w-4xl mx-auto aspect-[4/3] md:aspect-[16/9] rounded-[2rem] overflow-hidden bg-white/30 border border-white/50 shadow-2xl backdrop-blur-md"
           onMouseEnter={() => !userStopped && setIsAutoPlaying(false)}
           onMouseLeave={() => !userStopped && setIsAutoPlaying(true)}
           initial={{ opacity: 0, scale: 0.95 }}
