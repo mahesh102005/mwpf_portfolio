@@ -170,10 +170,11 @@ export function FormSection() {
                         <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
                       <SelectContent>
-                        <SelectItem value="wedding">Wedding Photography</SelectItem>
-                        <SelectItem value="pre-wedding">Pre-Wedding Shoot</SelectItem>
-                        <SelectItem value="event">Event Coverage</SelectItem>
-                        <SelectItem value="commercial">Commercial</SelectItem>
+                        <SelectItem value="wedding-photo-video">Wedding Photography & Videography</SelectItem>
+                        <SelectItem value="wedding-cinematic">Wedding Cinematic</SelectItem>
+                        <SelectItem value="pre-wedding">Pre-Wedding photo Shoot</SelectItem>
+                        <SelectItem value="maternity">Maternity Photoshoot</SelectItem>
+                        <SelectItem value="birthday">Birthday Photography</SelectItem>
                         <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
                     </Select>
