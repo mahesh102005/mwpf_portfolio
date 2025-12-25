@@ -162,20 +162,6 @@ export function VideoSection() {
                 </motion.div>
               </div>
 
-              {/* Video Info */}
-              <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent text-white">
-                <motion.div
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.2 }}
-                >
-                  <span className="inline-block px-3 py-1 rounded-full bg-primary/80 text-white text-xs font-medium mb-3 backdrop-blur-sm">
-                    {videos[currentIndex].category}
-                  </span>
-                  <h3 className="text-3xl font-bold mb-2">{videos[currentIndex].title}</h3>
-                </motion.div>
-              </div>
-
               {/* Navigation Arrows (Hover) */}
               <div className="absolute inset-y-0 left-0 w-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <button
