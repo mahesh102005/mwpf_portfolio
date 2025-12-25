@@ -196,33 +196,6 @@ export function VideoSection() {
             </motion.div>
           </AnimatePresence>
 
-          {/* Progress Indicators - Adjusted for white background */}
-          <div className="absolute -bottom-12 left-0 right-0 flex justify-center gap-3">
-            {videos.map((_, index) => (
-              <button
-                key={index}
-                onClick={() => {
-                  handleInteraction();
-                  setCurrentIndex(index);
-                }}
-                className={`h-1.5 rounded-full transition-all duration-300 ${
-                  index === currentIndex ? "w-8 bg-primary" : "w-2 bg-gray-300 hover:bg-primary/50"
-                }`}
-              />
-            ))}
-          </div>
-        </div>
-
-        <div className="mt-20 text-center">
-           <Button 
-            variant="outline" 
-            size="lg"
-            onClick={(e) => handleManualNext(e)}
-            className="group border-primary/20 hover:bg-primary/5 hover:text-primary"
-          >
-            Next Video
-            <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
-          </Button>
         </div>
       </div>
 
