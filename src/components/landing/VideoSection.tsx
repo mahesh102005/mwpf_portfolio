@@ -151,17 +151,6 @@ export function VideoSection() {
               {/* Overlay - Adjusted for better visibility on hover */}
               <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300" />
 
-              {/* Play Button */}
-              <div className="absolute inset-0 flex items-center justify-center">
-                <motion.div
-                  whileHover={{ scale: 1.1 }}
-                  whileTap={{ scale: 0.95 }}
-                  className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-md border border-white/50 flex items-center justify-center shadow-lg group-hover:bg-white/30 transition-all"
-                >
-                  <Play className="w-8 h-8 text-white fill-white ml-1" />
-                </motion.div>
-              </div>
-
               {/* Navigation Arrows (Hover) */}
               <div className="absolute inset-y-0 left-0 w-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                 <button
