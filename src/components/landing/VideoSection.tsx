@@ -136,7 +136,7 @@ export function VideoSection() {
               animate={{ opacity: 1, scale: 1 }}
               exit={{ opacity: 0, scale: 1.05 }}
               transition={{ duration: 0.5 }}
-              className="relative w-full h-full rounded-2xl overflow-hidden shadow-2xl group cursor-pointer"
+              className="relative w-full h-full rounded-[2rem] overflow-hidden shadow-2xl group cursor-pointer border border-white/50 bg-white/30 backdrop-blur-md"
               onClick={handleVideoClick}
               onMouseEnter={handleInteraction}
               onMouseMove={handleInteraction}
