@@ -46,6 +46,7 @@ export function PhotoSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFullScreen, setIsFullScreen] = useState(false);
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [userStopped, setUserStopped] = useState(false);
   const [direction, setDirection] = useState(0);
 
   const nextPhoto = useCallback(() => {
@@ -58,13 +59,33 @@ export function PhotoSection() {
     setCurrentIndex((prev) => (prev - 1 + photos.length) % photos.length);
   }, []);
 
+  const handleManualNext = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    nextPhoto();
+    setIsAutoPlaying(false);
+    setUserStopped(true);
+  };
+
+  const handleManualPrev = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    prevPhoto();
+    setIsAutoPlaying(false);
+    setUserStopped(true);
+  };
+
+  const handleImageClick = () => {
+    setIsFullScreen(true);
+    setIsAutoPlaying(false);
+    setUserStopped(true);
+  };
+
   // Auto-play logic
   useEffect(() => {
     if (!isAutoPlaying || isFullScreen) return;
 
     const timer = setInterval(() => {
       nextPhoto();
-    }, 6000); // 6 seconds
+    }, 5000); // 5 seconds
 
     return () => clearInterval(timer);
   }, [isAutoPlaying, isFullScreen, nextPhoto]);
@@ -72,8 +93,8 @@ export function PhotoSection() {
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "ArrowRight") nextPhoto();
-      if (e.key === "ArrowLeft") prevPhoto();
+      if (e.key === "ArrowRight") handleManualNext();
+      if (e.key === "ArrowLeft") handleManualPrev();
       if (e.key === "Escape") setIsFullScreen(false);
     };
 
@@ -134,8 +155,8 @@ export function PhotoSection() {
         {/* Main Photo Panel */}
         <motion.div 
           className="relative group w-full max-w-7xl aspect-[4/3] md:aspect-[16/9] rounded-[2rem] overflow-hidden bg-white/30 border border-white/50 shadow-2xl backdrop-blur-md"
-          onMouseEnter={() => setIsAutoPlaying(false)}
-          onMouseLeave={() => setIsAutoPlaying(true)}
+          onMouseEnter={() => !userStopped && setIsAutoPlaying(false)}
+          onMouseLeave={() => !userStopped && setIsAutoPlaying(true)}
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -161,7 +182,7 @@ export function PhotoSection() {
                   scale: { duration: 0.4 }
                 }}
                 className="absolute inset-0 w-full h-full object-cover cursor-pointer"
-                onClick={() => setIsFullScreen(true)}
+                onClick={handleImageClick}
                 alt={photos[currentIndex].title}
               />
             </AnimatePresence>
@@ -172,7 +193,7 @@ export function PhotoSection() {
             <Button
               variant="ghost"
               size="icon"
-              onClick={(e) => { e.stopPropagation(); prevPhoto(); }}
+              onClick={handleManualPrev}
               className="h-12 w-12 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 pointer-events-auto transition-transform hover:scale-110"
             >
               <ArrowLeft className="w-6 h-6" />
@@ -180,7 +201,7 @@ export function PhotoSection() {
             <Button
               variant="ghost"
               size="icon"
-              onClick={(e) => { e.stopPropagation(); nextPhoto(); }}
+              onClick={handleManualNext}
               className="h-12 w-12 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 pointer-events-auto transition-transform hover:scale-110"
             >
               <ArrowRight className="w-6 h-6" />
@@ -194,7 +215,7 @@ export function PhotoSection() {
                 variant="ghost"
                 size="sm"
                 className="pointer-events-auto text-white/80 hover:text-white hover:bg-white/10 gap-2"
-                onClick={() => setIsFullScreen(true)}
+                onClick={handleImageClick}
               >
                 <Expand className="w-4 h-4" />
                 Full Screen
@@ -208,7 +229,7 @@ export function PhotoSection() {
           <Button
             variant="outline"
             className="h-12 px-8 rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm"
-            onClick={nextPhoto}
+            onClick={handleManualNext}
           >
             <ImageIcon className="w-4 h-4 mr-2" />
             Change Photo
@@ -261,7 +282,7 @@ export function PhotoSection() {
               <Button
                 variant="ghost"
                 size="icon"
-                onClick={prevPhoto}
+                onClick={handleManualPrev}
                 className="text-white hover:bg-white/10 rounded-full"
               >
                 <ArrowLeft className="w-6 h-6" />
@@ -271,7 +292,7 @@ export function PhotoSection() {
               
               <Button
                 variant="ghost"
-                onClick={nextPhoto}
+                onClick={handleManualNext}
                 className="text-white hover:bg-white/10 rounded-full px-6"
               >
                 Change Photo
@@ -282,7 +303,7 @@ export function PhotoSection() {
               <Button
                 variant="ghost"
                 size="icon"
-                onClick={nextPhoto}
+                onClick={handleManualNext}
                 className="text-white hover:bg-white/10 rounded-full"
               >
                 <ArrowRight className="w-6 h-6" />
