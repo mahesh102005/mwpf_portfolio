@@ -19,7 +19,7 @@ export function ContactSection() {
         {/* Glass Overlay */}
         <div className="absolute inset-0 bg-white/[0.02] backdrop-blur-[1px] pointer-events-none" />
 
-        <div className="relative z-10 flex flex-col min-h-[600px] p-8 md:p-16 justify-between">
+        <div className="relative z-10 flex flex-col min-h-[800px] p-8 md:p-16 justify-between">
           
           {/* Top Row */}
           <div className="flex justify-between items-start w-full">
