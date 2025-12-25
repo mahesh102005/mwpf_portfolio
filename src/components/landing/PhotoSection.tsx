@@ -189,11 +189,7 @@ export function PhotoSection() {
 
           {/* Info Overlay */}
           <div className="absolute bottom-0 left-0 right-0 z-30 p-6 md:p-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-            <div className="flex items-end justify-between">
-              <div>
-                <p className="text-primary text-sm font-medium tracking-wider uppercase mb-1">{photos[currentIndex].category}</p>
-                <h3 className="text-white text-2xl font-bold">{photos[currentIndex].title}</h3>
-              </div>
+            <div className="flex items-end justify-end">
               <Button
                 variant="ghost"
                 size="sm"
