@@ -14,7 +14,7 @@ export function AboutSection() {
             <div className="relative">
               <div className="absolute inset-0 bg-primary rounded-3xl blur-2xl opacity-20 transform rotate-3" />
               <img 
-                src="https://images.unsplash.com/photo-1552168324-d612d77725e3?q=80&w=1000&auto=format&fit=crop" 
+                src="https://harmless-tapir-303.convex.cloud/api/storage/28e67764-f0f5-4c65-b81a-c1d7f69ae54b" 
                 alt="Photographer" 
                 className="relative rounded-3xl border border-white/10 shadow-2xl w-full aspect-[4/5] object-cover grayscale hover:grayscale-0 transition-all duration-500"
               />
