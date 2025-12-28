@@ -118,8 +118,9 @@
   * {
     @apply border-border outline-ring/50;
   }
-  body {
-    @apply bg-background text-foreground;
+  html, body {
+    background-color: #000000;
+    @apply text-foreground;
   }
   button:not([disabled]),
   [role="button"]:not([disabled]) {
