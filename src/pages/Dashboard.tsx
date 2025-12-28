@@ -32,9 +32,19 @@ export default function Dashboard() {
     }
   }, [isLoading, isAuthenticated, navigate]);
 
+  // Fix for mobile background color (overscroll/browser chrome)
+  useEffect(() => {
+    // Force body background to match dashboard theme
+    const originalBg = document.body.style.backgroundColor;
+    document.body.style.backgroundColor = "#0a0a0a";
+    return () => {
+      document.body.style.backgroundColor = originalBg;
+    };
+  }, []);
+
   if (isLoading) {
     return (
-      <div className="min-h-screen flex items-center justify-center bg-background">
+      <div className="min-h-[100dvh] w-full flex items-center justify-center bg-neutral-950">
         <div className="animate-pulse text-primary">Loading Dashboard...</div>
       </div>
     );
@@ -129,7 +139,7 @@ export default function Dashboard() {
   );
 
   return (
-    <div className="min-h-[100dvh] bg-neutral-950 flex dark text-foreground selection:bg-primary/30">
+    <div className="min-h-[100dvh] w-full bg-neutral-950 flex dark text-foreground selection:bg-primary/30 overflow-x-hidden">
       {/* Sidebar */}
       <motion.div 
         initial={{ x: -100, opacity: 0 }}
@@ -140,7 +150,7 @@ export default function Dashboard() {
       </motion.div>
 
       {/* Main Content */}
-      <div className="flex-1 md:ml-64 p-4 md:p-8">
+      <div className="flex-1 md:ml-64 p-4 md:p-8 w-full max-w-[100vw]">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
