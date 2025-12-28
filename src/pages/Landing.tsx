@@ -10,11 +10,16 @@ import { useEffect } from "react";
 export default function Landing() {
   // Fix for mobile background color (overscroll/browser chrome)
   useEffect(() => {
-    // Force body background to match dark theme for overscroll areas
-    const originalBg = document.body.style.backgroundColor;
+    // Force body and html background to match dark theme for overscroll areas
+    const originalBodyBg = document.body.style.backgroundColor;
+    const originalHtmlBg = document.documentElement.style.backgroundColor;
+
     document.body.style.backgroundColor = "#000000";
+    document.documentElement.style.backgroundColor = "#000000";
+
     return () => {
-      document.body.style.backgroundColor = originalBg;
+      document.body.style.backgroundColor = originalBodyBg;
+      document.documentElement.style.backgroundColor = originalHtmlBg;
     };
   }, []);
 
