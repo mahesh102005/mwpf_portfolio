@@ -148,7 +148,7 @@ export function PhotoSection() {
             transition={{ delay: 0.1 }}
             className="text-zinc-500 max-w-lg mx-auto"
           >
-            A curated collection of moments frozen in time.
+            Capturing moments that last forever
           </motion.p>
         </div>
 
