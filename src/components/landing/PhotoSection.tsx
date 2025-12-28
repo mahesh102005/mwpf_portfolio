@@ -139,7 +139,7 @@ export function PhotoSection() {
             viewport={{ once: true }}
             className="text-4xl md:text-6xl font-bold text-zinc-900 tracking-tight"
           >
-            Selected <span className="text-primary font-serif italic">Works</span>
+            PHOTOS
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0, y: 20 }}
