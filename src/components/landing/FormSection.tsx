@@ -94,7 +94,7 @@ export function FormSection() {
   }
 
   return (
-    <section id="form" className="py-20 bg-muted/30 relative overflow-hidden">
+    <section id="form" className="py-20 bg-white relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10 flex justify-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
