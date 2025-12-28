@@ -10,12 +10,14 @@ import {
   LogOut, 
   TrendingUp,
   MessageSquare,
-  Image as ImageIcon
+  Image as ImageIcon,
+  Menu
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { ScrollArea } from "@/components/ui/scroll-area";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
+import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
 
@@ -69,6 +71,63 @@ export default function Dashboard() {
     }
   ];
 
+  const SidebarContent = () => (
+    <>
+      <div className="flex items-center gap-3 mb-10">
+        <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary to-purple-500 flex items-center justify-center">
+          <LayoutDashboard className="text-white w-6 h-6" />
+        </div>
+        <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">
+          Studio
+        </h1>
+      </div>
+
+      <nav className="space-y-2 flex-1">
+        {[
+          { name: "Overview", icon: LayoutDashboard, active: true },
+          { name: "Bookings", icon: Calendar, active: false },
+          { name: "Clients", icon: Users, active: false },
+          { name: "Gallery", icon: ImageIcon, active: false },
+          { name: "Settings", icon: Settings, active: false },
+        ].map((item) => (
+          <Button
+            key={item.name}
+            variant="ghost"
+            className={`w-full justify-start gap-3 text-base ${
+              item.active 
+                ? "bg-white/10 text-white" 
+                : "text-muted-foreground hover:text-white hover:bg-white/5"
+            }`}
+          >
+            <item.icon className="w-5 h-5" />
+            {item.name}
+          </Button>
+        ))}
+      </nav>
+
+      <div className="pt-6 border-t border-white/10">
+        <div className="flex items-center gap-3 mb-4 px-2">
+          <Avatar className="w-8 h-8 border border-white/10">
+            <AvatarImage src={user?.image} />
+            <AvatarFallback>AD</AvatarFallback>
+          </Avatar>
+          <div className="flex-1 overflow-hidden">
+            <p className="text-sm font-medium text-white truncate">{user?.name || "Admin"}</p>
+            <p className="text-xs text-muted-foreground truncate">{user?.email}</p>
+          </div>
+        </div>
+        <Button 
+          variant="destructive" 
+          className="w-full justify-start gap-3 bg-red-500/10 hover:bg-red-500/20 text-red-500 border border-red-500/20"
+          onClick={() => signOut()}
+        >
+          <LogOut className="w-4 h-4" />
+          Sign Out
+        </Button>
+      </div>
+    </>
+  );
+
   return (
     <div className="min-h-screen bg-background flex">
       {/* Sidebar */}
@@ -77,79 +136,40 @@ export default function Dashboard() {
         animate={{ x: 0, opacity: 1 }}
         className="w-64 bg-black/40 backdrop-blur-xl border-r border-white/10 hidden md:flex flex-col p-6 fixed h-full z-10"
       >
-        <div className="flex items-center gap-3 mb-10">
-          <div className="w-10 h-10 rounded-xl bg-gradient-to-tr from-primary to-purple-500 flex items-center justify-center">
-            <LayoutDashboard className="text-white w-6 h-6" />
-          </div>
-          <h1 className="text-xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-white to-white/60">
-            Studio
-          </h1>
-        </div>
-
-        <nav className="space-y-2 flex-1">
-          {[
-            { name: "Overview", icon: LayoutDashboard, active: true },
-            { name: "Bookings", icon: Calendar, active: false },
-            { name: "Clients", icon: Users, active: false },
-            { name: "Gallery", icon: ImageIcon, active: false },
-            { name: "Settings", icon: Settings, active: false },
-          ].map((item) => (
-            <Button
-              key={item.name}
-              variant="ghost"
-              className={`w-full justify-start gap-3 text-base ${
-                item.active 
-                  ? "bg-white/10 text-white" 
-                  : "text-muted-foreground hover:text-white hover:bg-white/5"
-              }`}
-            >
-              <item.icon className="w-5 h-5" />
-              {item.name}
-            </Button>
-          ))}
-        </nav>
-
-        <div className="pt-6 border-t border-white/10">
-          <div className="flex items-center gap-3 mb-4 px-2">
-            <Avatar className="w-8 h-8 border border-white/10">
-              <AvatarImage src={user?.image} />
-              <AvatarFallback>AD</AvatarFallback>
-            </Avatar>
-            <div className="flex-1 overflow-hidden">
-              <p className="text-sm font-medium text-white truncate">{user?.name || "Admin"}</p>
-              <p className="text-xs text-muted-foreground truncate">{user?.email}</p>
-            </div>
-          </div>
-          <Button 
-            variant="destructive" 
-            className="w-full justify-start gap-3 bg-red-500/10 hover:bg-red-500/20 text-red-500 border border-red-500/20"
-            onClick={() => signOut()}
-          >
-            <LogOut className="w-4 h-4" />
-            Sign Out
-          </Button>
-        </div>
+        <SidebarContent />
       </motion.div>
 
       {/* Main Content */}
-      <div className="flex-1 md:ml-64 p-8">
+      <div className="flex-1 md:ml-64 p-4 md:p-8">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1 }}
         >
-          <header className="flex justify-between items-center mb-8">
-            <div>
-              <h2 className="text-3xl font-bold text-white mb-1">Dashboard</h2>
-              <p className="text-muted-foreground">Welcome back to your creative space.</p>
+          <header className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8 gap-4">
+            <div className="flex items-center gap-4 w-full md:w-auto">
+              <Sheet>
+                <SheetTrigger asChild>
+                  <Button variant="ghost" size="icon" className="md:hidden shrink-0 -ml-2">
+                    <Menu className="w-6 h-6 text-white" />
+                  </Button>
+                </SheetTrigger>
+                <SheetContent side="left" className="w-64 bg-black/95 border-r border-white/10 p-6 flex flex-col border-none">
+                  <SidebarContent />
+                </SheetContent>
+              </Sheet>
+              <div>
+                <h2 className="text-2xl md:text-3xl font-bold text-white mb-1">Dashboard</h2>
+                <p className="text-sm md:text-base text-muted-foreground">Welcome back to your creative space.</p>
+              </div>
             </div>
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6">
+            <Button className="w-full md:w-auto bg-primary hover:bg-primary/90 text-primary-foreground rounded-full px-6">
               + New Project
             </Button>
           </header>
 
           {/* Stats Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6 mb-8">
             {stats.map((stat, index) => (
               <motion.div
                 key={stat.title}
@@ -189,13 +209,22 @@ export default function Dashboard() {
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: i * 0.05 }}
-                          className="flex items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-white/10 transition-all"
+                          className="flex flex-col sm:flex-row items-start gap-4 p-4 rounded-xl bg-white/5 border border-white/5 hover:border-white/10 transition-all"
                         >
-                          <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold shrink-0">
-                            {contact.name.charAt(0)}
+                          <div className="flex items-center gap-4 w-full sm:w-auto">
+                            <div className="w-10 h-10 rounded-full bg-primary/20 flex items-center justify-center text-primary font-bold shrink-0">
+                              {contact.name.charAt(0)}
+                            </div>
+                            <div className="sm:hidden flex-1">
+                               <h4 className="font-medium text-white truncate">{contact.name}</h4>
+                               <span className="text-xs text-muted-foreground">
+                                {new Date(contact._creationTime).toLocaleDateString()}
+                              </span>
+                            </div>
                           </div>
-                          <div className="flex-1 min-w-0">
-                            <div className="flex justify-between items-start mb-1">
+                          
+                          <div className="flex-1 min-w-0 w-full">
+                            <div className="hidden sm:flex justify-between items-start mb-1">
                               <h4 className="font-medium text-white truncate">{contact.name}</h4>
                               <span className="text-xs text-muted-foreground bg-white/5 px-2 py-1 rounded-full">
                                 {new Date(contact._creationTime).toLocaleDateString()}
