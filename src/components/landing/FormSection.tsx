@@ -1,6 +1,5 @@
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Label } from "@/components/ui/label";
 import {
   Select,
   SelectContent,
@@ -9,203 +8,224 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Textarea } from "@/components/ui/textarea";
+import { Label } from "@/components/ui/label";
 import { api } from "@/convex/_generated/api";
 import { useMutation } from "convex/react";
 import { motion } from "framer-motion";
-import { Loader2 } from "lucide-react";
 import { useState } from "react";
 import { toast } from "sonner";
-
-const INDIAN_STATES = [
-  "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", 
-  "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", 
-  "Maharashtra", "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", 
-  "Rajasthan", "Sikkim", "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", 
-  "Uttarakhand", "West Bengal", "Andaman and Nicobar Islands", "Chandigarh", 
-  "Dadra and Nagar Haveli and Daman and Diu", "Delhi", "Jammu and Kashmir", "Ladakh", 
-  "Lakshadweep", "Puducherry"
-];
 
 export function FormSection() {
   const submitContact = useMutation(api.contacts.submit);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     phone: "",
     service: "",
     state: "",
-    message: ""
+    message: "",
   });
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const handleSelectChange = (name: string, value: string) => {
+    setFormData((prev) => ({ ...prev, [name]: value }));
+  };
+
+  const indianStates = [
+    "Andhra Pradesh", "Arunachal Pradesh", "Assam", "Bihar", "Chhattisgarh", "Goa", "Gujarat", 
+    "Haryana", "Himachal Pradesh", "Jharkhand", "Karnataka", "Kerala", "Madhya Pradesh", "Maharashtra", 
+    "Manipur", "Meghalaya", "Mizoram", "Nagaland", "Odisha", "Punjab", "Rajasthan", "Sikkim", 
+    "Tamil Nadu", "Telangana", "Tripura", "Uttar Pradesh", "Uttarakhand", "West Bengal", "Delhi"
+  ];
+
+  async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
+    
+    // Basic validation
+    if (!formData.name || formData.name.length < 2) {
+      toast.error("Please enter a valid name");
+      return;
+    }
+    if (!formData.email || !formData.email.includes("@")) {
+      toast.error("Please enter a valid email");
+      return;
+    }
+    if (!formData.phone || formData.phone.length < 10) {
+      toast.error("Please enter a valid phone number");
+      return;
+    }
+    if (!formData.service) {
+      toast.error("Please select a service");
+      return;
+    }
+
     setIsSubmitting(true);
-
     try {
-      // Basic validation
-      if (formData.name.length < 2) throw new Error("Name is too short");
-      if (!formData.email.includes("@")) throw new Error("Invalid email address");
-      if (formData.phone.length < 10) throw new Error("Invalid phone number");
-      if (!formData.service) throw new Error("Please select a service");
-
       await submitContact({
-        ...formData,
-        type: "booking"
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        service: formData.service,
+        state: formData.state,
+        message: formData.message,
+        type: "booking",
       });
-
-      toast.success("Request submitted successfully!", {
-        description: "We'll get back to you shortly."
-      });
-
+      toast.success("Request submitted successfully!");
       setFormData({
         name: "",
         email: "",
         phone: "",
         service: "",
         state: "",
-        message: ""
+        message: "",
       });
     } catch (error) {
-      toast.error("Failed to submit request", {
-        description: error instanceof Error ? error.message : "Please try again later"
-      });
+      console.error(error);
+      toast.error("Failed to submit request. Please try again.");
     } finally {
       setIsSubmitting(false);
     }
-  };
+  }
 
   return (
-    <section id="form" className="py-24 px-4 bg-white relative overflow-hidden">
-      {/* Ambient Background */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-zinc-50 to-zinc-100 opacity-80" />
-      
-      <div className="relative z-10 w-full max-w-3xl mx-auto">
+    <section id="form" className="py-20 bg-muted/30 relative overflow-hidden">
+      <div className="container mx-auto px-4 relative z-10 flex justify-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="bg-white rounded-[2rem] shadow-2xl overflow-hidden border border-zinc-100"
+          transition={{ duration: 0.6 }}
+          className="w-full max-w-2xl bg-background rounded-2xl shadow-xl overflow-hidden border border-border/50"
         >
-          {/* Header */}
-          <div className="bg-black p-8 md:p-12 text-center relative overflow-hidden">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-primary/20 via-transparent to-transparent opacity-50" />
-            <div className="relative z-10 space-y-4">
-              <div className="w-16 h-16 mx-auto bg-white rounded-full p-1 mb-6">
-                <img src="/logo.svg" alt="Logo" className="w-full h-full object-contain rounded-full" />
+          {/* Header Section */}
+          <div className="bg-black text-white p-8 text-center relative overflow-hidden m-4 rounded-xl">
+            <div className="relative z-10 flex flex-col items-center">
+              <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-4 backdrop-blur-sm border border-white/20">
+                 <img 
+                    src="https://harmless-tapir-303.convex.cloud/api/storage/12f3af3e-9161-4b2f-bfd5-081de370261e" 
+                    alt="MWP Logo" 
+                    className="w-10 h-10 object-contain"
+                 />
               </div>
-              <h2 className="text-2xl md:text-3xl font-bold text-white tracking-tight">
-                MAULI WEDDING PHOTOGRAPHY AND FILMS
-              </h2>
-              <p className="text-zinc-400">
-                We capture amazing moments worldwide.
-              </p>
+              <h2 className="text-2xl font-bold mb-1 uppercase tracking-wide">MAULI WEDDING PHOTOGRAPHY AND FILMS</h2>
+              <p className="text-white/70 text-sm">We capture amazing moments worldwide.</p>
+            </div>
+            
+            {/* Decorative background elements */}
+            <div className="absolute top-0 left-0 w-full h-full opacity-20 pointer-events-none">
+                <div className="absolute top-[-50%] left-[-20%] w-[500px] h-[500px] rounded-full bg-primary blur-[100px]" />
             </div>
           </div>
 
-          {/* Form */}
-          <div className="p-8 md:p-12 space-y-8">
-            <form onSubmit={handleSubmit} className="space-y-6">
+          <div className="p-8 pt-2">
+            <form onSubmit={onSubmit} className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="name" className="text-zinc-900">Full Name</Label>
-                <Input
+                <Label htmlFor="name" className="font-medium">Full Name</Label>
+                <Input 
                   id="name"
-                  placeholder="Enter your full name"
+                  name="name"
+                  placeholder="Enter your full name" 
+                  className="h-12 bg-muted/20" 
                   value={formData.name}
-                  onChange={(e) => setFormData(prev => ({ ...prev, name: e.target.value }))}
-                  className="bg-zinc-50 border-zinc-200 text-zinc-900 placeholder:text-zinc-400 focus:border-primary/50 focus:ring-primary/20"
+                  onChange={handleChange}
+                  required
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email" className="text-zinc-900">Email Address</Label>
-                <Input
+                <Label htmlFor="email" className="font-medium">Email Address</Label>
+                <Input 
                   id="email"
+                  name="email"
                   type="email"
-                  placeholder="Enter your email address"
+                  placeholder="Enter your email address" 
+                  className="h-12 bg-muted/20" 
                   value={formData.email}
-                  onChange={(e) => setFormData(prev => ({ ...prev, email: e.target.value }))}
-                  className="bg-zinc-50 border-zinc-200 text-zinc-900 placeholder:text-zinc-400 focus:border-primary/50 focus:ring-primary/20"
+                  onChange={handleChange}
+                  required
                 />
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="phone" className="text-zinc-900">Mobile Number</Label>
-                <Input
+                <Label htmlFor="phone" className="font-medium">Mobile Number</Label>
+                <Input 
                   id="phone"
+                  name="phone"
                   type="tel"
-                  placeholder="Enter your mobile number"
+                  placeholder="Enter your mobile number" 
+                  className="h-12 bg-muted/20" 
                   value={formData.phone}
-                  onChange={(e) => setFormData(prev => ({ ...prev, phone: e.target.value }))}
-                  className="bg-zinc-50 border-zinc-200 text-zinc-900 placeholder:text-zinc-400 focus:border-primary/50 focus:ring-primary/20"
+                  onChange={handleChange}
+                  required
                 />
               </div>
 
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2">
-                  <Label className="text-zinc-900">Service</Label>
-                  <Select 
-                    value={formData.service} 
-                    onValueChange={(value) => setFormData(prev => ({ ...prev, service: value }))}
-                  >
-                    <SelectTrigger className="bg-zinc-50 border-zinc-200 text-zinc-900 focus:border-primary/50 focus:ring-primary/20">
-                      <SelectValue placeholder="Select a service" />
-                    </SelectTrigger>
-                    <SelectContent>
-                      <SelectItem value="wedding">Wedding Photography</SelectItem>
-                      <SelectItem value="pre-wedding">Pre-Wedding Shoot</SelectItem>
-                      <SelectItem value="cinematography">Cinematography</SelectItem>
-                      <SelectItem value="candid">Candid Photography</SelectItem>
-                      <SelectItem value="drone">Drone Services</SelectItem>
-                      <SelectItem value="album">Album Designing</SelectItem>
-                    </SelectContent>
-                  </Select>
-                </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                  <div className="space-y-2">
+                    <Label className="font-medium">Service</Label>
+                    <Select 
+                      value={formData.service} 
+                      onValueChange={(val) => handleSelectChange("service", val)}
+                    >
+                      <SelectTrigger className="h-12 bg-muted/20">
+                        <SelectValue placeholder="Select a service" />
+                      </SelectTrigger>
+                      <SelectContent>
+                        <SelectItem value="wedding-photo-video">Wedding Photography & Videography</SelectItem>
+                        <SelectItem value="wedding-cinematic">Wedding Cinematic</SelectItem>
+                        <SelectItem value="pre-wedding">Pre-Wedding photo Shoot</SelectItem>
+                        <SelectItem value="maternity">Maternity Photoshoot</SelectItem>
+                        <SelectItem value="birthday">Birthday Photography</SelectItem>
+                        <SelectItem value="other">Other</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
 
-                <div className="space-y-2">
-                  <Label className="text-zinc-900">State</Label>
-                  <Select 
-                    value={formData.state} 
-                    onValueChange={(value) => setFormData(prev => ({ ...prev, state: value }))}
-                  >
-                    <SelectTrigger className="bg-zinc-50 border-zinc-200 text-zinc-900 focus:border-primary/50 focus:ring-primary/20">
-                      <SelectValue placeholder="Select your state" />
-                    </SelectTrigger>
-                    <SelectContent className="max-h-[200px]">
-                      {INDIAN_STATES.map((state) => (
-                        <SelectItem key={state} value={state}>
-                          {state}
-                        </SelectItem>
-                      ))}
-                    </SelectContent>
-                  </Select>
-                </div>
+                  <div className="space-y-2">
+                    <Label className="font-medium">State</Label>
+                    <Select 
+                      value={formData.state} 
+                      onValueChange={(val) => handleSelectChange("state", val)}
+                    >
+                      <SelectTrigger className="h-12 bg-muted/20">
+                        <SelectValue placeholder="Select your state" />
+                      </SelectTrigger>
+                      <SelectContent className="max-h-[300px]">
+                        {indianStates.map((state) => (
+                          <SelectItem key={state} value={state.toLowerCase().replace(/\s+/g, '-')}>
+                            {state}
+                          </SelectItem>
+                        ))}
+                        <SelectItem value="other">Other</SelectItem>
+                      </SelectContent>
+                    </Select>
+                  </div>
               </div>
-
+              
               <div className="space-y-2">
-                <Label htmlFor="message" className="text-zinc-900">Message (Optional)</Label>
-                <Textarea
-                  id="message"
-                  placeholder="Any specific requirements?"
-                  value={formData.message}
-                  onChange={(e) => setFormData(prev => ({ ...prev, message: e.target.value }))}
-                  className="min-h-[100px] bg-zinc-50 border-zinc-200 text-zinc-900 placeholder:text-zinc-400 focus:border-primary/50 focus:ring-primary/20"
+                <Label htmlFor="message" className="font-medium">Message (Optional)</Label>
+                <Textarea 
+                    id="message"
+                    name="message"
+                    placeholder="Any specific requirements?" 
+                    className="min-h-[80px] bg-muted/20 resize-none" 
+                    value={formData.message}
+                    onChange={handleChange}
                 />
               </div>
 
               <Button 
-                type="submit" 
-                className="w-full h-12 bg-black hover:bg-zinc-900 text-white text-lg font-medium transition-all hover:scale-[1.02]"
-                disabled={isSubmitting}
+                  type="submit" 
+                  className="w-full h-12 text-base font-medium bg-black hover:bg-black/90 text-white rounded-lg mt-4"
+                  disabled={isSubmitting}
               >
-                {isSubmitting ? (
-                  <>
-                    <Loader2 className="mr-2 h-5 w-5 animate-spin" />
-                    Submitting...
-                  </>
-                ) : (
-                  "Submit Request"
-                )}
+                {isSubmitting ? "Submitting..." : "Submit Request"}
               </Button>
             </form>
           </div>
