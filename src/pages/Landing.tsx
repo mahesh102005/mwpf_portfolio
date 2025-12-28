@@ -1,11 +1,13 @@
 import { Navbar } from "@/components/Navbar";
-import { AboutSection } from "@/components/landing/AboutSection";
-import { ContactSection } from "@/components/landing/ContactSection";
-import { FormSection } from "@/components/landing/FormSection";
 import { HeroSection } from "@/components/landing/HeroSection";
-import { PhotoSection } from "@/components/landing/PhotoSection";
-import { VideoSection } from "@/components/landing/VideoSection";
-import { useEffect } from "react";
+import { Suspense, lazy } from "react";
+
+// Lazy load below-the-fold sections to improve initial load time
+const AboutSection = lazy(() => import("@/components/landing/AboutSection").then(module => ({ default: module.AboutSection })));
+const ContactSection = lazy(() => import("@/components/landing/ContactSection").then(module => ({ default: module.ContactSection })));
+const FormSection = lazy(() => import("@/components/landing/FormSection").then(module => ({ default: module.FormSection })));
+const PhotoSection = lazy(() => import("@/components/landing/PhotoSection").then(module => ({ default: module.PhotoSection })));
+const VideoSection = lazy(() => import("@/components/landing/VideoSection").then(module => ({ default: module.VideoSection })));
 
 export default function Landing() {
   return (
@@ -14,15 +16,25 @@ export default function Landing() {
 
       <HeroSection />
 
-      <PhotoSection />
+      <Suspense fallback={<div className="h-screen w-full bg-black" />}>
+        <PhotoSection />
+      </Suspense>
 
-      <VideoSection />
+      <Suspense fallback={<div className="h-screen w-full bg-black" />}>
+        <VideoSection />
+      </Suspense>
 
-      <AboutSection />
+      <Suspense fallback={<div className="min-h-[50vh] w-full bg-black" />}>
+        <AboutSection />
+      </Suspense>
 
-      <FormSection />
+      <Suspense fallback={<div className="min-h-[50vh] w-full bg-black" />}>
+        <FormSection />
+      </Suspense>
 
-      <ContactSection />
+      <Suspense fallback={<div className="min-h-[20vh] w-full bg-black" />}>
+        <ContactSection />
+      </Suspense>
     </div>
   );
 }

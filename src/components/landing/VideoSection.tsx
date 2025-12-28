@@ -146,6 +146,7 @@ export function VideoSection() {
                 src={videos[currentIndex].thumbnail}
                 alt={videos[currentIndex].title}
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
               />
               
               {/* Overlay - Adjusted for better visibility on hover */}
