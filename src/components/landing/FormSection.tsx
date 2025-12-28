@@ -94,23 +94,23 @@ export function FormSection() {
   }
 
   return (
-    <section id="form" className="py-20 bg-black relative overflow-hidden">
+    <section id="form" className="py-20 bg-white relative overflow-hidden">
       <div className="container mx-auto px-4 relative z-10 flex justify-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="w-full max-w-2xl bg-zinc-950 rounded-2xl shadow-xl overflow-hidden border border-white/10"
+          className="w-full max-w-2xl bg-background rounded-2xl shadow-xl overflow-hidden border border-border/50"
         >
           {/* Header Section */}
-          <div className="bg-zinc-900 text-white p-8 text-center relative overflow-hidden m-4 rounded-xl border border-white/5">
+          <div className="bg-black text-white p-8 text-center relative overflow-hidden m-4 rounded-xl">
             <div className="relative z-10 flex flex-col items-center">
-              <div className="w-16 h-16 bg-white/5 rounded-full flex items-center justify-center mb-4 backdrop-blur-sm border border-white/10">
+              <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-4 backdrop-blur-sm border border-white/20">
                  <img 
                     src="https://harmless-tapir-303.convex.cloud/api/storage/12f3af3e-9161-4b2f-bfd5-081de370261e" 
                     alt="MWP Logo" 
-                    className="w-10 h-10 object-contain invert"
+                    className="w-10 h-10 object-contain"
                  />
               </div>
               <h2 className="text-2xl font-bold mb-1 uppercase tracking-wide">MAULI WEDDING PHOTOGRAPHY AND FILMS</h2>
@@ -126,12 +126,12 @@ export function FormSection() {
           <div className="p-8 pt-2">
             <form onSubmit={onSubmit} className="space-y-6">
               <div className="space-y-2">
-                <Label htmlFor="name" className="font-medium text-zinc-200">Full Name</Label>
+                <Label htmlFor="name" className="font-medium">Full Name</Label>
                 <Input 
                   id="name"
                   name="name"
                   placeholder="Enter your full name" 
-                  className="h-12 bg-zinc-900 border-zinc-800 text-white placeholder:text-zinc-500 focus-visible:ring-primary/50" 
+                  className="h-12 bg-white" 
                   value={formData.name}
                   onChange={handleChange}
                   required
@@ -139,13 +139,13 @@ export function FormSection() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="email" className="font-medium text-zinc-200">Email Address</Label>
+                <Label htmlFor="email" className="font-medium">Email Address</Label>
                 <Input 
                   id="email"
                   name="email"
                   type="email"
                   placeholder="Enter your email address" 
-                  className="h-12 bg-zinc-900 border-zinc-800 text-white placeholder:text-zinc-500 focus-visible:ring-primary/50" 
+                  className="h-12 bg-white" 
                   value={formData.email}
                   onChange={handleChange}
                   required
@@ -153,13 +153,13 @@ export function FormSection() {
               </div>
 
               <div className="space-y-2">
-                <Label htmlFor="phone" className="font-medium text-zinc-200">Mobile Number</Label>
+                <Label htmlFor="phone" className="font-medium">Mobile Number</Label>
                 <Input 
                   id="phone"
                   name="phone"
                   type="tel"
                   placeholder="Enter your mobile number" 
-                  className="h-12 bg-zinc-900 border-zinc-800 text-white placeholder:text-zinc-500 focus-visible:ring-primary/50" 
+                  className="h-12 bg-white" 
                   value={formData.phone}
                   onChange={handleChange}
                   required
@@ -168,53 +168,53 @@ export function FormSection() {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                   <div className="space-y-2">
-                    <Label className="font-medium text-zinc-200">Service</Label>
+                    <Label className="font-medium">Service</Label>
                     <Select 
                       value={formData.service} 
                       onValueChange={(val) => handleSelectChange("service", val)}
                     >
-                      <SelectTrigger className="h-12 bg-zinc-900 border-zinc-800 text-white focus:ring-primary/50">
+                      <SelectTrigger className="h-12 bg-white">
                         <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
-                      <SelectContent className="bg-zinc-900 border-zinc-800 text-white">
-                        <SelectItem value="wedding-photo-video" className="focus:bg-zinc-800 focus:text-white">Wedding Photography & Videography</SelectItem>
-                        <SelectItem value="wedding-cinematic" className="focus:bg-zinc-800 focus:text-white">Wedding Cinematic</SelectItem>
-                        <SelectItem value="pre-wedding" className="focus:bg-zinc-800 focus:text-white">Pre-Wedding photo Shoot</SelectItem>
-                        <SelectItem value="maternity" className="focus:bg-zinc-800 focus:text-white">Maternity Photoshoot</SelectItem>
-                        <SelectItem value="birthday" className="focus:bg-zinc-800 focus:text-white">Birthday Photography</SelectItem>
-                        <SelectItem value="other" className="focus:bg-zinc-800 focus:text-white">Other</SelectItem>
+                      <SelectContent>
+                        <SelectItem value="wedding-photo-video">Wedding Photography & Videography</SelectItem>
+                        <SelectItem value="wedding-cinematic">Wedding Cinematic</SelectItem>
+                        <SelectItem value="pre-wedding">Pre-Wedding photo Shoot</SelectItem>
+                        <SelectItem value="maternity">Maternity Photoshoot</SelectItem>
+                        <SelectItem value="birthday">Birthday Photography</SelectItem>
+                        <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
 
                   <div className="space-y-2">
-                    <Label className="font-medium text-zinc-200">State</Label>
+                    <Label className="font-medium">State</Label>
                     <Select 
                       value={formData.state} 
                       onValueChange={(val) => handleSelectChange("state", val)}
                     >
-                      <SelectTrigger className="h-12 bg-zinc-900 border-zinc-800 text-white focus:ring-primary/50">
+                      <SelectTrigger className="h-12 bg-white">
                         <SelectValue placeholder="Select your state" />
                       </SelectTrigger>
-                      <SelectContent className="max-h-[300px] bg-zinc-900 border-zinc-800 text-white">
+                      <SelectContent className="max-h-[300px]">
                         {indianStates.map((state) => (
-                          <SelectItem key={state} value={state.toLowerCase().replace(/\s+/g, '-')} className="focus:bg-zinc-800 focus:text-white">
+                          <SelectItem key={state} value={state.toLowerCase().replace(/\s+/g, '-')}>
                             {state}
                           </SelectItem>
                         ))}
-                        <SelectItem value="other" className="focus:bg-zinc-800 focus:text-white">Other</SelectItem>
+                        <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
                     </Select>
                   </div>
               </div>
               
               <div className="space-y-2">
-                <Label htmlFor="message" className="font-medium text-zinc-200">Message (Optional)</Label>
+                <Label htmlFor="message" className="font-medium">Message (Optional)</Label>
                 <Textarea 
                     id="message"
                     name="message"
                     placeholder="Any specific requirements?" 
-                    className="min-h-[80px] bg-zinc-900 border-zinc-800 text-white placeholder:text-zinc-500 resize-none focus-visible:ring-primary/50" 
+                    className="min-h-[80px] bg-white resize-none" 
                     value={formData.message}
                     onChange={handleChange}
                 />
@@ -222,7 +222,7 @@ export function FormSection() {
 
               <Button 
                   type="submit" 
-                  className="w-full h-12 text-base font-medium bg-white hover:bg-zinc-200 text-black rounded-lg mt-4 transition-colors"
+                  className="w-full h-12 text-base font-medium bg-black hover:bg-black/90 text-white rounded-lg mt-4"
                   disabled={isSubmitting}
               >
                 {isSubmitting ? "Submitting..." : "Submit Request"}
