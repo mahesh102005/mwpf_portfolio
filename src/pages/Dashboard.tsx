@@ -129,7 +129,7 @@ export default function Dashboard() {
   );
 
   return (
-    <div className="min-h-screen bg-background flex">
+    <div className="min-h-[100dvh] bg-neutral-950 flex dark text-foreground selection:bg-primary/30">
       {/* Sidebar */}
       <motion.div 
         initial={{ x: -100, opacity: 0 }}
@@ -150,11 +150,11 @@ export default function Dashboard() {
             <div className="flex items-center gap-4 w-full md:w-auto">
               <Sheet>
                 <SheetTrigger asChild>
-                  <Button variant="ghost" size="icon" className="md:hidden shrink-0 -ml-2">
+                  <Button variant="ghost" size="icon" className="md:hidden shrink-0 -ml-2 hover:bg-white/10">
                     <Menu className="w-6 h-6 text-white" />
                   </Button>
                 </SheetTrigger>
-                <SheetContent side="left" className="w-64 bg-black/95 border-r border-white/10 p-6 flex flex-col border-none">
+                <SheetContent side="left" className="w-64 bg-neutral-950 border-r border-white/10 p-6 flex flex-col border-none text-foreground">
                   <SidebarContent />
                 </SheetContent>
               </Sheet>
