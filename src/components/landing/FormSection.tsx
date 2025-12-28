@@ -131,7 +131,7 @@ export function FormSection() {
                   id="name"
                   name="name"
                   placeholder="Enter your full name" 
-                  className="h-12 bg-muted/20" 
+                  className="h-12 bg-white" 
                   value={formData.name}
                   onChange={handleChange}
                   required
@@ -145,7 +145,7 @@ export function FormSection() {
                   name="email"
                   type="email"
                   placeholder="Enter your email address" 
-                  className="h-12 bg-muted/20" 
+                  className="h-12 bg-white" 
                   value={formData.email}
                   onChange={handleChange}
                   required
@@ -159,7 +159,7 @@ export function FormSection() {
                   name="phone"
                   type="tel"
                   placeholder="Enter your mobile number" 
-                  className="h-12 bg-muted/20" 
+                  className="h-12 bg-white" 
                   value={formData.phone}
                   onChange={handleChange}
                   required
@@ -173,7 +173,7 @@ export function FormSection() {
                       value={formData.service} 
                       onValueChange={(val) => handleSelectChange("service", val)}
                     >
-                      <SelectTrigger className="h-12 bg-muted/20">
+                      <SelectTrigger className="h-12 bg-white">
                         <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
                       <SelectContent>
@@ -193,7 +193,7 @@ export function FormSection() {
                       value={formData.state} 
                       onValueChange={(val) => handleSelectChange("state", val)}
                     >
-                      <SelectTrigger className="h-12 bg-muted/20">
+                      <SelectTrigger className="h-12 bg-white">
                         <SelectValue placeholder="Select your state" />
                       </SelectTrigger>
                       <SelectContent className="max-h-[300px]">
@@ -214,7 +214,7 @@ export function FormSection() {
                     id="message"
                     name="message"
                     placeholder="Any specific requirements?" 
-                    className="min-h-[80px] bg-muted/20 resize-none" 
+                    className="min-h-[80px] bg-white resize-none" 
                     value={formData.message}
                     onChange={handleChange}
                 />
