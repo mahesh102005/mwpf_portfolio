@@ -11,28 +11,28 @@ const VideoSection = lazy(() => import("@/components/landing/VideoSection").then
 
 export default function Landing() {
   return (
-    <div className="min-h-screen font-sans text-foreground selection:bg-primary/30 bg-black overflow-x-hidden">
+    <div className="min-h-screen font-sans text-foreground selection:bg-primary/30 bg-white md:bg-black overflow-x-hidden">
       <Navbar />
 
       <HeroSection />
 
-      <Suspense fallback={<div className="h-screen w-full bg-black" />}>
+      <Suspense fallback={<div className="h-screen w-full bg-white md:bg-black" />}>
         <PhotoSection />
       </Suspense>
 
-      <Suspense fallback={<div className="h-screen w-full bg-black" />}>
+      <Suspense fallback={<div className="h-screen w-full bg-white md:bg-black" />}>
         <VideoSection />
       </Suspense>
 
-      <Suspense fallback={<div className="min-h-[50vh] w-full bg-black" />}>
+      <Suspense fallback={<div className="min-h-[50vh] w-full bg-white md:bg-black" />}>
         <AboutSection />
       </Suspense>
 
-      <Suspense fallback={<div className="min-h-[50vh] w-full bg-black" />}>
+      <Suspense fallback={<div className="min-h-[50vh] w-full bg-white md:bg-black" />}>
         <FormSection />
       </Suspense>
 
-      <Suspense fallback={<div className="min-h-[20vh] w-full bg-black" />}>
+      <Suspense fallback={<div className="min-h-[20vh] w-full bg-white md:bg-black" />}>
         <ContactSection />
       </Suspense>
     </div>
