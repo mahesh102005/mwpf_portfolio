@@ -96,10 +96,16 @@ export function ContactSection() {
 
             {/* Socials */}
             <div className="flex items-center gap-3">
-              {[Mail, WhatsApp, Instagram].map((Icon, i) => (
+              {[
+                { Icon: Mail, href: "mailto:maheshganorkar102005@gmail.com" },
+                { Icon: WhatsApp, href: "https://wa.me/919075178415" },
+                { Icon: Instagram, href: "https://www.instagram.com/" }
+              ].map(({ Icon, href }, i) => (
                 <a 
                   key={i} 
-                  href="#" 
+                  href={href}
+                  target={href.startsWith("http") ? "_blank" : undefined}
+                  rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
                   className="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-zinc-400 hover:bg-white hover:text-black hover:scale-110 transition-all duration-300"
                 >
                   <Icon className="w-5 h-5" />
