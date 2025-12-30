@@ -47,12 +47,6 @@ const photos = [
     title: "Rings & Roses"
   },
   {
-    id: 5,
-    src: "https://images.unsplash.com/photo-1520854221256-17451cc330e7?q=80&w=2070&auto=format&fit=crop",
-    category: "Reception",
-    title: "First Dance"
-  },
-  {
     id: 6,
     src: "https://images.unsplash.com/photo-1522673607200-1645062cd958?q=80&w=2070&auto=format&fit=crop",
     category: "Candid",
