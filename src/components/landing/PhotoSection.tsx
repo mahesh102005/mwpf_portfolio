@@ -5,52 +5,22 @@ import { useEffect, useState, useCallback } from "react";
 
 const photos = [
   {
-    id: 7,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/dc633926-e6e4-4cff-ba1c-bff6c7b6e17e",
-    category: "Wedding",
-    title: "Magical Moments"
-  },
-  {
-    id: 8,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/914132f0-659b-4e47-a590-237cd46ac5f0",
-    category: "Celebration",
-    title: "Grand Entrance"
-  },
-  {
-    id: 9,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/a6e1922b-dd4d-4cd8-9793-ef4ba85594a2",
-    category: "Pre-Wedding",
-    title: "Love in Nature"
-  },
-  {
     id: 1,
-    src: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop",
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/500ff364-b20d-402f-8309-92abfe83df04",
     category: "Wedding",
-    title: "Eternal Love"
+    title: "Ceremonial Bliss"
   },
   {
     id: 2,
-    src: "https://images.unsplash.com/photo-1511285560982-1351cdeb9821?q=80&w=2070&auto=format&fit=crop",
-    category: "Portrait",
-    title: "Golden Hour"
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/9cd0b89b-4198-4326-8c92-9b335417ec78",
+    category: "Celebration",
+    title: "Joyful Moments"
   },
   {
     id: 3,
-    src: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=2070&auto=format&fit=crop",
-    category: "Ceremony",
-    title: "The Vows"
-  },
-  {
-    id: 4,
-    src: "https://images.unsplash.com/photo-1606800052052-a08af7148866?q=80&w=2070&auto=format&fit=crop",
-    category: "Details",
-    title: "Rings & Roses"
-  },
-  {
-    id: 6,
-    src: "https://images.unsplash.com/photo-1522673607200-1645062cd958?q=80&w=2070&auto=format&fit=crop",
-    category: "Candid",
-    title: "Pure Joy"
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/14f0092a-3750-4219-a36f-268d6177f7dc",
+    category: "Portrait",
+    title: "Romantic Gaze"
   }
 ];
 
