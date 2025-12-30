@@ -5,6 +5,24 @@ import { useEffect, useState, useCallback } from "react";
 
 const photos = [
   {
+    id: 7,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/dc633926-e6e4-4cff-ba1c-bff6c7b6e17e",
+    category: "Wedding",
+    title: "Magical Moments"
+  },
+  {
+    id: 8,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/914132f0-659b-4e47-a590-237cd46ac5f0",
+    category: "Celebration",
+    title: "Grand Entrance"
+  },
+  {
+    id: 9,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/a6e1922b-dd4d-4cd8-9793-ef4ba85594a2",
+    category: "Pre-Wedding",
+    title: "Love in Nature"
+  },
+  {
     id: 1,
     src: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop",
     category: "Wedding",
