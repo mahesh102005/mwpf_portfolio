@@ -11,7 +11,7 @@ const VideoSection = lazy(() => import("@/components/landing/VideoSection").then
 
 export default function Landing() {
   return (
-    <div className="min-h-screen font-sans text-foreground selection:bg-primary/30 bg-white md:bg-black overflow-x-hidden">
+    <div className="min-h-screen font-sans text-foreground selection:bg-primary/30 bg-black overflow-x-hidden">
       <Navbar />
 
       <HeroSection />
@@ -32,7 +32,7 @@ export default function Landing() {
         <FormSection />
       </Suspense>
 
-      <Suspense fallback={<div className="min-h-[20vh] w-full bg-white md:bg-black" />}>
+      <Suspense fallback={<div className="min-h-[20vh] w-full bg-black" />}>
         <ContactSection />
       </Suspense>
     </div>

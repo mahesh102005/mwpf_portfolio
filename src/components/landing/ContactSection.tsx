@@ -22,7 +22,7 @@ const WhatsApp = (props: React.ComponentProps<"svg">) => (
 
 export function ContactSection() {
   return (
-    <section id="contact" className="py-12 md:py-24 px-4 bg-background flex items-center justify-center">
+    <section id="contact" className="py-12 md:py-24 px-4 bg-black flex items-center justify-center">
       <motion.div 
         initial={{ opacity: 0, y: 40 }}
         whileInView={{ opacity: 1, y: 0 }}
