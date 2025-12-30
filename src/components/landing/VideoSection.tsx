@@ -6,11 +6,25 @@ import { useEffect, useState, useCallback, useRef } from "react";
 const videos = [
   {
     id: 1,
-    title: "Featured Wedding Film",
-    category: "Cinematic Highlights",
+    title: "Cinematic Wedding Highlights",
+    category: "Wedding Films",
     thumbnail: "https://images.unsplash.com/photo-1511285560982-1356c11d4606?q=80&w=2076&auto=format&fit=crop",
-    videoUrl: "https://drive.google.com/file/d/1Fv4GtfnnhosZg-eCr6hS0lg--92DGQgD/preview",
-  }
+    videoUrl: "", // Placeholder
+  },
+  {
+    id: 2,
+    title: "Pre-Wedding Story",
+    category: "Love Stories",
+    thumbnail: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=1974&auto=format&fit=crop",
+    videoUrl: "", // Placeholder
+  },
+  {
+    id: 3,
+    title: "Traditional Ceremony",
+    category: "Cultural Events",
+    thumbnail: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop",
+    videoUrl: "", // Placeholder
+  },
 ];
 
 export function VideoSection() {
@@ -20,19 +34,15 @@ export function VideoSection() {
   const [direction, setDirection] = useState(0);
   const resumeTimerRef = useRef<NodeJS.Timeout | null>(null);
 
-  const showNavigation = videos.length > 1;
-
   const nextVideo = useCallback(() => {
-    if (!showNavigation) return;
     setDirection(1);
     setCurrentIndex((prev) => (prev + 1) % videos.length);
-  }, [showNavigation]);
+  }, []);
 
   const prevVideo = useCallback(() => {
-    if (!showNavigation) return;
     setDirection(-1);
     setCurrentIndex((prev) => (prev - 1 + videos.length) % videos.length);
-  }, [showNavigation]);
+  }, []);
 
   const handleInteraction = useCallback(() => {
     setIsAutoPlaying(false);
@@ -73,28 +83,26 @@ export function VideoSection() {
 
   // Auto-play logic
   useEffect(() => {
-    if (!isAutoPlaying || isFullScreen || !showNavigation) return;
+    if (!isAutoPlaying || isFullScreen) return;
 
     const timer = setInterval(() => {
       nextVideo();
     }, 6000); // 6 seconds interval
 
     return () => clearInterval(timer);
-  }, [isAutoPlaying, isFullScreen, nextVideo, showNavigation]);
+  }, [isAutoPlaying, isFullScreen, nextVideo]);
 
   // Keyboard navigation
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (showNavigation) {
-        if (e.key === "ArrowRight") handleManualNext();
-        if (e.key === "ArrowLeft") handleManualPrev();
-      }
+      if (e.key === "ArrowRight") handleManualNext();
+      if (e.key === "ArrowLeft") handleManualPrev();
       if (e.key === "Escape") handleCloseFullScreen();
     };
 
     window.addEventListener("keydown", handleKeyDown);
     return () => window.removeEventListener("keydown", handleKeyDown);
-  }, [nextVideo, prevVideo, showNavigation]);
+  }, [nextVideo, prevVideo]);
 
   return (
     <section id="video" className="relative min-h-screen w-full overflow-hidden bg-white py-20">
@@ -142,33 +150,25 @@ export function VideoSection() {
               />
               
               {/* Overlay - Adjusted for better visibility on hover */}
-              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300 flex items-center justify-center">
-                 <div className="w-20 h-20 rounded-full bg-white/20 backdrop-blur-md flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-                    <Play className="w-8 h-8 text-white fill-white" />
-                 </div>
-              </div>
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300" />
 
               {/* Navigation Arrows (Hover) */}
-              {showNavigation && (
-                <>
-                  <div className="absolute inset-y-0 left-0 w-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <button
-                      onClick={(e) => { e.stopPropagation(); handleManualPrev(e); }}
-                      className="p-3 rounded-full bg-black/20 backdrop-blur-md text-white hover:bg-black/40 transition-colors"
-                    >
-                      <ArrowLeft className="w-6 h-6" />
-                    </button>
-                  </div>
-                  <div className="absolute inset-y-0 right-0 w-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <button
-                      onClick={(e) => { e.stopPropagation(); handleManualNext(e); }}
-                      className="p-3 rounded-full bg-black/20 backdrop-blur-md text-white hover:bg-black/40 transition-colors"
-                    >
-                      <ArrowRight className="w-6 h-6" />
-                    </button>
-                  </div>
-                </>
-              )}
+              <div className="absolute inset-y-0 left-0 w-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <button
+                  onClick={(e) => { e.stopPropagation(); handleManualPrev(e); }}
+                  className="p-3 rounded-full bg-black/20 backdrop-blur-md text-white hover:bg-black/40 transition-colors"
+                >
+                  <ArrowLeft className="w-6 h-6" />
+                </button>
+              </div>
+              <div className="absolute inset-y-0 right-0 w-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <button
+                  onClick={(e) => { e.stopPropagation(); handleManualNext(e); }}
+                  className="p-3 rounded-full bg-black/20 backdrop-blur-md text-white hover:bg-black/40 transition-colors"
+                >
+                  <ArrowRight className="w-6 h-6" />
+                </button>
+              </div>
             </motion.div>
           </AnimatePresence>
         </div>
@@ -190,38 +190,26 @@ export function VideoSection() {
               </button>
 
               <div className="relative w-full max-w-7xl aspect-video bg-black rounded-lg overflow-hidden shadow-2xl border border-white/10">
-                 {videos[currentIndex].videoUrl ? (
-                   <iframe 
-                     src={videos[currentIndex].videoUrl} 
-                     className="w-full h-full" 
-                     allow="autoplay; fullscreen" 
-                     allowFullScreen
-                     title={videos[currentIndex].title}
-                   />
-                 ) : (
-                   <div className="absolute inset-0 flex flex-col items-center justify-center text-white/50">
-                      <Play className="w-16 h-16 mb-4 opacity-50" />
-                      <p className="text-lg">Video Source Empty</p>
-                      <p className="text-sm opacity-70">({videos[currentIndex].title})</p>
-                   </div>
-                 )}
+                 <div className="absolute inset-0 flex flex-col items-center justify-center text-white/50">
+                    <Play className="w-16 h-16 mb-4 opacity-50" />
+                    <p className="text-lg">Video Source Empty</p>
+                    <p className="text-sm opacity-70">({videos[currentIndex].title})</p>
+                 </div>
                  
                  {/* Controls */}
-                 <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/80 to-transparent flex justify-between items-end pointer-events-none">
+                 <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/80 to-transparent flex justify-between items-end">
                     <div>
                       <h3 className="text-2xl font-bold text-white mb-1">{videos[currentIndex].title}</h3>
                       <p className="text-white/70">{videos[currentIndex].category}</p>
                     </div>
-                    {showNavigation && (
-                      <div className="flex gap-4 pointer-events-auto">
-                        <button onClick={(e) => handleManualPrev(e)} className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors">
-                          <ArrowLeft className="w-6 h-6" />
-                        </button>
-                        <button onClick={(e) => handleManualNext(e)} className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors">
-                          <ArrowRight className="w-6 h-6" />
-                        </button>
-                      </div>
-                    )}
+                    <div className="flex gap-4">
+                      <button onClick={(e) => handleManualPrev(e)} className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors">
+                        <ArrowLeft className="w-6 h-6" />
+                      </button>
+                      <button onClick={(e) => handleManualNext(e)} className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors">
+                        <ArrowRight className="w-6 h-6" />
+                      </button>
+                    </div>
                  </div>
               </div>
             </motion.div>
