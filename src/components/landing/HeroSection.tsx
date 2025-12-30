@@ -4,6 +4,7 @@ import { ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const heroImages = [
+  "https://harmless-tapir-303.convex.cloud/api/storage/81f8e825-61cf-429a-b5fa-716bb5cd047c",
   "https://harmless-tapir-303.convex.cloud/api/storage/c40cd9ae-b9fd-4a2a-a094-a7cfef43c500",
   "https://harmless-tapir-303.convex.cloud/api/storage/0ae9be60-fb0f-41b4-8eb9-23e597a1d2f9",
   "https://harmless-tapir-303.convex.cloud/api/storage/9bcf76bb-7ace-41a2-a090-41ad4b88b2b9",
