@@ -121,7 +121,7 @@ export function VideoSection() {
           className="text-center mb-12"
         >
           <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-4 text-foreground">
-            Visual Stories
+            Videos
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
             Cinematic moments captured in motion. Experience the emotion and beauty of your special day.
