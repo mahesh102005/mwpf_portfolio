@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight, Instagram, Mail, Menu, Sparkles } from "lucide-react";
+import { ArrowRight, Instagram, Mail, Menu, Sparkles, MessageCircle } from "lucide-react";
 
 const WhatsApp = (props: React.ComponentProps<"svg">) => (
   <svg
@@ -76,16 +76,17 @@ export function ContactSection() {
                   href="https://wa.me/919075178415"
                   target="_blank"
                   rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary transition-colors"
                 >
-                  <Button 
-                    size="lg" 
-                    className="h-16 px-10 rounded-full bg-zinc-900 text-white hover:bg-zinc-800 border-4 border-white/10 shadow-[0_0_40px_-10px_rgba(255,255,255,0.1)] transition-all duration-300 group text-lg font-medium"
-                  >
-                    <span className="mr-2 p-1 bg-white/10 text-white rounded-full">
-                      <WhatsApp className="w-4 h-4" />
-                    </span>
-                    WhatsApp
-                  </Button>
+                  <MessageCircle className="h-5 w-5" />
+                </a>
+                <a
+                  href="https://www.instagram.com/mwpf.in?igsh=ZWZodWJnOG43ZnNu&utm_source=qr"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-muted-foreground hover:text-primary transition-colors"
+                >
+                  <Instagram className="h-5 w-5" />
                 </a>
               </motion.div>
 
