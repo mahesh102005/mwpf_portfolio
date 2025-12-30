@@ -124,7 +124,7 @@ export function VideoSection() {
             VIDEOS
           </h2>
           <p className="text-muted-foreground max-w-2xl mx-auto text-lg">
-            Cinematic moments captured in motion. Experience the emotion and beauty of your special day.
+            Life isn't a still image. We make sure your memories move with you
           </p>
         </motion.div>
 
