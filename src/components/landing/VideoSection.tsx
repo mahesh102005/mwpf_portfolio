@@ -10,7 +10,7 @@ const videos = [
     category: "Wedding Films",
     // Using the Google Drive preview link for embedding
     videoUrl: "https://drive.google.com/file/d/1zbV8NjOu8dlA_HhY_XFRKl7PJ7-MbHCz/preview",
-    thumbnail: "https://images.unsplash.com/photo-1511285560982-1356c11d4606?q=80&w=2076&auto=format&fit=crop",
+    thumbnail: "https://harmless-tapir-303.convex.cloud/api/storage/1f4f90b5-0f53-43c4-9662-c8378ed0a32b",
   },
   {
     id: 2,
@@ -18,7 +18,7 @@ const videos = [
     category: "Love Stories",
     // Duplicate for demo purposes since only one link was provided
     videoUrl: "https://drive.google.com/file/d/1zbV8NjOu8dlA_HhY_XFRKl7PJ7-MbHCz/preview",
-    thumbnail: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=1974&auto=format&fit=crop",
+    thumbnail: "https://harmless-tapir-303.convex.cloud/api/storage/1f4f90b5-0f53-43c4-9662-c8378ed0a32b",
   },
   {
     id: 3,
@@ -26,7 +26,7 @@ const videos = [
     category: "Cultural Events",
     // Duplicate for demo purposes
     videoUrl: "https://drive.google.com/file/d/1zbV8NjOu8dlA_HhY_XFRKl7PJ7-MbHCz/preview",
-    thumbnail: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop",
+    thumbnail: "https://harmless-tapir-303.convex.cloud/api/storage/1f4f90b5-0f53-43c4-9662-c8378ed0a32b",
   },
 ];
 
