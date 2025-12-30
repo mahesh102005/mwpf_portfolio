@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, Play } from "lucide-react";
+import { ArrowRight, Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useCallback } from "react";
 
 const videos = [
@@ -51,6 +51,12 @@ export function VideoSection() {
     setDirection(1);
     setIsPlaying(false);
     setCurrentIndex((prev) => (prev + 1) % videos.length);
+  }, []);
+
+  const prevVideo = useCallback(() => {
+    setDirection(-1);
+    setIsPlaying(false);
+    setCurrentIndex((prev) => (prev - 1 + videos.length) % videos.length);
   }, []);
 
   const handlePlay = () => {
@@ -115,6 +121,22 @@ export function VideoSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
         >
+          {/* Navigation Arrows */}
+          <button
+            onClick={(e) => { e.stopPropagation(); prevVideo(); }}
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 md:p-3 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 transition-all hover:scale-110 flex items-center justify-center"
+            aria-label="Previous video"
+          >
+            <ChevronLeft className="w-6 h-6" />
+          </button>
+          <button
+            onClick={(e) => { e.stopPropagation(); nextVideo(); }}
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 md:p-3 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 transition-all hover:scale-110 flex items-center justify-center"
+            aria-label="Next video"
+          >
+            <ChevronRight className="w-6 h-6" />
+          </button>
+
           {/* Video/Thumbnail Container */}
           <div className="absolute inset-0 overflow-hidden rounded-[2rem] bg-black">
             <AnimatePresence initial={false} custom={direction} mode="popLayout">
@@ -164,7 +186,7 @@ export function VideoSection() {
                   className="w-full h-full"
                 >
                   <iframe
-                    src={videos[currentIndex].videoUrl}
+                    src={`${videos[currentIndex].videoUrl}?autoplay=1`}
                     className="w-full h-full"
                     allow="autoplay; fullscreen"
                     allowFullScreen
@@ -175,18 +197,6 @@ export function VideoSection() {
             </AnimatePresence>
           </div>
         </motion.div>
-
-        {/* Bottom Controls */}
-        <div className="flex items-center gap-4">
-          <Button
-            variant="outline"
-            className="h-12 px-8 rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm"
-            onClick={nextVideo}
-          >
-            Next Video
-            <ArrowRight className="w-4 h-4 ml-2" />
-          </Button>
-        </div>
 
       </div>
     </section>
