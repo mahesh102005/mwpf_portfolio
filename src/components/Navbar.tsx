@@ -1,13 +1,10 @@
 import { useState } from "react";
-import { motion, AnimatePresence, useScroll, useMotionValueEvent, Variants } from "framer-motion";
-import { Menu, X } from "lucide-react";
-import { Button } from "@/components/ui/button";
+import { motion, useScroll, useMotionValueEvent, Variants } from "framer-motion";
 import { useAuth } from "@/hooks/use-auth";
 import { useNavigate } from "react-router";
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   
   const { isAuthenticated } = useAuth();
@@ -27,7 +24,6 @@ export function Navbar() {
   ];
 
   const scrollToSection = (href: string) => {
-    setIsMobileMenuOpen(false);
     if (href.startsWith("/")) {
       navigate(href);
       return;
@@ -128,50 +124,6 @@ export function Navbar() {
             </motion.a>
           )}
         </div>
-
-        {/* Mobile Menu Toggle */}
-        <div className="md:hidden ml-auto">
-          <Button
-            variant="ghost"
-            size="icon"
-            className={`rounded-full ${isScrolled ? "text-foreground hover:bg-black/5" : "text-white hover:bg-white/10"}`}
-            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          >
-            {isMobileMenuOpen ? <X /> : <Menu />}
-          </Button>
-        </div>
-
-        {/* Mobile Nav Dropdown */}
-        <AnimatePresence>
-          {isMobileMenuOpen && (
-            <motion.div
-              initial={{ opacity: 0, y: -20, scale: 0.95, height: 0 }}
-              animate={{ opacity: 1, y: 0, scale: 1, height: "auto" }}
-              exit={{ opacity: 0, y: -20, scale: 0.95, height: 0 }}
-              transition={{ duration: 0.3, ease: "easeInOut" }}
-              className="absolute top-full left-0 right-0 mt-4 p-4 rounded-3xl bg-white/90 backdrop-blur-xl border border-black/5 shadow-2xl md:hidden overflow-hidden"
-            >
-              <div className="flex flex-col gap-2">
-                {navLinks.map((link, i) => (
-                  <motion.a
-                    key={link.name}
-                    href={link.href}
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: i * 0.05 }}
-                    onClick={(e) => {
-                      e.preventDefault();
-                      scrollToSection(link.href);
-                    }}
-                    className="text-lg font-bold tracking-widest uppercase text-foreground/90 hover:text-primary hover:bg-black/5 px-4 py-3 rounded-xl transition-all"
-                  >
-                    {link.name}
-                  </motion.a>
-                ))}
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
       </motion.nav>
     </motion.header>
   );
