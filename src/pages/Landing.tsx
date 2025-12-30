@@ -3,7 +3,6 @@ import { HeroSection } from "@/components/landing/HeroSection";
 import { Suspense, lazy } from "react";
 
 // Lazy load below-the-fold sections to improve initial load time
-const AboutSection = lazy(() => import("@/components/landing/AboutSection").then(module => ({ default: module.AboutSection })));
 const ContactSection = lazy(() => import("@/components/landing/ContactSection").then(module => ({ default: module.ContactSection })));
 const FormSection = lazy(() => import("@/components/landing/FormSection").then(module => ({ default: module.FormSection })));
 const PhotoSection = lazy(() => import("@/components/landing/PhotoSection").then(module => ({ default: module.PhotoSection })));
@@ -22,10 +21,6 @@ export default function Landing() {
 
       <Suspense fallback={<div className="h-screen w-full bg-black" />}>
         <VideoSection />
-      </Suspense>
-
-      <Suspense fallback={<div className="min-h-[50vh] w-full bg-black" />}>
-        <AboutSection />
       </Suspense>
 
       <Suspense fallback={<div className="min-h-[50vh] w-full bg-black" />}>
