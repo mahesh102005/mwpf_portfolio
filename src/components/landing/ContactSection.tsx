@@ -122,7 +122,7 @@ export function ContactSection() {
               {[
                 { Icon: Mail, href: "mailto:mauliweddingphotography@gmail.com" },
                 { Icon: WhatsApp, href: "https://wa.me/919075178415" },
-                { Icon: Instagram, href: "https://www.instagram.com/" }
+                { Icon: Instagram, href: "https://www.instagram.com/mwpf.in?igsh=ZWZodWJnOG43ZnNu&utm_source=qr" }
               ].map(({ Icon, href }, i) => (
                 <a 
                   key={i} 
