@@ -89,7 +89,7 @@ export function ContactSection() {
             
             {/* Links */}
             <div className="flex items-center gap-6 text-sm text-zinc-500 font-medium">
-              <p>&copy; mwp {new Date().getFullYear()}</p>
+              <p>&copy; mwpf 2025</p>
               <a href="#" className="hover:text-white transition-colors">Privacy Policy</a>
               <a href="#" className="hover:text-white transition-colors">Legal Notice</a>
             </div>
