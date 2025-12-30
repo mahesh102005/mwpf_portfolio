@@ -5,6 +5,13 @@ import { useState, useCallback } from "react";
 
 const videos = [
   {
+    id: 5,
+    title: "Suyog & Harshadha",
+    category: "Love Stories",
+    videoUrl: "https://drive.google.com/file/d/1ExeOlOFLF4VLHa4HZrH6VtHCjiAH1LAm/preview",
+    thumbnail: "https://harmless-tapir-303.convex.cloud/api/storage/2f6e34be-2ccd-4623-93db-c56554a62f98",
+  },
+  {
     id: 4,
     title: "Romantic Couple Shoot",
     category: "Love Stories",
