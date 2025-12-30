@@ -40,9 +40,7 @@ export function ContactSection() {
         <div className="relative z-10 flex flex-col min-h-[800px] p-8 md:p-16 justify-between">
           
           {/* Top Row */}
-          <div className="flex justify-between items-start w-full">
-            <div className="hidden md:block" /> {/* Spacer for center alignment */}
-            
+          <div className="flex justify-center items-start w-full">
             <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-md">
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
