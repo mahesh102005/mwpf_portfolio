@@ -19,6 +19,7 @@ export function Navbar() {
     { name: "Home", href: "#home" },
     { name: "Photos", href: "#photo" },
     { name: "Videos", href: "#video" },
+    { name: "About", href: "#about" },
     { name: "Form", href: "#form" },
     { name: "Contact", href: "#contact" },
   ];
