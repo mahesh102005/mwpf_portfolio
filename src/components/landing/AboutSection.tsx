@@ -32,7 +32,7 @@ export function AboutSection() {
             className="w-full md:w-1/2 text-center md:text-left"
           >
             <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary tracking-tight">
-              About <span className="text-foreground">MWPF TEAM</span>
+              About <span className="text-primary">MWPF TEAM</span>
             </h2>
             <p className="text-muted-foreground text-lg mb-6 leading-relaxed font-light">
               We are a passionate team of photographers and videographers dedicated to capturing the essence of every moment. With a keen eye for detail and a love for storytelling, we strive to create visual masterpieces that resonate with emotion and beauty.
