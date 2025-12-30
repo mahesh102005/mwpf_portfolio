@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, Play, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
+import { ArrowRight, Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useCallback } from "react";
 
 const videos = [
@@ -46,35 +46,21 @@ export function VideoSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [direction, setDirection] = useState(0);
-  const [isVideoLoading, setIsVideoLoading] = useState(true);
-  const [useIframe, setUseIframe] = useState(false);
 
   const nextVideo = useCallback(() => {
     setDirection(1);
     setIsPlaying(false);
-    setUseIframe(false);
     setCurrentIndex((prev) => (prev + 1) % videos.length);
   }, []);
 
   const prevVideo = useCallback(() => {
     setDirection(-1);
     setIsPlaying(false);
-    setUseIframe(false);
     setCurrentIndex((prev) => (prev - 1 + videos.length) % videos.length);
   }, []);
 
   const handlePlay = () => {
     setIsPlaying(true);
-    setIsVideoLoading(true);
-    setUseIframe(false);
-  };
-
-  const getDirectUrl = (url: string) => {
-    const match = url.match(/\/d\/([^\/]+)/);
-    if (match && match[1]) {
-      return `https://drive.google.com/uc?export=download&id=${match[1]}`;
-    }
-    return url;
   };
 
   const variants = {
@@ -197,40 +183,15 @@ export function VideoSection() {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  className="w-full h-full relative bg-black"
+                  className="w-full h-full"
                 >
-                  {!useIframe ? (
-                    <>
-                      {isVideoLoading && (
-                        <div className="absolute inset-0 flex items-center justify-center z-10 pointer-events-none">
-                          <Loader2 className="w-12 h-12 text-white/50 animate-spin" />
-                        </div>
-                      )}
-                      <video
-                        src={getDirectUrl(videos[currentIndex].videoUrl)}
-                        className="w-full h-full object-contain"
-                        controls
-                        autoPlay
-                        playsInline
-                        onLoadedData={() => setIsVideoLoading(false)}
-                        onWaiting={() => setIsVideoLoading(true)}
-                        onPlaying={() => setIsVideoLoading(false)}
-                        onError={() => {
-                          console.log("Video load failed, falling back to iframe");
-                          setUseIframe(true);
-                        }}
-                      />
-                    </>
-                  ) : (
-                    <iframe
-                      src={`${videos[currentIndex].videoUrl}?autoplay=1`}
-                      className="w-full h-full"
-                      allow="autoplay; fullscreen"
-                      allowFullScreen
-                      title={videos[currentIndex].title}
-                    />
-                  )}
+                  <iframe
+                    src={`${videos[currentIndex].videoUrl}?autoplay=1`}
+                    className="w-full h-full"
+                    allow="autoplay; fullscreen"
+                    allowFullScreen
+                    title={videos[currentIndex].title}
+                  />
                 </motion.div>
               )}
             </AnimatePresence>
