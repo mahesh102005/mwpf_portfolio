@@ -1,10 +1,108 @@
 import { Button } from "@/components/ui/button";
-import { motion } from "framer-motion";
-import { Play } from "lucide-react";
-import { useState } from "react";
+import { AnimatePresence, motion } from "framer-motion";
+import { ArrowLeft, ArrowRight, Expand, Film, Play, X, MonitorPlay } from "lucide-react";
+import { useEffect, useState, useCallback, useRef } from "react";
+
+const videos = [
+  {
+    id: 1,
+    title: "Cinematic Wedding Highlights",
+    category: "Wedding Films",
+    thumbnail: "https://images.unsplash.com/photo-1511285560982-1356c11d4606?q=80&w=2076&auto=format&fit=crop",
+    videoUrl: "", // Placeholder
+  },
+  {
+    id: 2,
+    title: "Pre-Wedding Story",
+    category: "Love Stories",
+    thumbnail: "https://images.unsplash.com/photo-1583939003579-730e3918a45a?q=80&w=1974&auto=format&fit=crop",
+    videoUrl: "", // Placeholder
+  },
+  {
+    id: 3,
+    title: "Traditional Ceremony",
+    category: "Cultural Events",
+    thumbnail: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=2070&auto=format&fit=crop",
+    videoUrl: "", // Placeholder
+  },
+];
 
 export function VideoSection() {
-  const [isPlaying, setIsPlaying] = useState(false);
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [isFullScreen, setIsFullScreen] = useState(false);
+  const [isAutoPlaying, setIsAutoPlaying] = useState(true);
+  const [direction, setDirection] = useState(0);
+  const resumeTimerRef = useRef<NodeJS.Timeout | null>(null);
+
+  const nextVideo = useCallback(() => {
+    setDirection(1);
+    setCurrentIndex((prev) => (prev + 1) % videos.length);
+  }, []);
+
+  const prevVideo = useCallback(() => {
+    setDirection(-1);
+    setCurrentIndex((prev) => (prev - 1 + videos.length) % videos.length);
+  }, []);
+
+  const handleInteraction = useCallback(() => {
+    setIsAutoPlaying(false);
+    
+    if (resumeTimerRef.current) {
+      clearTimeout(resumeTimerRef.current);
+    }
+
+    resumeTimerRef.current = setTimeout(() => {
+      if (!isFullScreen) {
+        setIsAutoPlaying(true);
+      }
+    }, 5000); // Resume after 5 seconds of inactivity
+  }, [isFullScreen]);
+
+  const handleManualNext = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    handleInteraction();
+    nextVideo();
+  };
+
+  const handleManualPrev = (e?: React.MouseEvent) => {
+    e?.stopPropagation();
+    handleInteraction();
+    prevVideo();
+  };
+
+  const handleVideoClick = () => {
+    handleInteraction();
+    setIsFullScreen(true);
+    setIsAutoPlaying(false); // Stop auto-play when entering full screen
+  };
+
+  const handleCloseFullScreen = () => {
+    setIsFullScreen(false);
+    handleInteraction(); // Will resume auto-play after delay
+  };
+
+  // Auto-play logic
+  useEffect(() => {
+    if (!isAutoPlaying || isFullScreen) return;
+
+    const timer = setInterval(() => {
+      nextVideo();
+    }, 6000); // 6 seconds interval
+
+    return () => clearInterval(timer);
+  }, [isAutoPlaying, isFullScreen, nextVideo]);
+
+  // Keyboard navigation
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "ArrowRight") handleManualNext();
+      if (e.key === "ArrowLeft") handleManualPrev();
+      if (e.key === "Escape") handleCloseFullScreen();
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => window.removeEventListener("keydown", handleKeyDown);
+  }, [nextVideo, prevVideo]);
 
   return (
     <section id="video" className="relative min-h-screen w-full overflow-hidden bg-white py-20">
@@ -30,43 +128,93 @@ export function VideoSection() {
           </p>
         </motion.div>
 
-        <motion.div
-          initial={{ opacity: 0, scale: 0.95 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5 }}
-          className="relative w-full max-w-5xl mx-auto aspect-video rounded-[2rem] overflow-hidden shadow-2xl border border-white/50 bg-white/30 backdrop-blur-md group"
-        >
-          {!isPlaying ? (
-            <div className="absolute inset-0 flex items-center justify-center bg-black/5">
-              {/* Glass Overlay */}
-              <div className="absolute inset-0 bg-gradient-to-br from-white/40 to-white/10 backdrop-blur-[2px]" />
+        <div className="relative max-w-5xl mx-auto aspect-video">
+          <AnimatePresence mode="wait">
+            <motion.div
+              key={currentIndex}
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 1.05 }}
+              transition={{ duration: 0.5 }}
+              className="relative w-full h-full rounded-[2rem] overflow-hidden shadow-2xl group cursor-pointer border border-white/50 bg-white/30 backdrop-blur-md"
+              onClick={handleVideoClick}
+              onMouseEnter={handleInteraction}
+              onMouseMove={handleInteraction}
+            >
+              {/* Video Thumbnail */}
+              <img
+                src={videos[currentIndex].thumbnail}
+                alt={videos[currentIndex].title}
+                className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                loading="lazy"
+              />
               
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setIsPlaying(true)}
-                className="relative z-10 w-24 h-24 rounded-full bg-white/20 hover:bg-white/30 backdrop-blur-xl border border-white/40 text-white transition-all duration-300 hover:scale-110 shadow-lg group-hover:shadow-xl"
-              >
-                <Play className="w-10 h-10 fill-white ml-1" />
-              </Button>
-              
-              <div className="absolute bottom-8 left-0 right-0 text-center z-10">
-                <p className="text-zinc-600 font-medium tracking-widest text-sm uppercase">
-                  Watch Showreel
-                </p>
+              {/* Overlay - Adjusted for better visibility on hover */}
+              <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors duration-300" />
+
+              {/* Navigation Arrows (Hover) */}
+              <div className="absolute inset-y-0 left-0 w-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <button
+                  onClick={(e) => { e.stopPropagation(); handleManualPrev(e); }}
+                  className="p-3 rounded-full bg-black/20 backdrop-blur-md text-white hover:bg-black/40 transition-colors"
+                >
+                  <ArrowLeft className="w-6 h-6" />
+                </button>
               </div>
-            </div>
-          ) : (
-            <iframe
-              src="https://player.vimeo.com/video/1150366269?autoplay=1&title=0&byline=0&portrait=0"
-              className="w-full h-full"
-              frameBorder="0"
-              allow="autoplay; fullscreen; picture-in-picture"
-              allowFullScreen
-            />
+              <div className="absolute inset-y-0 right-0 w-20 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                <button
+                  onClick={(e) => { e.stopPropagation(); handleManualNext(e); }}
+                  className="p-3 rounded-full bg-black/20 backdrop-blur-md text-white hover:bg-black/40 transition-colors"
+                >
+                  <ArrowRight className="w-6 h-6" />
+                </button>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+        </div>
+
+        {/* Full Screen Modal */}
+        <AnimatePresence>
+          {isFullScreen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 bg-black/95 backdrop-blur-xl flex items-center justify-center p-4 md:p-10"
+            >
+              <button
+                onClick={handleCloseFullScreen}
+                className="absolute top-6 right-6 p-3 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors z-50"
+              >
+                <X className="w-6 h-6" />
+              </button>
+
+              <div className="relative w-full max-w-7xl aspect-video bg-black rounded-lg overflow-hidden shadow-2xl border border-white/10">
+                 <div className="absolute inset-0 flex flex-col items-center justify-center text-white/50">
+                    <Play className="w-16 h-16 mb-4 opacity-50" />
+                    <p className="text-lg">Video Source Empty</p>
+                    <p className="text-sm opacity-70">({videos[currentIndex].title})</p>
+                 </div>
+                 
+                 {/* Controls */}
+                 <div className="absolute inset-x-0 bottom-0 p-6 bg-gradient-to-t from-black/80 to-transparent flex justify-between items-end">
+                    <div>
+                      <h3 className="text-2xl font-bold text-white mb-1">{videos[currentIndex].title}</h3>
+                      <p className="text-white/70">{videos[currentIndex].category}</p>
+                    </div>
+                    <div className="flex gap-4">
+                      <button onClick={(e) => handleManualPrev(e)} className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors">
+                        <ArrowLeft className="w-6 h-6" />
+                      </button>
+                      <button onClick={(e) => handleManualNext(e)} className="p-2 rounded-full bg-white/10 text-white hover:bg-white/20 transition-colors">
+                        <ArrowRight className="w-6 h-6" />
+                      </button>
+                    </div>
+                 </div>
+              </div>
+            </motion.div>
           )}
-        </motion.div>
+        </AnimatePresence>
       </div>
     </section>
   );
