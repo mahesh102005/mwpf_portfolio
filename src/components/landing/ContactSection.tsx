@@ -120,7 +120,7 @@ export function ContactSection() {
             {/* Socials */}
             <div className="flex items-center gap-3">
               {[
-                { Icon: Mail, href: "mailto:maheshganorkar102005@gmail.com" },
+                { Icon: Mail, href: "mailto:mauliweddingphotography@gmail.com" },
                 { Icon: WhatsApp, href: "https://wa.me/919075178415" },
                 { Icon: Instagram, href: "https://www.instagram.com/" }
               ].map(({ Icon, href }, i) => (
