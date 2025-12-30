@@ -3,6 +3,15 @@ import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { useState, useCallback } from "react";
 
+// Helper to convert Google Drive preview link to direct stream link
+const getDirectVideoUrl = (url: string) => {
+  const match = url.match(/\/d\/(.+?)\//);
+  if (match && match[1]) {
+    return `https://drive.google.com/uc?export=download&id=${match[1]}`;
+  }
+  return url;
+};
+
 const videos = [
   {
     id: 7,
@@ -183,14 +192,14 @@ export function VideoSection() {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="w-full h-full"
+                  className="w-full h-full bg-black"
                 >
-                  <iframe
-                    src={`${videos[currentIndex].videoUrl}?autoplay=1`}
-                    className="w-full h-full"
-                    allow="autoplay; fullscreen"
-                    allowFullScreen
-                    title={videos[currentIndex].title}
+                  <video
+                    src={getDirectVideoUrl(videos[currentIndex].videoUrl)}
+                    className="w-full h-full object-contain"
+                    autoPlay
+                    controls
+                    playsInline
                   />
                 </motion.div>
               )}
