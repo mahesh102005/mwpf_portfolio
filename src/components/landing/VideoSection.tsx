@@ -147,8 +147,7 @@ export function VideoSection() {
                       onClick={handlePlay}
                       className="group/play relative flex items-center justify-center w-24 h-24 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl transition-all duration-300 hover:bg-white/20"
                     >
-                      <div className="absolute inset-0 rounded-full bg-white/5 blur-md" />
-                      <Play className="w-10 h-10 text-white fill-white ml-1 relative z-10" />
+                      <Play className="w-10 h-10 text-white fill-white ml-1" />
                     </motion.button>
                   </div>
 
