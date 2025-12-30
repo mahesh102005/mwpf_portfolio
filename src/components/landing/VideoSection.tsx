@@ -92,13 +92,13 @@ export function VideoSection() {
   };
 
   return (
-    <section id="video" className="py-24 px-4 bg-white relative overflow-hidden min-h-screen flex items-center justify-center">
+    <section id="video" className="py-12 md:py-24 px-4 bg-white relative overflow-hidden min-h-screen flex items-center justify-center">
       {/* Ambient Background - Matching PhotoSection */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-zinc-50 to-zinc-100 opacity-80" />
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[128px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[128px] pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-[90rem] mx-auto flex flex-col items-center gap-12">
+      <div className="relative z-10 w-full max-w-[90rem] mx-auto flex flex-col items-center gap-8 md:gap-12">
         
         {/* Header */}
         <div className="text-center space-y-4">
@@ -106,7 +106,7 @@ export function VideoSection() {
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="text-4xl md:text-6xl font-bold text-zinc-900 tracking-tight"
+            className="text-3xl md:text-6xl font-bold text-zinc-900 tracking-tight"
           >
             VIDEOS
           </motion.h2>
@@ -115,7 +115,7 @@ export function VideoSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-zinc-500 max-w-lg mx-auto"
+            className="text-sm md:text-base text-zinc-500 max-w-lg mx-auto px-4"
           >
             Life isn't a still image. We make sure your memories move with you
           </motion.p>
@@ -123,7 +123,7 @@ export function VideoSection() {
 
         {/* Main Video Panel */}
         <motion.div 
-          className="relative group w-full max-w-5xl mx-auto aspect-video rounded-[2rem] overflow-hidden bg-white/30 border border-white/50 shadow-2xl backdrop-blur-md"
+          className="relative group w-full max-w-5xl mx-auto aspect-video rounded-xl md:rounded-[2rem] overflow-hidden bg-white/30 border border-white/50 shadow-2xl backdrop-blur-md"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -132,21 +132,21 @@ export function VideoSection() {
           {/* Navigation Arrows */}
           <button
             onClick={(e) => { e.stopPropagation(); prevVideo(); }}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 md:p-3 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 transition-all hover:scale-110 flex items-center justify-center"
+            className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-30 p-1.5 md:p-3 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 transition-all hover:scale-110 flex items-center justify-center"
             aria-label="Previous video"
           >
-            <ChevronLeft className="w-6 h-6" />
+            <ChevronLeft className="w-4 h-4 md:w-6 md:h-6" />
           </button>
           <button
             onClick={(e) => { e.stopPropagation(); nextVideo(); }}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 md:p-3 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 transition-all hover:scale-110 flex items-center justify-center"
+            className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-30 p-1.5 md:p-3 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 transition-all hover:scale-110 flex items-center justify-center"
             aria-label="Next video"
           >
-            <ChevronRight className="w-6 h-6" />
+            <ChevronRight className="w-4 h-4 md:w-6 md:h-6" />
           </button>
 
           {/* Video/Thumbnail Container */}
-          <div className="absolute inset-0 overflow-hidden rounded-[2rem] bg-black">
+          <div className="absolute inset-0 overflow-hidden rounded-xl md:rounded-[2rem] bg-black">
             <AnimatePresence initial={false} custom={direction} mode="popLayout">
               {!isPlaying ? (
                 <motion.div
@@ -175,16 +175,16 @@ export function VideoSection() {
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={handlePlay}
-                      className="group/play relative flex items-center justify-center w-24 h-24 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl transition-all duration-300 hover:bg-white/20 cursor-pointer z-20"
+                      className="group/play relative flex items-center justify-center w-16 h-16 md:w-24 md:h-24 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl transition-all duration-300 hover:bg-white/20 cursor-pointer z-20"
                     >
-                      <Play className="w-10 h-10 text-white fill-white ml-1" />
+                      <Play className="w-6 h-6 md:w-10 md:h-10 text-white fill-white ml-1" />
                     </motion.button>
                   </div>
 
                   {/* Title Overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent pointer-events-none">
-                    <h3 className="text-2xl font-bold text-white mb-1">{videos[currentIndex].title}</h3>
-                    <p className="text-white/70">{videos[currentIndex].category}</p>
+                  <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-black/80 to-transparent pointer-events-none">
+                    <h3 className="text-lg md:text-2xl font-bold text-white mb-1">{videos[currentIndex].title}</h3>
+                    <p className="text-xs md:text-base text-white/70">{videos[currentIndex].category}</p>
                   </div>
                 </motion.div>
               ) : (
