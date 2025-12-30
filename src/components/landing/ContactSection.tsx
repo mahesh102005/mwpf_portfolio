@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { motion } from "framer-motion";
-import { ArrowRight, Instagram, Mail, Menu, Sparkles } from "lucide-react";
+import { ArrowRight, Instagram, Mail, Sparkles } from "lucide-react";
 
 const WhatsApp = (props: React.ComponentProps<"svg">) => (
   <svg
@@ -50,10 +50,6 @@ export function ContactSection() {
               </span>
               <span className="text-xs font-medium tracking-widest uppercase text-white/70">Available to work</span>
             </div>
-
-            <Button variant="ghost" size="icon" className="text-white/50 hover:text-white hover:bg-white/10 rounded-full">
-              <Menu className="w-6 h-6" />
-            </Button>
           </div>
 
           {/* Center Content */}
