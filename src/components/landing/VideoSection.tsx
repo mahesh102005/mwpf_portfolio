@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, Play, ChevronLeft, ChevronRight } from "lucide-react";
+import { ArrowRight, Play, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import { useState, useCallback } from "react";
 
 const videos = [
@@ -45,22 +45,30 @@ const videos = [
 export function VideoSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [direction, setDirection] = useState(0);
 
   const nextVideo = useCallback(() => {
     setDirection(1);
     setIsPlaying(false);
+    setIsLoading(false);
     setCurrentIndex((prev) => (prev + 1) % videos.length);
   }, []);
 
   const prevVideo = useCallback(() => {
     setDirection(-1);
     setIsPlaying(false);
+    setIsLoading(false);
     setCurrentIndex((prev) => (prev - 1 + videos.length) % videos.length);
   }, []);
 
   const handlePlay = () => {
     setIsPlaying(true);
+    setIsLoading(true);
+  };
+
+  const handleIframeLoad = () => {
+    setIsLoading(false);
   };
 
   const variants = {
@@ -124,14 +132,14 @@ export function VideoSection() {
           {/* Navigation Arrows */}
           <button
             onClick={(e) => { e.stopPropagation(); prevVideo(); }}
-            className="absolute left-4 top-1/2 -translate-y-1/2 z-20 p-2 md:p-3 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 transition-all hover:scale-110 flex items-center justify-center"
+            className="absolute left-4 top-1/2 -translate-y-1/2 z-30 p-2 md:p-3 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 transition-all hover:scale-110 flex items-center justify-center"
             aria-label="Previous video"
           >
             <ChevronLeft className="w-6 h-6" />
           </button>
           <button
             onClick={(e) => { e.stopPropagation(); nextVideo(); }}
-            className="absolute right-4 top-1/2 -translate-y-1/2 z-20 p-2 md:p-3 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 transition-all hover:scale-110 flex items-center justify-center"
+            className="absolute right-4 top-1/2 -translate-y-1/2 z-30 p-2 md:p-3 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 transition-all hover:scale-110 flex items-center justify-center"
             aria-label="Next video"
           >
             <ChevronRight className="w-6 h-6" />
@@ -153,7 +161,7 @@ export function VideoSection() {
                     opacity: { duration: 0.4 },
                     scale: { duration: 0.4 }
                   }}
-                  className="absolute inset-0 w-full h-full"
+                  className="absolute inset-0 w-full h-full z-10"
                 >
                   <img
                     src={videos[currentIndex].thumbnail}
@@ -167,14 +175,14 @@ export function VideoSection() {
                       whileHover={{ scale: 1.1 }}
                       whileTap={{ scale: 0.95 }}
                       onClick={handlePlay}
-                      className="group/play relative flex items-center justify-center w-24 h-24 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl transition-all duration-300 hover:bg-white/20"
+                      className="group/play relative flex items-center justify-center w-24 h-24 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl transition-all duration-300 hover:bg-white/20 cursor-pointer z-20"
                     >
                       <Play className="w-10 h-10 text-white fill-white ml-1" />
                     </motion.button>
                   </div>
 
                   {/* Title Overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent">
+                  <div className="absolute bottom-0 left-0 right-0 p-8 bg-gradient-to-t from-black/80 to-transparent pointer-events-none">
                     <h3 className="text-2xl font-bold text-white mb-1">{videos[currentIndex].title}</h3>
                     <p className="text-white/70">{videos[currentIndex].category}</p>
                   </div>
@@ -183,13 +191,19 @@ export function VideoSection() {
                 <motion.div
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  className="w-full h-full"
+                  className="w-full h-full relative z-20 bg-black"
                 >
+                  {isLoading && (
+                    <div className="absolute inset-0 flex items-center justify-center z-10">
+                      <Loader2 className="w-12 h-12 text-white animate-spin" />
+                    </div>
+                  )}
                   <iframe
-                    src={`${videos[currentIndex].videoUrl}?autoplay=1`}
-                    className="w-full h-full"
+                    src={`${videos[currentIndex].videoUrl}`}
+                    className="w-full h-full relative z-20"
                     allow="autoplay; fullscreen"
                     allowFullScreen
+                    onLoad={handleIframeLoad}
                     title={videos[currentIndex].title}
                   />
                 </motion.div>
