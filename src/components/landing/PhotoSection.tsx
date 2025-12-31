@@ -202,7 +202,7 @@ export function PhotoSection() {
           </div>
 
           {/* Navigation Controls */}
-          <div className="absolute inset-0 z-30 flex items-center justify-between px-4 md:px-8 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+          <div className="absolute inset-0 z-30 flex items-center justify-between px-2 md:px-8 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
             <Button
               variant="ghost"
               size="icon"
@@ -226,14 +226,14 @@ export function PhotoSection() {
           </div>
 
           {/* Explicit Bottom Right Full Screen Button */}
-          <div className="absolute bottom-6 right-6 z-40">
+          <div className="absolute bottom-3 right-3 md:bottom-6 md:right-6 z-40">
              <Button
                 variant="ghost"
                 size="icon"
-                className="h-12 w-12 md:h-14 md:w-14 rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur-md border border-white/20 pointer-events-auto transition-transform hover:scale-110 active:scale-95 shadow-lg"
+                className="h-10 w-10 md:h-14 md:w-14 rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur-md border border-white/20 pointer-events-auto transition-transform hover:scale-110 active:scale-95 shadow-lg"
                 onClick={handleImageClick}
               >
-                <Expand className="w-6 h-6 md:w-8 md:h-8" />
+                <Expand className="w-5 h-5 md:w-8 md:h-8" />
               </Button>
           </div>
         </motion.div>
@@ -242,29 +242,11 @@ export function PhotoSection() {
         <div className="flex items-center gap-4 md:gap-6">
           <Button
             variant="outline"
-            size="icon"
-            className="h-12 w-12 rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm md:hidden"
-            onClick={handleManualPrev}
-          >
-            <ArrowLeft className="w-5 h-5" />
-          </Button>
-
-          <Button
-            variant="outline"
             className="h-12 px-6 md:h-16 md:px-10 text-sm md:text-lg rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm"
             onClick={handleManualNext}
           >
             <ImageIcon className="w-5 h-5 md:w-6 md:h-6 mr-2 md:mr-3" />
             Change Photo
-          </Button>
-
-          <Button
-            variant="outline"
-            size="icon"
-            className="h-12 w-12 rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm md:hidden"
-            onClick={handleManualNext}
-          >
-            <ArrowRight className="w-5 h-5" />
           </Button>
         </div>
 
