@@ -207,17 +207,17 @@ export function PhotoSection() {
               variant="ghost"
               size="icon"
               onClick={handleManualPrev}
-              className="h-16 w-16 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 pointer-events-auto transition-transform hover:scale-110 active:scale-95"
+              className="h-14 w-14 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 pointer-events-auto transition-transform hover:scale-110 active:scale-95"
             >
-              <ArrowLeft className="w-10 h-10" />
+              <ArrowLeft className="w-8 h-8" />
             </Button>
             <Button
               variant="ghost"
               size="icon"
               onClick={handleManualNext}
-              className="h-16 w-16 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 pointer-events-auto transition-transform hover:scale-110 active:scale-95"
+              className="h-14 w-14 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 pointer-events-auto transition-transform hover:scale-110 active:scale-95"
             >
-              <ArrowRight className="w-10 h-10" />
+              <ArrowRight className="w-8 h-8" />
             </Button>
           </div>
 
@@ -230,7 +230,7 @@ export function PhotoSection() {
              <Button
                 variant="ghost"
                 size="icon"
-                className="h-16 w-16 rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur-md border border-white/20 pointer-events-auto transition-transform hover:scale-110 active:scale-95 shadow-lg"
+                className="h-14 w-14 rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur-md border border-white/20 pointer-events-auto transition-transform hover:scale-110 active:scale-95 shadow-lg"
                 onClick={handleImageClick}
               >
                 <Expand className="w-8 h-8" />
@@ -243,28 +243,28 @@ export function PhotoSection() {
           <Button
             variant="outline"
             size="icon"
-            className="h-20 w-20 rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm md:hidden"
+            className="h-16 w-16 rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm md:hidden"
             onClick={handleManualPrev}
           >
-            <ArrowLeft className="w-10 h-10" />
+            <ArrowLeft className="w-8 h-8" />
           </Button>
 
           <Button
             variant="outline"
-            className="h-20 px-12 text-xl rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm"
+            className="h-16 px-10 text-lg rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm"
             onClick={handleManualNext}
           >
-            <ImageIcon className="w-8 h-8 mr-3" />
+            <ImageIcon className="w-6 h-6 mr-3" />
             Change Photo
           </Button>
 
           <Button
             variant="outline"
             size="icon"
-            className="h-20 w-20 rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm md:hidden"
+            className="h-16 w-16 rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm md:hidden"
             onClick={handleManualNext}
           >
-            <ArrowRight className="w-10 h-10" />
+            <ArrowRight className="w-8 h-8" />
           </Button>
         </div>
 

@@ -153,17 +153,17 @@ export function VideoSection() {
           {/* Navigation Arrows */}
           <button
             onClick={(e) => { e.stopPropagation(); prevVideo(); }}
-            className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-30 p-1.5 md:p-3 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 transition-all hover:scale-110 flex items-center justify-center"
+            className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-30 h-14 w-14 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 transition-all hover:scale-110 active:scale-95 flex items-center justify-center"
             aria-label="Previous video"
           >
-            <ChevronLeft className="w-4 h-4 md:w-6 md:h-6" />
+            <ChevronLeft className="w-8 h-8" />
           </button>
           <button
             onClick={(e) => { e.stopPropagation(); nextVideo(); }}
-            className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-30 p-1.5 md:p-3 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 transition-all hover:scale-110 flex items-center justify-center"
+            className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-30 h-14 w-14 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 transition-all hover:scale-110 active:scale-95 flex items-center justify-center"
             aria-label="Next video"
           >
-            <ChevronRight className="w-4 h-4 md:w-6 md:h-6" />
+            <ChevronRight className="w-8 h-8" />
           </button>
 
           {/* Video/Thumbnail Container */}
