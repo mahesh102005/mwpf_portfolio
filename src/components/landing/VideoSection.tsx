@@ -5,6 +5,13 @@ import { useState, useCallback } from "react";
 
 const videos = [
   {
+    id: 9,
+    title: "Bridal Portrait",
+    category: "Wedding Films",
+    videoUrl: "https://drive.google.com/file/d/1eHK0AoXW6wQsxQfLpRHCTbVRtJ4w-PGt/preview",
+    thumbnail: "https://harmless-tapir-303.convex.cloud/api/storage/cc0e185d-7582-4976-a29c-2b0275e83e04",
+  },
+  {
     id: 8,
     title: "Wedding Celebration",
     category: "Wedding Films",
