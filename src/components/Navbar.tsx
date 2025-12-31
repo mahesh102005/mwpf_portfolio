@@ -53,7 +53,15 @@ export function Navbar() {
   };
 
   const mobileMenuVariants: Variants = {
-    closed: { opacity: 0, scale: 0.95, y: 10 },
+    closed: { 
+      opacity: 0, 
+      scale: 0.95, 
+      y: -20,
+      transition: {
+        staggerChildren: 0.05,
+        staggerDirection: -1
+      }
+    },
     open: { 
       opacity: 1, 
       scale: 1, 
@@ -61,9 +69,16 @@ export function Navbar() {
       transition: { 
         type: "spring", 
         stiffness: 300, 
-        damping: 30 
+        damping: 30,
+        staggerChildren: 0.1,
+        delayChildren: 0.2
       } 
     }
+  };
+
+  const menuItemVariants: Variants = {
+    closed: { opacity: 0, y: 20 },
+    open: { opacity: 1, y: 0 }
   };
 
   return (
@@ -166,7 +181,7 @@ export function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-transparent md:hidden flex items-start justify-end p-4 pt-24"
+            className="fixed inset-0 z-[60] bg-transparent md:hidden flex items-start justify-end p-4 pt-28"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             <motion.div
@@ -188,11 +203,12 @@ export function Navbar() {
                 </Button>
               </div>
 
-              <div className="flex flex-col items-center py-10 px-6 gap-5">
+              <motion.div className="flex flex-col items-center py-10 px-6 gap-5">
                 {navLinks.map((link) => (
-                  <a
+                  <motion.a
                     key={link.name}
                     href={link.href}
+                    variants={menuItemVariants}
                     onClick={(e) => {
                       e.preventDefault();
                       scrollToSection(link.href);
@@ -200,12 +216,13 @@ export function Navbar() {
                     className="text-sm font-medium text-neutral-700 hover:text-black tracking-[0.2em] uppercase transition-colors"
                   >
                     {link.name}
-                  </a>
+                  </motion.a>
                 ))}
                 
                 {isAuthenticated && (
-                  <a
+                  <motion.a
                     href="/dashboard"
+                    variants={menuItemVariants}
                     onClick={(e) => {
                       e.preventDefault();
                       navigate("/dashboard");
@@ -214,9 +231,9 @@ export function Navbar() {
                     className="mt-2 px-6 py-2 bg-neutral-900 text-white text-[10px] font-bold tracking-[0.2em] uppercase rounded-full hover:bg-neutral-800 transition-colors"
                   >
                     Dashboard
-                  </a>
+                  </motion.a>
                 )}
-              </div>
+              </motion.div>
             </motion.div>
           </motion.div>
         )}
