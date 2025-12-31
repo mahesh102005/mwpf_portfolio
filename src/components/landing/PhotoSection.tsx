@@ -339,6 +339,36 @@ const photos = [
     src: "https://harmless-tapir-303.convex.cloud/api/storage/85373785-15ca-4d47-930d-69a3804cf519",
     category: "Detail",
     title: "Intimate Details"
+  },
+  {
+    id: 57,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/63d8d433-c654-4d3c-a8d2-f9c69d21042b",
+    category: "Wedding",
+    title: "Walking Together"
+  },
+  {
+    id: 58,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/496a789a-00a7-4c47-a71b-dfea6d9f39a7",
+    category: "Portrait",
+    title: "Monochrome Love"
+  },
+  {
+    id: 59,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/785710bb-8b75-4910-a1df-b77d901e10e5",
+    category: "Wedding",
+    title: "Forehead Kiss"
+  },
+  {
+    id: 60,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/3d67a16d-8869-4cdc-bf0b-4f7756db2288",
+    category: "Event",
+    title: "Haldi Joy"
+  },
+  {
+    id: 61,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/1885b782-19a3-4351-99fa-82c1a30c7efa",
+    category: "Event",
+    title: "Family Celebration"
   }
 ];
 
