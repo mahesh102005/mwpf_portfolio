@@ -2,8 +2,9 @@ import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
 
-const heroImages = [
+const desktopHeroImages = [
   "https://harmless-tapir-303.convex.cloud/api/storage/bc728afb-a2f0-4ea3-9a74-94b7ad89c432",
   "https://harmless-tapir-303.convex.cloud/api/storage/b122d7c1-8a08-4e81-b598-563793135485",
   "https://harmless-tapir-303.convex.cloud/api/storage/168a96d0-77e6-4dce-8f09-dd6604b7957e",
@@ -14,8 +15,21 @@ const heroImages = [
   "https://harmless-tapir-303.convex.cloud/api/storage/fe493285-4bb8-42a7-91da-7756fa9cb679",
 ];
 
+const mobileHeroImages = [
+  "https://harmless-tapir-303.convex.cloud/api/storage/07b5732b-3754-4805-9018-b663d5dd6958",
+  "https://harmless-tapir-303.convex.cloud/api/storage/c1ec3c88-42a1-4c08-8f28-0fb711d12cc2",
+  "https://harmless-tapir-303.convex.cloud/api/storage/a5443f3f-a551-4eeb-b243-9dfa1fed9805",
+  "https://harmless-tapir-303.convex.cloud/api/storage/60a45ed4-4631-4503-a971-2b756b3988c0",
+  "https://harmless-tapir-303.convex.cloud/api/storage/d5ba003b-c798-4573-a4a3-31c7df1176d8",
+  "https://harmless-tapir-303.convex.cloud/api/storage/4a898f25-d7a3-4207-8dd9-713912281ca2",
+  "https://harmless-tapir-303.convex.cloud/api/storage/21474769-7eb6-44b5-9d5b-a67a67f80e86",
+  "https://harmless-tapir-303.convex.cloud/api/storage/c76a9d10-d523-455a-8108-43da912dd63b",
+];
+
 export function HeroSection() {
   const [currentImage, setCurrentImage] = useState(0);
+  const isMobile = useIsMobile();
+  const heroImages = isMobile ? mobileHeroImages : desktopHeroImages;
 
   useEffect(() => {
     // Preload images for smoother transitions
@@ -28,14 +42,14 @@ export function HeroSection() {
       setCurrentImage((prev) => (prev + 1) % heroImages.length);
     }, 3500);
     return () => clearInterval(timer);
-  }, []);
+  }, [heroImages]);
 
   return (
     <section id="home" className="relative h-screen w-full overflow-hidden bg-black">
       {/* Background Slideshow */}
       <AnimatePresence mode="popLayout">
         <motion.div
-          key={currentImage}
+          key={`${isMobile ? 'mobile' : 'desktop'}-${currentImage}`}
           initial={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
           animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
           exit={{ opacity: 0, filter: "blur(10px)" }}
