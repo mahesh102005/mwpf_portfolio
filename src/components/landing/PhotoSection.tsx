@@ -291,6 +291,30 @@ const photos = [
     src: "https://harmless-tapir-303.convex.cloud/api/storage/90c8a571-e121-484b-a72d-de0ddd135b70",
     category: "Portrait",
     title: "Silhouette Love"
+  },
+  {
+    id: 49,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/1bdba34c-a9ca-480f-8306-427a813fa15d",
+    category: "Portrait",
+    title: "Silhouette Dance"
+  },
+  {
+    id: 50,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/eafea26a-fc4e-42b9-8027-6f9a1adc4997",
+    category: "Portrait",
+    title: "Sunset Walk"
+  },
+  {
+    id: 51,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/81f665b8-a545-447a-ad2b-6808fff7b1e7",
+    category: "Portrait",
+    title: "Golden Hour Connection"
+  },
+  {
+    id: 52,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/4fb4d701-773c-4976-85e9-9596df41b5f3",
+    category: "Portrait",
+    title: "Romantic Silhouette"
   }
 ];
 
