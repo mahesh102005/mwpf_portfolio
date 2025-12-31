@@ -1,5 +1,4 @@
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Play, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import { useState, useCallback } from "react";
@@ -37,6 +36,7 @@ const videos = [
     id: 1,
     title: "Cinematic Wedding Highlights",
     category: "Wedding Films",
+    // Using the Google Drive preview link for embedding
     videoUrl: "https://drive.google.com/file/d/1zbV8NjOu8dlA_HhY_XFRKl7PJ7-MbHCz/preview",
     thumbnail: "https://harmless-tapir-303.convex.cloud/api/storage/1f4f90b5-0f53-43c4-9662-c8378ed0a32b",
   },
@@ -69,13 +69,6 @@ export function VideoSection() {
 
   const handleIframeLoad = () => {
     setIsLoading(false);
-  };
-
-  const getAutoplayUrl = (url: string) => {
-    if (url.includes("drive.google.com") && url.includes("/preview")) {
-      return url.includes("?") ? `${url}&autoplay=1` : `${url}?autoplay=1`;
-    }
-    return url;
   };
 
   const variants = {
@@ -198,16 +191,13 @@ export function VideoSection() {
                 ) : (
                   <div className="w-full h-full relative bg-black">
                     {isLoading && (
-                      <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
+                      <div className="absolute inset-0 flex items-center justify-center z-10">
                         <Loader2 className="w-12 h-12 text-white animate-spin" />
                       </div>
                     )}
                     <iframe
-                      src={getAutoplayUrl(videos[currentIndex].videoUrl)}
-                      className={cn(
-                        "w-full h-full relative z-20 transition-opacity duration-500",
-                        isLoading ? "opacity-0" : "opacity-100"
-                      )}
+                      src={`${videos[currentIndex].videoUrl}`}
+                      className="w-full h-full relative z-20"
                       allow="autoplay; fullscreen"
                       allowFullScreen
                       onLoad={handleIframeLoad}
