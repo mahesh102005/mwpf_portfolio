@@ -123,7 +123,7 @@ export function VideoSection() {
 
         {/* Main Video Panel */}
         <motion.div 
-          className="relative group w-full max-w-5xl mx-auto aspect-video rounded-xl md:rounded-[2rem] overflow-hidden bg-white/30 border border-white/50 shadow-2xl backdrop-blur-md"
+          className="relative group w-full max-w-5xl mx-auto aspect-video rounded-[2rem] overflow-hidden bg-white/30 border-2 border-zinc-300 md:border md:border-white/50 shadow-2xl backdrop-blur-md"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -146,7 +146,7 @@ export function VideoSection() {
           </button>
 
           {/* Video/Thumbnail Container */}
-          <div className="absolute inset-0 overflow-hidden rounded-xl md:rounded-[2rem] bg-black">
+          <div className="absolute inset-0 overflow-hidden rounded-[2rem] bg-black">
             <AnimatePresence initial={false} custom={direction} mode="popLayout">
               <motion.div
                 key={currentIndex}
