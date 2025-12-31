@@ -171,6 +171,36 @@ const photos = [
     src: "https://harmless-tapir-303.convex.cloud/api/storage/1cc374bc-424d-4241-9bad-a32bb0bf29d6",
     category: "Portrait",
     title: "Seaside Walk"
+  },
+  {
+    id: 29,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/efe55dcd-1703-4d61-b306-a63de30bd196",
+    category: "Wedding",
+    title: "Romantic Gaze"
+  },
+  {
+    id: 30,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/92b5380c-009e-4fb9-be40-939d416949e7",
+    category: "Wedding",
+    title: "Loving Glance"
+  },
+  {
+    id: 31,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/cb8f7625-4491-4694-8d51-1a40bc79b120",
+    category: "Wedding",
+    title: "First Dance"
+  },
+  {
+    id: 32,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/caf97ecb-08fe-47ff-9191-5e9ca7928fef",
+    category: "Portrait",
+    title: "Close Embrace"
+  },
+  {
+    id: 33,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/d15b2502-a9c6-4782-b9ad-9970d7a38ed5",
+    category: "Wedding",
+    title: "Together Forever"
   }
 ];
 
