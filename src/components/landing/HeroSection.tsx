@@ -65,6 +65,8 @@ export function HeroSection() {
             fetchPriority="high"
             loading="eager"
             decoding="async"
+            width="1920"
+            height="1080"
           />
         </motion.div>
       </AnimatePresence>
