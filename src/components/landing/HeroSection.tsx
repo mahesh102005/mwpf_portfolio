@@ -4,9 +4,9 @@ import { ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const heroImages = [
-  "https://harmless-tapir-303.convex.cloud/api/storage/c40cd9ae-b9fd-4a2a-a094-a7cfef43c500",
-  "https://harmless-tapir-303.convex.cloud/api/storage/0ae9be60-fb0f-41b4-8eb9-23e597a1d2f9",
-  "https://harmless-tapir-303.convex.cloud/api/storage/9bcf76bb-7ace-41a2-a090-41ad4b88b2b9",
+  "https://harmless-tapir-303.convex.cloud/api/storage/e1b0654b-86b4-4663-a4f8-c65f64625bda",
+  "https://harmless-tapir-303.convex.cloud/api/storage/e2c60c77-b7bc-4cf0-9b86-4e8f095295d6",
+  "https://harmless-tapir-303.convex.cloud/api/storage/7d91d2ab-edb6-48a1-8387-a6a129b2b57b",
 ];
 
 export function HeroSection() {

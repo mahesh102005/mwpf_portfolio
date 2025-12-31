@@ -6,21 +6,45 @@ import { useEffect, useState, useCallback } from "react";
 const photos = [
   {
     id: 1,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/500ff364-b20d-402f-8309-92abfe83df04",
-    category: "Wedding",
-    title: "Ceremonial Bliss"
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/45510fc4-6ba6-41e1-96ac-d1b27f3a4973",
+    category: "Pre-Wedding",
+    title: "Timeless Journey"
   },
   {
     id: 2,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/9cd0b89b-4198-4326-8c92-9b335417ec78",
-    category: "Celebration",
-    title: "Joyful Moments"
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/24ca09f2-f848-4732-a18d-8549e78cba5b",
+    category: "Couple",
+    title: "Doorway to Love"
   },
   {
     id: 3,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/14f0092a-3750-4219-a36f-268d6177f7dc",
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/3c5370cc-d72b-4b78-9354-28174f2b9c92",
+    category: "Silhouette",
+    title: "Sunset Romance"
+  },
+  {
+    id: 4,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/0d3dbda6-b3cb-416a-b65d-9d05a29a77ed",
+    category: "Celebration",
+    title: "Sparkling Moments"
+  },
+  {
+    id: 5,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/a11f83a9-e6cb-4dca-8ba6-45fb3742b6ab",
+    category: "Wedding",
+    title: "Shower of Blessings"
+  },
+  {
+    id: 6,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/425526dc-bb64-426f-a575-8607ff131cad",
+    category: "Candid",
+    title: "Chai & Conversations"
+  },
+  {
+    id: 7,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/fdd13082-8470-4518-8613-38ccac7a1091",
     category: "Portrait",
-    title: "Romantic Gaze"
+    title: "Nature's Embrace"
   }
 ];
 
