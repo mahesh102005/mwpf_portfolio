@@ -201,6 +201,36 @@ const photos = [
     src: "https://harmless-tapir-303.convex.cloud/api/storage/d15b2502-a9c6-4782-b9ad-9970d7a38ed5",
     category: "Wedding",
     title: "Together Forever"
+  },
+  {
+    id: 34,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/4cbc9760-eca0-4e9d-b0e5-9d8491adee3b",
+    category: "Wedding",
+    title: "Captured Moment"
+  },
+  {
+    id: 35,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/bd734005-6366-4148-bd99-979beeba239d",
+    category: "Portrait",
+    title: "Timeless Memory"
+  },
+  {
+    id: 36,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/c9e36912-2911-449d-9b47-c786d4cc99c7",
+    category: "Event",
+    title: "Joyful Celebration"
+  },
+  {
+    id: 37,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/0faf31a6-87c5-43dc-8360-174ca1456c6f",
+    category: "Wedding",
+    title: "Elegant Detail"
+  },
+  {
+    id: 38,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/c8488970-089d-4a67-93f4-0912ef717932",
+    category: "Portrait",
+    title: "Beautiful Smile"
   }
 ];
 
