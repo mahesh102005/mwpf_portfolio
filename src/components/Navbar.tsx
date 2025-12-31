@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { motion, useScroll, useMotionValueEvent, Variants, AnimatePresence } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, useScroll, Variants, AnimatePresence } from "framer-motion";
 import { useAuth } from "@/hooks/use-auth";
 import { useNavigate } from "react-router";
 import { Menu, X } from "lucide-react";
@@ -14,12 +14,14 @@ export function Navbar() {
   const navigate = useNavigate();
   const { scrollY } = useScroll();
 
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    setIsScrolled(latest > 50);
-    if (isMobileMenuOpen) {
-      setIsMobileMenuOpen(false);
-    }
-  });
+  useEffect(() => {
+    return scrollY.on("change", (latest) => {
+      setIsScrolled(latest > 50);
+      if (isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    });
+  }, [scrollY, isMobileMenuOpen]);
 
   const navLinks = [
     { name: "Home", href: "#home" },
