@@ -166,7 +166,7 @@ export function PhotoSection() {
 
         {/* Main Photo Panel */}
         <motion.div 
-          className="relative group w-full max-w-5xl mx-auto aspect-video rounded-[1.5rem] md:rounded-[2rem] overflow-hidden bg-white/30 border border-zinc-200 md:border-white/50 shadow-2xl backdrop-blur-md"
+          className="relative group w-full max-w-5xl mx-auto aspect-video rounded-[1.5rem] md:rounded-[2rem] overflow-hidden bg-white/30 border-2 border-zinc-300 md:border md:border-white/50 shadow-2xl backdrop-blur-md"
           onMouseEnter={() => !userStopped && setIsAutoPlaying(false)}
           onMouseLeave={() => !userStopped && setIsAutoPlaying(true)}
           initial={{ opacity: 0, scale: 0.95 }}
@@ -233,7 +233,17 @@ export function PhotoSection() {
           </div>
 
           {/* Explicit Bottom Right Full Screen Button */}
-          <div className="absolute bottom-3 right-3 md:bottom-6 md:right-6 z-40">
+          <div className="absolute bottom-3 right-3 md:bottom-6 md:right-6 z-40 flex items-center gap-3">
+             <motion.div 
+               initial={{ opacity: 0, x: 10 }}
+               whileInView={{ opacity: 1, x: 0 }}
+               transition={{ delay: 0.5, duration: 0.5 }}
+               className="flex items-center gap-2 bg-black/60 backdrop-blur-md text-white px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-white/10 shadow-lg pointer-events-none"
+             >
+               <span className="text-xs md:text-sm font-medium">View photos in full-screen mode</span>
+               <ArrowRight className="w-3 h-3 md:w-4 md:h-4 animate-pulse" />
+             </motion.div>
+
              <Button
                 variant="ghost"
                 size="icon"
