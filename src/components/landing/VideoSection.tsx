@@ -177,7 +177,7 @@ export function VideoSection() {
                     )}
                     <iframe
                       src={`${videos[currentIndex].videoUrl}`}
-                      className="absolute top-1/2 left-1/2 w-[108%] h-[108%] -translate-x-1/2 -translate-y-1/2 z-20"
+                      className="w-full h-full relative z-20"
                       allow="autoplay; fullscreen"
                       allowFullScreen
                       onLoad={handleIframeLoad}
