@@ -28,7 +28,7 @@ export function HeroSection() {
   return (
     <section id="home" className="relative h-screen w-full overflow-hidden bg-black">
       {/* Background Slideshow */}
-      <AnimatePresence>
+      <AnimatePresence mode="popLayout">
         <motion.div
           key={currentImage}
           initial={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
