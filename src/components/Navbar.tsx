@@ -166,7 +166,7 @@ export function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm md:hidden flex items-center justify-center p-6"
+            className="fixed inset-0 z-[60] bg-black/10 md:hidden flex items-start justify-end p-4 pt-24"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             <motion.div
@@ -175,7 +175,7 @@ export function Navbar() {
               exit="closed"
               variants={mobileMenuVariants}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white w-full max-w-[300px] rounded-[2rem] shadow-2xl overflow-hidden relative"
+              className="bg-white w-full max-w-[250px] rounded-[1.5rem] shadow-2xl overflow-hidden relative"
             >
               <div className="absolute top-4 right-4 z-10">
                 <Button
