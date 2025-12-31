@@ -85,14 +85,6 @@ export default function Dashboard() {
 
   return (
     <div className="min-h-[100dvh] w-full bg-black flex dark text-foreground selection:bg-primary/30 overflow-x-hidden relative">
-      {/* Background Photo Effect */}
-      <div className="fixed inset-0 z-0 pointer-events-none">
-        <div
-          className="absolute inset-0 bg-[url('https://images.unsplash.com/photo-1452587925148-ce544e77e70d?q=80&w=2574&auto=format&fit=crop')] bg-cover bg-center opacity-20 mix-blend-overlay"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/90 to-black" />
-      </div>
-
       {/* Sidebar */}
       <motion.div
         initial={{ x: -100, opacity: 0 }}
