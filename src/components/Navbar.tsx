@@ -16,6 +16,9 @@ export function Navbar() {
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 50);
+    if (isMobileMenuOpen) {
+      setIsMobileMenuOpen(false);
+    }
   });
 
   const navLinks = [
@@ -190,7 +193,7 @@ export function Navbar() {
               exit="closed"
               variants={mobileMenuVariants}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white/60 backdrop-blur-xl border border-white/20 w-full max-w-[250px] rounded-[1.5rem] shadow-2xl overflow-hidden relative"
+              className="bg-white/20 backdrop-blur-lg border border-white/20 w-full max-w-[250px] rounded-[1.5rem] shadow-2xl overflow-hidden relative"
             >
               <div className="absolute top-4 right-4 z-10">
                 <Button
