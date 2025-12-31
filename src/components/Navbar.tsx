@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { motion, useScroll, Variants, AnimatePresence } from "framer-motion";
 import { useAuth } from "@/hooks/use-auth";
 import { useNavigate } from "react-router";
@@ -10,18 +10,27 @@ export function Navbar() {
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   
+  // Use a ref to track the menu state for the scroll handler without triggering re-subscriptions
+  const isMobileMenuOpenRef = useRef(isMobileMenuOpen);
+
   const { isAuthenticated } = useAuth();
   const navigate = useNavigate();
   const { scrollY } = useScroll();
 
+  // Update ref when state changes
+  useEffect(() => {
+    isMobileMenuOpenRef.current = isMobileMenuOpen;
+  }, [isMobileMenuOpen]);
+
   useEffect(() => {
     return scrollY.on("change", (latest) => {
       setIsScrolled(latest > 50);
-      if (isMobileMenuOpen) {
+      // Close mobile menu on scroll if it's open
+      if (isMobileMenuOpenRef.current) {
         setIsMobileMenuOpen(false);
       }
     });
-  }, [scrollY, isMobileMenuOpen]);
+  }, [scrollY]);
 
   const navLinks = [
     { name: "Home", href: "#home" },
