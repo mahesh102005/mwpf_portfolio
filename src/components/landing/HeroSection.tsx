@@ -60,7 +60,7 @@ export function HeroSection() {
         >
           <img
             src={heroImages[currentImage]}
-            alt="Cinematic Photography"
+            alt={`Mauli Photography Portfolio Highlight ${currentImage + 1}`}
             className="w-full h-full object-cover"
             fetchPriority="high"
             loading="eager"
@@ -92,6 +92,7 @@ export function HeroSection() {
             size="lg" 
             className="group relative overflow-hidden rounded-full bg-white/5 backdrop-blur-sm border border-white/20 hover:bg-white/10 text-white px-10 py-8 text-sm tracking-[0.2em] uppercase transition-all duration-500 hover:border-primary/50"
             onClick={() => document.getElementById('photo')?.scrollIntoView({ behavior: 'smooth' })}
+            aria-label="View Portfolio"
           >
             <span className="relative z-10 group-hover:text-primary transition-colors duration-300">View Portfolio</span>
             <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/5 to-transparent translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
