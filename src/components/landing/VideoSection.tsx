@@ -133,9 +133,8 @@ export function VideoSection() {
                       loading="lazy"
                     />
                     
-                    {/* Simple Play Button Overlay */}
+                    {/* Glass Play Button Overlay */}
                     <div className="absolute inset-0 flex items-center justify-center z-20">
-<<<<<<< HEAD
                       <div className="flex items-center gap-3 md:gap-6">
                         <motion.div 
                           initial={{ opacity: 0, x: 10 }}
@@ -161,15 +160,6 @@ export function VideoSection() {
                           <Play className="w-6 h-6 md:w-10 md:h-10 text-white fill-white ml-1" />
                         </motion.button>
                       </div>
-=======
-                      <button
-                        onClick={handlePlay}
-                        className="group/play relative flex items-center justify-center w-20 h-20 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl transition-all duration-300 hover:bg-white/20 hover:scale-110 cursor-pointer"
-                        aria-label="Play video"
-                      >
-                        <Play className="w-8 h-8 text-white fill-white ml-1" />
-                      </button>
->>>>>>> parent of e3e5be5 (Work in progress - saved before revert)
                     </div>
 
                     {/* Title Overlay */}
