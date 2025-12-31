@@ -189,6 +189,7 @@ export function VideoSection() {
                       src={videos[currentIndex].thumbnail}
                       alt={videos[currentIndex].title}
                       className="w-full h-full object-cover opacity-80"
+                      loading="lazy"
                     />
                     
                     {/* Glass Play Button Overlay */}
