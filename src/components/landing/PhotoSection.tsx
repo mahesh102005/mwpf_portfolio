@@ -81,6 +81,36 @@ const photos = [
     src: "https://harmless-tapir-303.convex.cloud/api/storage/92c7983d-8f02-4d8f-9538-6cfe66c19dbb",
     category: "Wedding",
     title: "Couple's Joy"
+  },
+  {
+    id: 14,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/70285e90-7108-4145-9119-7d6333338aec",
+    category: "Wedding",
+    title: "Timeless Moment"
+  },
+  {
+    id: 15,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/417629d8-cb25-463e-9534-0b380f2865e4",
+    category: "Wedding",
+    title: "Ceremonial Joy"
+  },
+  {
+    id: 16,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/5765e692-1a35-448d-99ea-06286638d7a1",
+    category: "Portrait",
+    title: "Couple's Portrait"
+  },
+  {
+    id: 17,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/352d8519-c6e7-420f-b925-0d931e032895",
+    category: "Wedding",
+    title: "Intimate Moment"
+  },
+  {
+    id: 18,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/21bdc6b9-6f08-4555-adac-4afe563df4eb",
+    category: "Portrait",
+    title: "Groom's Style"
   }
 ];
 
