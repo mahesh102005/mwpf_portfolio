@@ -138,6 +138,7 @@ export function VideoSection() {
                     {/* Glass Play Button Overlay */}
                     <div className="absolute inset-0 flex items-center justify-center z-20">
                       <div className="flex items-center gap-3 md:gap-6">
+                        {/* Hide 'Click to Play' label on mobile to prevent multiple button confusion */}
                         {!isMobile && (
                           <motion.div 
                             initial={{ opacity: 0, x: 10 }}
@@ -160,7 +161,7 @@ export function VideoSection() {
                           whileTap={{ scale: 0.95 }}
                           onClick={handlePlay}
                           className="group/play relative flex items-center justify-center w-16 h-16 md:w-24 md:h-24 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl transition-all duration-300 hover:bg-white/20 cursor-pointer z-30"
-                          aria-label="Play video"
+                          aria-label="Play Video"
                         >
                           <Play className="w-6 h-6 md:w-10 md:h-10 text-white fill-white ml-1" />
                         </motion.button>
