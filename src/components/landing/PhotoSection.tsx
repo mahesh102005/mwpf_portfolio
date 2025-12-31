@@ -141,7 +141,7 @@ export function PhotoSection() {
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[128px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[128px] pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-[90rem] mx-auto flex flex-col items-center gap-12">
+      <div className="relative z-10 w-full max-w-[90rem] mx-auto flex flex-col items-center gap-8 md:gap-12">
         
         {/* Header */}
         <div className="text-center space-y-4">
@@ -166,7 +166,7 @@ export function PhotoSection() {
 
         {/* Main Photo Panel */}
         <motion.div 
-          className="relative group w-full max-w-5xl mx-auto aspect-video rounded-[2rem] overflow-hidden bg-white/30 border-2 border-zinc-300 md:border md:border-white/50 shadow-2xl backdrop-blur-md"
+          className="relative group w-full max-w-5xl mx-auto aspect-video rounded-[1.5rem] md:rounded-[2rem] overflow-hidden bg-white/30 border border-zinc-200 md:border-white/50 shadow-2xl backdrop-blur-md"
           onMouseEnter={() => !userStopped && setIsAutoPlaying(false)}
           onMouseLeave={() => !userStopped && setIsAutoPlaying(true)}
           initial={{ opacity: 0, scale: 0.95 }}
@@ -175,10 +175,10 @@ export function PhotoSection() {
           transition={{ duration: 0.5 }}
         >
           {/* Glass Overlay & Vignette */}
-          <div className="absolute inset-0 z-20 pointer-events-none shadow-[inset_0_0_100px_rgba(0,0,0,0.5)] rounded-[2rem]" />
+          <div className="absolute inset-0 z-20 pointer-events-none shadow-[inset_0_0_100px_rgba(0,0,0,0.5)] rounded-[1.5rem] md:rounded-[2rem]" />
           
           {/* Image Slider */}
-          <div className="absolute inset-0 overflow-hidden rounded-[2rem]">
+          <div className="absolute inset-0 overflow-hidden rounded-[1.5rem] md:rounded-[2rem]">
             <AnimatePresence initial={false} custom={direction}>
               <motion.img
                 key={currentIndex}
@@ -201,24 +201,31 @@ export function PhotoSection() {
             </AnimatePresence>
           </div>
 
-          {/* Navigation Controls */}
-          <div className="absolute inset-0 z-30 flex items-center justify-between px-2 md:px-8 opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={handleManualPrev}
-              className="h-12 w-12 md:h-14 md:w-14 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 pointer-events-auto transition-transform hover:scale-110 active:scale-95"
-            >
-              <ArrowLeft className="w-6 h-6 md:w-8 md:h-8" />
-            </Button>
-            <Button
-              variant="ghost"
-              size="icon"
-              onClick={handleManualNext}
-              className="h-12 w-12 md:h-14 md:w-14 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 pointer-events-auto transition-transform hover:scale-110 active:scale-95"
-            >
-              <ArrowRight className="w-6 h-6 md:w-8 md:h-8" />
-            </Button>
+          {/* Navigation Controls (Internal - Desktop Hover / Mobile Touch) */}
+          <div className="absolute inset-0 z-30 flex items-center justify-between px-2 md:px-4 pointer-events-none">
+             {/* Left Arrow */}
+             <div className="pointer-events-auto opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={handleManualPrev}
+                  className="h-10 w-10 md:h-14 md:w-14 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 transition-transform hover:scale-110 active:scale-95"
+                >
+                  <ArrowLeft className="w-5 h-5 md:w-8 md:h-8" />
+                </Button>
+             </div>
+
+             {/* Right Arrow */}
+             <div className="pointer-events-auto opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={handleManualNext}
+                  className="h-10 w-10 md:h-14 md:w-14 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 transition-transform hover:scale-110 active:scale-95"
+                >
+                  <ArrowRight className="w-5 h-5 md:w-8 md:h-8" />
+                </Button>
+             </div>
           </div>
 
           {/* Info Overlay */}
@@ -242,11 +249,29 @@ export function PhotoSection() {
         <div className="flex items-center gap-4 md:gap-6">
           <Button
             variant="outline"
+            size="icon"
+            onClick={handleManualPrev}
+            className="h-12 w-12 md:h-16 md:w-16 rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm"
+          >
+            <ArrowLeft className="w-5 h-5 md:w-6 md:h-6" />
+          </Button>
+
+          <Button
+            variant="outline"
             className="h-12 px-6 md:h-16 md:px-10 text-sm md:text-lg rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm"
             onClick={handleManualNext}
           >
             <ImageIcon className="w-5 h-5 md:w-6 md:h-6 mr-2 md:mr-3" />
             Change Photo
+          </Button>
+
+          <Button
+            variant="outline"
+            size="icon"
+            onClick={handleManualNext}
+            className="h-12 w-12 md:h-16 md:w-16 rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm"
+          >
+            <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
           </Button>
         </div>
 
