@@ -1,9 +1,133 @@
 import { Button } from "@/components/ui/button";
+import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Play, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import { useState, useCallback } from "react";
 
 const videos = [
+>>>>>>> REPLACE
+<<<<<<< SEARCH
+  const handlePlay = () => {
+    setIsPlaying(true);
+    setIsLoading(true);
+  };
+
+  const handleIframeLoad = () => {
+    setIsLoading(false);
+  };
+
+  const variants = {
+=======
+  const handlePlay = () => {
+    setIsPlaying(true);
+    setIsLoading(true);
+  };
+
+  const handleIframeLoad = () => {
+    setIsLoading(false);
+  };
+
+  // Helper to construct the autoplay URL for Google Drive
+  const getAutoplayUrl = (url: string) => {
+    if (url.includes("drive.google.com") && url.includes("/preview")) {
+      return url.includes("?") ? `${url}&autoplay=1` : `${url}?autoplay=1`;
+    }
+    return url;
+  };
+
+  const variants = {
+>>>>>>> REPLACE
+<<<<<<< SEARCH
+                {!isPlaying ? (
+                  <div className="w-full h-full relative">
+                    <img
+                      src={videos[currentIndex].thumbnail}
+                      alt={videos[currentIndex].title}
+                      className="w-full h-full object-cover opacity-80"
+                    />
+                    
+                    {/* Glass Play Button Overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <motion.button
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={handlePlay}
+                        className="group/play relative flex items-center justify-center w-16 h-16 md:w-24 md:h-24 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl transition-all duration-300 hover:bg-white/20 cursor-pointer z-20"
+                      >
+                        <Play className="w-6 h-6 md:w-10 md:h-10 text-white fill-white ml-1" />
+                      </motion.button>
+                    </div>
+
+                    {/* Title Overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-black/80 to-transparent pointer-events-none">
+                      <h3 className="text-lg md:text-2xl font-bold text-white mb-1">{videos[currentIndex].title}</h3>
+                      <p className="text-xs md:text-base text-white/70">{videos[currentIndex].category}</p>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="w-full h-full relative bg-black">
+                    {isLoading && (
+                      <div className="absolute inset-0 flex items-center justify-center z-10">
+                        <Loader2 className="w-12 h-12 text-white animate-spin" />
+                      </div>
+                    )}
+                    <iframe
+                      src={`${videos[currentIndex].videoUrl}`}
+                      className="w-full h-full relative z-20"
+                      allow="autoplay; fullscreen"
+                      allowFullScreen
+                      onLoad={handleIframeLoad}
+                      title={videos[currentIndex].title}
+                    />
+                  </div>
+                )}
+=======
+                {!isPlaying ? (
+                  <div className="w-full h-full relative">
+                    <img
+                      src={videos[currentIndex].thumbnail}
+                      alt={videos[currentIndex].title}
+                      className="w-full h-full object-cover opacity-80"
+                    />
+                    
+                    {/* Glass Play Button Overlay */}
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <motion.button
+                        whileHover={{ scale: 1.1 }}
+                        whileTap={{ scale: 0.95 }}
+                        onClick={handlePlay}
+                        className="group/play relative flex items-center justify-center w-16 h-16 md:w-24 md:h-24 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl transition-all duration-300 hover:bg-white/20 cursor-pointer z-20"
+                      >
+                        <Play className="w-6 h-6 md:w-10 md:h-10 text-white fill-white ml-1" />
+                      </motion.button>
+                    </div>
+
+                    {/* Title Overlay */}
+                    <div className="absolute bottom-0 left-0 right-0 p-4 md:p-8 bg-gradient-to-t from-black/80 to-transparent pointer-events-none">
+                      <h3 className="text-lg md:text-2xl font-bold text-white mb-1">{videos[currentIndex].title}</h3>
+                      <p className="text-xs md:text-base text-white/70">{videos[currentIndex].category}</p>
+                    </div>
+                  </div>
+                ) : (
+                  <div className="w-full h-full relative bg-black">
+                    {isLoading && (
+                      <div className="absolute inset-0 flex items-center justify-center z-30 pointer-events-none">
+                        <Loader2 className="w-12 h-12 text-white animate-spin" />
+                      </div>
+                    )}
+                    <iframe
+                      src={getAutoplayUrl(videos[currentIndex].videoUrl)}
+                      className={cn(
+                        "w-full h-full relative z-20 transition-opacity duration-500",
+                        isLoading ? "opacity-0" : "opacity-100"
+                      )}
+                      allow="autoplay; fullscreen"
+                      allowFullScreen
+                      onLoad={handleIframeLoad}
+                      title={videos[currentIndex].title}
+                    />
+                  </div>
+                )}
   {
     id: 7,
     title: "Cinematic Wedding Film",
