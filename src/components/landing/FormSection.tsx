@@ -64,6 +64,10 @@ export function FormSection() {
       toast.error("Please select a service");
       return;
     }
+    if (!formData.state) {
+      toast.error("Please select a state");
+      return;
+    }
 
     setIsSubmitting(true);
     try {

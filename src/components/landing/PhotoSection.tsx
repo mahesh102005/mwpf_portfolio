@@ -141,6 +141,36 @@ const photos = [
     src: "https://harmless-tapir-303.convex.cloud/api/storage/246afbec-b7a9-400f-b1d3-01163976b097",
     category: "Wedding",
     title: "Intimate Moment"
+  },
+  {
+    id: 24,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/6b496982-5ee4-40c8-afa2-d09aaf3c015b",
+    category: "Wedding",
+    title: "Traditional Love"
+  },
+  {
+    id: 25,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/d1c9679b-77cb-45f0-ace8-105bc558d983",
+    category: "Wedding",
+    title: "Joyful Union"
+  },
+  {
+    id: 26,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/11be9199-6ccc-468c-a319-017be442f177",
+    category: "Pre-Wedding",
+    title: "Beach Romance"
+  },
+  {
+    id: 27,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/97c57884-bb2e-4424-8f41-5a4dc9bc057f",
+    category: "Pre-Wedding",
+    title: "Ocean Breeze"
+  },
+  {
+    id: 28,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/1cc374bc-424d-4241-9bad-a32bb0bf29d6",
+    category: "Pre-Wedding",
+    title: "Seaside Walk"
   }
 ];
 
