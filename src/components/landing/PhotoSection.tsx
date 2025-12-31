@@ -429,6 +429,42 @@ const photos = [
     src: "https://harmless-tapir-303.convex.cloud/api/storage/5fe21f16-1113-417b-abe6-8100be6434e6",
     category: "Portrait",
     title: "Bridge Walk"
+  },
+  {
+    id: 72,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/104ad489-5783-48eb-8508-ac7cb31ee74f",
+    category: "Wedding",
+    title: "Traditional Walk"
+  },
+  {
+    id: 73,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/c1f20df9-1ef2-436d-ab98-677ad2597d44",
+    category: "Portrait",
+    title: "Nature Run"
+  },
+  {
+    id: 74,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/3d7f7a69-ff34-4041-ae1b-34e39e7b535e",
+    category: "Portrait",
+    title: "Tea Break Moment"
+  },
+  {
+    id: 75,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/7f5c33e6-f34f-4021-8355-7a0acdf714b2",
+    category: "Portrait",
+    title: "Candid Conversation"
+  },
+  {
+    id: 76,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/44907059-97f4-49ae-b172-1a7ed2e177c1",
+    category: "Portrait",
+    title: "Shared Laughter"
+  },
+  {
+    id: 77,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/b7531302-7b21-4227-b676-abb86425e1d3",
+    category: "Portrait",
+    title: "Coffee Date"
   }
 ];
 
