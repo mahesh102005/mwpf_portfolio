@@ -44,6 +44,8 @@ export function HeroSection() {
             fetchPriority="high"
             loading="eager"
           />
+          {/* Dark Overlay for Readability */}
+          <div className="absolute inset-0 bg-black/40 bg-gradient-to-b from-black/70 via-transparent to-black/80" />
         </motion.div>
       </AnimatePresence>
 
