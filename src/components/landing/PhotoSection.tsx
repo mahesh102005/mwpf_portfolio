@@ -1,6 +1,87 @@
 import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Expand, ImageIcon, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Expand, ImageIcon, Minimize, X } from "lucide-react";
+>>>>>>> REPLACE
+<<<<<<< SEARCH
+            {/* Floating Controls Panel */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 md:gap-6 p-2 md:p-4 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-2xl w-[90%] md:w-auto justify-between md:justify-center">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={handleManualPrev}
+                className="text-white hover:bg-white/10 rounded-full shrink-0"
+              >
+                <ArrowLeft className="w-6 h-6" />
+              </Button>
+              
+              <div className="h-8 w-[1px] bg-white/10 hidden md:block" />
+              
+              <Button
+                variant="ghost"
+                onClick={handleManualNext}
+                className="text-white hover:bg-white/10 rounded-full px-2 md:px-6 text-sm md:text-base whitespace-nowrap"
+              >
+                Change Photo
+              </Button>
+
+              <div className="h-8 w-[1px] bg-white/10 hidden md:block" />
+
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={handleManualNext}
+                className="text-white hover:bg-white/10 rounded-full shrink-0"
+              >
+                <ArrowRight className="w-6 h-6" />
+              </Button>
+            </div>
+          </motion.div>
+=======
+            {/* Floating Controls Panel */}
+            <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-50 flex items-center gap-2 md:gap-6 p-2 md:p-4 rounded-full bg-white/5 border border-white/10 backdrop-blur-md shadow-2xl w-[90%] md:w-auto justify-between md:justify-center">
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={handleManualPrev}
+                className="text-white hover:bg-white/10 rounded-full shrink-0"
+              >
+                <ArrowLeft className="w-6 h-6" />
+              </Button>
+              
+              <div className="h-8 w-[1px] bg-white/10 hidden md:block" />
+              
+              <Button
+                variant="ghost"
+                onClick={handleManualNext}
+                className="text-white hover:bg-white/10 rounded-full px-2 md:px-6 text-sm md:text-base whitespace-nowrap"
+              >
+                Change Photo
+              </Button>
+
+              <div className="h-8 w-[1px] bg-white/10 hidden md:block" />
+
+              <Button
+                variant="ghost"
+                size="icon"
+                onClick={handleManualNext}
+                className="text-white hover:bg-white/10 rounded-full shrink-0"
+              >
+                <ArrowRight className="w-6 h-6" />
+              </Button>
+            </div>
+
+            {/* Bottom Right Minimize Button */}
+            <div className="absolute bottom-8 right-8 z-50 hidden md:block">
+               <Button
+                variant="ghost"
+                size="icon"
+                className="h-12 w-12 rounded-full bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border border-white/10 transition-transform hover:scale-110 active:scale-95"
+                onClick={() => setIsFullScreen(false)}
+              >
+                <Minimize className="w-6 h-6" />
+              </Button>
+            </div>
+          </motion.div>
 import { useEffect, useState, useCallback } from "react";
 
 const photos = [
