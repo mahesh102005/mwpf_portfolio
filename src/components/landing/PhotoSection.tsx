@@ -111,6 +111,36 @@ const photos = [
     src: "https://harmless-tapir-303.convex.cloud/api/storage/21bdc6b9-6f08-4555-adac-4afe563df4eb",
     category: "Portrait",
     title: "Groom's Style"
+  },
+  {
+    id: 19,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/ceaedea7-f32b-4f66-815a-7306017f2c9b",
+    category: "Wedding",
+    title: "Beach Romance"
+  },
+  {
+    id: 20,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/cd09934d-f8eb-49cf-8497-0fab26403798",
+    category: "Wedding",
+    title: "Seaside Joy"
+  },
+  {
+    id: 21,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/9ac3b742-dbab-4c49-9988-ab8b57f0c9d2",
+    category: "Portrait",
+    title: "Artistic Shadow"
+  },
+  {
+    id: 22,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/b6c8f5ec-5c13-4850-a7b8-c25eecf18d08",
+    category: "Wedding",
+    title: "Elegant Couple"
+  },
+  {
+    id: 23,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/246afbec-b7a9-400f-b1d3-01163976b097",
+    category: "Wedding",
+    title: "Intimate Moment"
   }
 ];
 
