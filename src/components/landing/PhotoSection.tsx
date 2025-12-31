@@ -231,6 +231,36 @@ const photos = [
     src: "https://harmless-tapir-303.convex.cloud/api/storage/c8488970-089d-4a67-93f4-0912ef717932",
     category: "Portrait",
     title: "Beautiful Smile"
+  },
+  {
+    id: 39,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/b1d8c8b7-0cbb-4c08-b9aa-093d5f6a2af8",
+    category: "Wedding",
+    title: "Joyful Walk"
+  },
+  {
+    id: 40,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/23bcd895-71fd-4651-9960-188095d618e0",
+    category: "Portrait",
+    title: "Loving Gaze"
+  },
+  {
+    id: 41,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/737b50a2-ceba-4090-b17c-d409b7980a2a",
+    category: "Wedding",
+    title: "Couple's Portrait"
+  },
+  {
+    id: 42,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/2715621d-2af0-4ef8-ba2e-e16f07e95ca8",
+    category: "Event",
+    title: "Proposal Moment"
+  },
+  {
+    id: 43,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/f8d9b8ed-49a1-44f6-ae6f-ad2cacdce612",
+    category: "Event",
+    title: "She Said Yes"
   }
 ];
 
