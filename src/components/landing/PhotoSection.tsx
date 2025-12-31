@@ -207,17 +207,17 @@ export function PhotoSection() {
               variant="ghost"
               size="icon"
               onClick={handleManualPrev}
-              className="h-14 w-14 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 pointer-events-auto transition-transform hover:scale-110 active:scale-95"
+              className="h-12 w-12 md:h-14 md:w-14 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 pointer-events-auto transition-transform hover:scale-110 active:scale-95"
             >
-              <ArrowLeft className="w-8 h-8" />
+              <ArrowLeft className="w-6 h-6 md:w-8 md:h-8" />
             </Button>
             <Button
               variant="ghost"
               size="icon"
               onClick={handleManualNext}
-              className="h-14 w-14 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 pointer-events-auto transition-transform hover:scale-110 active:scale-95"
+              className="h-12 w-12 md:h-14 md:w-14 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 pointer-events-auto transition-transform hover:scale-110 active:scale-95"
             >
-              <ArrowRight className="w-8 h-8" />
+              <ArrowRight className="w-6 h-6 md:w-8 md:h-8" />
             </Button>
           </div>
 
@@ -230,41 +230,41 @@ export function PhotoSection() {
              <Button
                 variant="ghost"
                 size="icon"
-                className="h-14 w-14 rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur-md border border-white/20 pointer-events-auto transition-transform hover:scale-110 active:scale-95 shadow-lg"
+                className="h-12 w-12 md:h-14 md:w-14 rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur-md border border-white/20 pointer-events-auto transition-transform hover:scale-110 active:scale-95 shadow-lg"
                 onClick={handleImageClick}
               >
-                <Expand className="w-8 h-8" />
+                <Expand className="w-6 h-6 md:w-8 md:h-8" />
               </Button>
           </div>
         </motion.div>
 
         {/* Bottom Controls */}
-        <div className="flex items-center gap-6">
+        <div className="flex items-center gap-4 md:gap-6">
           <Button
             variant="outline"
             size="icon"
-            className="h-16 w-16 rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm md:hidden"
+            className="h-12 w-12 rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm md:hidden"
             onClick={handleManualPrev}
           >
-            <ArrowLeft className="w-8 h-8" />
+            <ArrowLeft className="w-5 h-5" />
           </Button>
 
           <Button
             variant="outline"
-            className="h-16 px-10 text-lg rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm"
+            className="h-12 px-6 md:h-16 md:px-10 text-sm md:text-lg rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm"
             onClick={handleManualNext}
           >
-            <ImageIcon className="w-6 h-6 mr-3" />
+            <ImageIcon className="w-5 h-5 md:w-6 md:h-6 mr-2 md:mr-3" />
             Change Photo
           </Button>
 
           <Button
             variant="outline"
             size="icon"
-            className="h-16 w-16 rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm md:hidden"
+            className="h-12 w-12 rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm md:hidden"
             onClick={handleManualNext}
           >
-            <ArrowRight className="w-8 h-8" />
+            <ArrowRight className="w-5 h-5" />
           </Button>
         </div>
 
