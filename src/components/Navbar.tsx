@@ -53,10 +53,11 @@ export function Navbar() {
   };
 
   const mobileMenuVariants: Variants = {
-    closed: { opacity: 0, x: "100%" },
+    closed: { opacity: 0, scale: 0.95, y: 10 },
     open: { 
       opacity: 1, 
-      x: 0, 
+      scale: 1, 
+      y: 0,
       transition: { 
         type: "spring", 
         stiffness: 300, 
@@ -162,68 +163,61 @@ export function Navbar() {
       <AnimatePresence>
         {isMobileMenuOpen && (
           <motion.div
-            initial="closed"
-            animate="open"
-            exit="closed"
-            variants={mobileMenuVariants}
-            className="fixed inset-0 z-[60] bg-black/95 backdrop-blur-xl md:hidden flex flex-col"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-[60] bg-black/60 backdrop-blur-sm md:hidden flex items-center justify-center p-6"
+            onClick={() => setIsMobileMenuOpen(false)}
           >
-            <div className="flex items-center justify-between p-6 border-b border-white/10">
-              <div className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-full border border-white/20 overflow-hidden">
-                  <img 
-                    src="https://harmless-tapir-303.convex.cloud/api/storage/2c18c70f-4dfb-4399-b2c8-a9ebf3589d8e" 
-                    alt="Mauli Photography Logo" 
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <span className="text-white font-bold tracking-[0.2em]">MAULI</span>
+            <motion.div
+              initial="closed"
+              animate="open"
+              exit="closed"
+              variants={mobileMenuVariants}
+              onClick={(e) => e.stopPropagation()}
+              className="bg-white w-full max-w-[300px] rounded-[2rem] shadow-2xl overflow-hidden relative"
+            >
+              <div className="absolute top-4 right-4 z-10">
+                <Button
+                  variant="ghost"
+                  size="icon"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="h-8 w-8 rounded-full text-neutral-400 hover:text-neutral-900 hover:bg-neutral-100"
+                >
+                  <X className="w-5 h-5" />
+                </Button>
               </div>
-              <Button
-                variant="ghost"
-                size="icon"
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="text-white hover:bg-white/10 rounded-full"
-              >
-                <X className="w-6 h-6" />
-              </Button>
-            </div>
 
-            <div className="flex-1 flex flex-col items-center justify-center gap-8 p-8">
-              {navLinks.map((link, index) => (
-                <motion.a
-                  key={link.name}
-                  href={link.href}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    scrollToSection(link.href);
-                  }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 }}
-                  className="text-2xl font-light text-white tracking-[0.2em] uppercase hover:text-primary transition-colors"
-                >
-                  {link.name}
-                </motion.a>
-              ))}
-              
-              {isAuthenticated && (
-                <motion.a
-                  href="/dashboard"
-                  onClick={(e) => {
-                    e.preventDefault();
-                    navigate("/dashboard");
-                    setIsMobileMenuOpen(false);
-                  }}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: navLinks.length * 0.1 }}
-                  className="mt-4 px-8 py-3 bg-primary text-white text-sm font-bold tracking-[0.15em] uppercase rounded-full hover:bg-primary/90 transition-colors shadow-lg"
-                >
-                  Dashboard
-                </motion.a>
-              )}
-            </div>
+              <div className="flex flex-col items-center py-10 px-6 gap-5">
+                {navLinks.map((link) => (
+                  <a
+                    key={link.name}
+                    href={link.href}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      scrollToSection(link.href);
+                    }}
+                    className="text-sm font-medium text-neutral-600 hover:text-neutral-900 tracking-[0.2em] uppercase transition-colors"
+                  >
+                    {link.name}
+                  </a>
+                ))}
+                
+                {isAuthenticated && (
+                  <a
+                    href="/dashboard"
+                    onClick={(e) => {
+                      e.preventDefault();
+                      navigate("/dashboard");
+                      setIsMobileMenuOpen(false);
+                    }}
+                    className="mt-2 px-6 py-2 bg-neutral-900 text-white text-[10px] font-bold tracking-[0.2em] uppercase rounded-full hover:bg-neutral-800 transition-colors"
+                  >
+                    Dashboard
+                  </a>
+                )}
+              </div>
+            </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
