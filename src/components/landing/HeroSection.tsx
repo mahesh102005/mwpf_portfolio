@@ -4,7 +4,6 @@ import { ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const heroImages = [
-  "https://harmless-tapir-303.convex.cloud/api/storage/81f8e825-61cf-429a-b5fa-716bb5cd047c",
   "https://harmless-tapir-303.convex.cloud/api/storage/c40cd9ae-b9fd-4a2a-a094-a7cfef43c500",
   "https://harmless-tapir-303.convex.cloud/api/storage/0ae9be60-fb0f-41b4-8eb9-23e597a1d2f9",
   "https://harmless-tapir-303.convex.cloud/api/storage/9bcf76bb-7ace-41a2-a090-41ad4b88b2b9",
@@ -14,6 +13,12 @@ export function HeroSection() {
   const [currentImage, setCurrentImage] = useState(0);
 
   useEffect(() => {
+    // Preload images for smoother transitions
+    heroImages.forEach((src) => {
+      const img = new Image();
+      img.src = src;
+    });
+
     const timer = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % heroImages.length);
     }, 3500);
@@ -29,7 +34,7 @@ export function HeroSection() {
           initial={{ opacity: 0, scale: 1.1, filter: "blur(10px)" }}
           animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
           exit={{ opacity: 0, filter: "blur(10px)" }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
+          transition={{ duration: 1.0, ease: "easeInOut" }}
           className="absolute inset-0 z-0"
         >
           <img
