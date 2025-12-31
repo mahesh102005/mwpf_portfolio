@@ -77,8 +77,8 @@ export function Navbar() {
           variants={navVariants}
           className={`pointer-events-auto relative flex items-center justify-between px-6 md:px-8 py-4 w-full max-w-6xl transition-all duration-500 ${
             isScrolled 
-              ? "bg-white/70 backdrop-blur-xl shadow-2xl rounded-full border border-white/20" 
-              : "bg-black/20 backdrop-blur-md rounded-full border border-white/25 shadow-[0_0_15px_rgba(255,255,255,0.05)]"
+              ? "bg-white/20 backdrop-blur-lg shadow-lg rounded-full border border-white/20" 
+              : "bg-white/5 backdrop-blur-sm rounded-full border border-white/10 shadow-sm"
           }`}
         >
           {/* Logo */}
@@ -166,7 +166,7 @@ export function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-black/10 backdrop-blur-sm md:hidden flex items-start justify-end p-4 pt-24"
+            className="fixed inset-0 z-[60] bg-transparent md:hidden flex items-start justify-end p-4 pt-24"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             <motion.div
@@ -175,7 +175,7 @@ export function Navbar() {
               exit="closed"
               variants={mobileMenuVariants}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white/80 backdrop-blur-xl border border-white/20 w-full max-w-[250px] rounded-[1.5rem] shadow-2xl overflow-hidden relative"
+              className="bg-white/60 backdrop-blur-xl border border-white/20 w-full max-w-[250px] rounded-[1.5rem] shadow-2xl overflow-hidden relative"
             >
               <div className="absolute top-4 right-4 z-10">
                 <Button
