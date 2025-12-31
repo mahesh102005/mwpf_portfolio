@@ -166,7 +166,7 @@ export function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-black/10 md:hidden flex items-start justify-end p-4 pt-24"
+            className="fixed inset-0 z-[60] bg-black/10 backdrop-blur-sm md:hidden flex items-start justify-end p-4 pt-24"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             <motion.div
