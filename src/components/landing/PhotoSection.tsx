@@ -166,7 +166,7 @@ export function PhotoSection() {
 
         {/* Main Photo Panel */}
         <motion.div 
-          className="relative group w-full max-w-5xl mx-auto aspect-video rounded-[1.5rem] md:rounded-[2rem] overflow-hidden bg-white/30 border-2 border-zinc-300 md:border md:border-white/50 shadow-2xl backdrop-blur-md"
+          className="relative group w-full max-w-5xl mx-auto aspect-video rounded-[2rem] overflow-hidden bg-white/30 border-2 border-zinc-300 md:border md:border-white/50 shadow-2xl backdrop-blur-md"
           onMouseEnter={() => !userStopped && setIsAutoPlaying(false)}
           onMouseLeave={() => !userStopped && setIsAutoPlaying(true)}
           initial={{ opacity: 0, scale: 0.95 }}
@@ -175,10 +175,10 @@ export function PhotoSection() {
           transition={{ duration: 0.5 }}
         >
           {/* Glass Overlay & Vignette */}
-          <div className="absolute inset-0 z-20 pointer-events-none shadow-[inset_0_0_100px_rgba(0,0,0,0.5)] rounded-[1.5rem] md:rounded-[2rem]" />
+          <div className="absolute inset-0 z-20 pointer-events-none shadow-[inset_0_0_100px_rgba(0,0,0,0.5)] rounded-[2rem]" />
           
           {/* Image Slider */}
-          <div className="absolute inset-0 overflow-hidden rounded-[1.5rem] md:rounded-[2rem]">
+          <div className="absolute inset-0 overflow-hidden rounded-[2rem]">
             <AnimatePresence initial={false} custom={direction}>
               <motion.img
                 key={currentIndex}
@@ -241,7 +241,12 @@ export function PhotoSection() {
                className="flex items-center gap-2 bg-black/60 backdrop-blur-md text-white px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-white/10 shadow-lg pointer-events-none"
              >
                <span className="text-xs md:text-sm font-medium">View photos in full-screen mode</span>
-               <ArrowRight className="w-3 h-3 md:w-4 md:h-4 animate-pulse" />
+               <motion.div
+                 animate={{ x: [0, 4, 0] }}
+                 transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
+               >
+                 <ArrowRight className="w-3 h-3 md:w-4 md:h-4" />
+               </motion.div>
              </motion.div>
 
              <Button
@@ -254,36 +259,6 @@ export function PhotoSection() {
               </Button>
           </div>
         </motion.div>
-
-        {/* Bottom Controls */}
-        <div className="flex items-center gap-4 md:gap-6">
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={handleManualPrev}
-            className="h-12 w-12 md:h-16 md:w-16 rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm"
-          >
-            <ArrowLeft className="w-5 h-5 md:w-6 md:h-6" />
-          </Button>
-
-          <Button
-            variant="outline"
-            className="h-12 px-6 md:h-16 md:px-10 text-sm md:text-lg rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm"
-            onClick={handleManualNext}
-          >
-            <ImageIcon className="w-5 h-5 md:w-6 md:h-6 mr-2 md:mr-3" />
-            Change Photo
-          </Button>
-
-          <Button
-            variant="outline"
-            size="icon"
-            onClick={handleManualNext}
-            className="h-12 w-12 md:h-16 md:w-16 rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm"
-          >
-            <ArrowRight className="w-5 h-5 md:w-6 md:h-6" />
-          </Button>
-        </div>
 
       </div>
 
