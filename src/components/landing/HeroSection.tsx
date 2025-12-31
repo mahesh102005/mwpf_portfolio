@@ -4,9 +4,14 @@ import { ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
 
 const heroImages = [
-  "https://harmless-tapir-303.convex.cloud/api/storage/c40cd9ae-b9fd-4a2a-a094-a7cfef43c500",
-  "https://harmless-tapir-303.convex.cloud/api/storage/0ae9be60-fb0f-41b4-8eb9-23e597a1d2f9",
-  "https://harmless-tapir-303.convex.cloud/api/storage/9bcf76bb-7ace-41a2-a090-41ad4b88b2b9",
+  "https://harmless-tapir-303.convex.cloud/api/storage/bc728afb-a2f0-4ea3-9a74-94b7ad89c432",
+  "https://harmless-tapir-303.convex.cloud/api/storage/b122d7c1-8a08-4e81-b598-563793135485",
+  "https://harmless-tapir-303.convex.cloud/api/storage/168a96d0-77e6-4dce-8f09-dd6604b7957e",
+  "https://harmless-tapir-303.convex.cloud/api/storage/f52829a0-e7ae-459e-abbb-af9e238c3141",
+  "https://harmless-tapir-303.convex.cloud/api/storage/28e9b1f2-db2d-4c4d-9581-e98758916547",
+  "https://harmless-tapir-303.convex.cloud/api/storage/4c267195-2f30-40a9-b4f9-967172ed94c6",
+  "https://harmless-tapir-303.convex.cloud/api/storage/9220dfa0-c67a-4c34-91be-e61c6b978e31",
+  "https://harmless-tapir-303.convex.cloud/api/storage/fe493285-4bb8-42a7-91da-7756fa9cb679",
 ];
 
 export function HeroSection() {
