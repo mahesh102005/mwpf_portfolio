@@ -261,6 +261,36 @@ const photos = [
     src: "https://harmless-tapir-303.convex.cloud/api/storage/f8d9b8ed-49a1-44f6-ae6f-ad2cacdce612",
     category: "Event",
     title: "She Said Yes"
+  },
+  {
+    id: 44,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/e82ad24d-a3db-4335-b327-629a94d30f5d",
+    category: "Wedding",
+    title: "Traditional Detail"
+  },
+  {
+    id: 45,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/c492fee1-3795-4f86-836e-bac8c079ed51",
+    category: "Wedding",
+    title: "Bridal Art"
+  },
+  {
+    id: 46,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/8d770577-089f-4571-892a-9b5091c075c2",
+    category: "Wedding",
+    title: "Ceremonial Art"
+  },
+  {
+    id: 47,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/d146a52f-e76f-474f-a741-de88e705811c",
+    category: "Portrait",
+    title: "Couple's Moment"
+  },
+  {
+    id: 48,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/90c8a571-e121-484b-a72d-de0ddd135b70",
+    category: "Portrait",
+    title: "Silhouette Love"
   }
 ];
 
