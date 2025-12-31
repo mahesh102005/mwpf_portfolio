@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button";
+node -e 'const fs = require("fs"); const content = `import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Play, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
@@ -73,7 +73,7 @@ export function VideoSection() {
 
   const getAutoplayUrl = (url: string) => {
     if (url.includes("drive.google.com") && url.includes("/preview")) {
-      return url.includes("?") ? `${url}&autoplay=1` : `${url}?autoplay=1`;
+      return url.includes("?") ? \`\${url}&autoplay=1\` : \`\${url}?autoplay=1\`;
     }
     return url;
   };
@@ -124,7 +124,7 @@ export function VideoSection() {
             transition={{ delay: 0.1 }}
             className="text-sm md:text-base text-zinc-500 max-w-lg mx-auto px-4"
           >
-            Life isn't a still image. We make sure your memories move with you
+            Life isn'\''t a still image. We make sure your memories move with you
           </motion.p>
         </div>
 
@@ -224,3 +224,4 @@ export function VideoSection() {
     </section>
   );
 }
+`; fs.writeFileSync("src/components/landing/VideoSection.tsx", content);'
