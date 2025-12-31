@@ -369,6 +369,36 @@ const photos = [
     src: "https://harmless-tapir-303.convex.cloud/api/storage/1885b782-19a3-4351-99fa-82c1a30c7efa",
     category: "Event",
     title: "Family Celebration"
+  },
+  {
+    id: 62,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/41190989-bc8e-4150-a200-1fe3754b611a",
+    category: "Portrait",
+    title: "Quiet Moments"
+  },
+  {
+    id: 63,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/09ebafc9-149e-47d0-b5f2-d4c9d26f79b1",
+    category: "Wedding",
+    title: "Market Walk"
+  },
+  {
+    id: 64,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/92e58d0d-3db1-4459-9556-5b30784f2144",
+    category: "Portrait",
+    title: "Monochrome Mood"
+  },
+  {
+    id: 65,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/2b00e306-e443-4805-b27c-cda6cca9d4ca",
+    category: "Portrait",
+    title: "City Lights"
+  },
+  {
+    id: 66,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/4dab3f0e-093e-445b-8119-b8c59d6bbbd8",
+    category: "Wedding",
+    title: "Shared Joy"
   }
 ];
 
