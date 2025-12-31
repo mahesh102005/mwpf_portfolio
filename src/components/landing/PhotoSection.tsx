@@ -51,6 +51,36 @@ const photos = [
     src: "https://harmless-tapir-303.convex.cloud/api/storage/61f69825-eabb-444f-a949-66f845e000dc",
     category: "Event",
     title: "Joyous Celebration"
+  },
+  {
+    id: 9,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/3bf386d5-3629-4a49-af82-b62819322d77",
+    category: "Wedding",
+    title: "Traditional Elegance"
+  },
+  {
+    id: 10,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/b46b6057-635b-44b7-878f-96f0a9ad1e04",
+    category: "Portrait",
+    title: "Candid Moment"
+  },
+  {
+    id: 11,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/659d6868-212b-41aa-9eb1-1b0a7fd1358f",
+    category: "Portrait",
+    title: "Natural Beauty"
+  },
+  {
+    id: 12,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/4319c1d5-d297-4736-9354-20ae9453d32d",
+    category: "Wedding",
+    title: "Groom's Portrait"
+  },
+  {
+    id: 13,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/92c7983d-8f02-4d8f-9538-6cfe66c19dbb",
+    category: "Wedding",
+    title: "Couple's Joy"
   }
 ];
 
