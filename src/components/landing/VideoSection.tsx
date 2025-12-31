@@ -37,7 +37,6 @@ const videos = [
     id: 1,
     title: "Cinematic Wedding Highlights",
     category: "Wedding Films",
-    // Using the Google Drive preview link for embedding
     videoUrl: "https://drive.google.com/file/d/1zbV8NjOu8dlA_HhY_XFRKl7PJ7-MbHCz/preview",
     thumbnail: "https://harmless-tapir-303.convex.cloud/api/storage/1f4f90b5-0f53-43c4-9662-c8378ed0a32b",
   },
@@ -72,7 +71,6 @@ export function VideoSection() {
     setIsLoading(false);
   };
 
-  // Helper to construct the autoplay URL for Google Drive
   const getAutoplayUrl = (url: string) => {
     if (url.includes("drive.google.com") && url.includes("/preview")) {
       return url.includes("?") ? `${url}&autoplay=1` : `${url}?autoplay=1`;
