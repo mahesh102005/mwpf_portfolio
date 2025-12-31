@@ -1,6 +1,31 @@
 import { useState, useEffect } from "react";
-import { motion, useScroll, useMotionValueEvent, Variants, AnimatePresence } from "framer-motion";
+import { motion, useScroll, Variants, AnimatePresence } from "framer-motion";
 import { useAuth } from "@/hooks/use-auth";
+>>>>>>> REPLACE
+<<<<<<< SEARCH
+  const { scrollY } = useScroll();
+
+  useMotionValueEvent(scrollY, "change", (latest) => {
+    setIsScrolled(latest > 50);
+    if (isMobileMenuOpen) {
+      setIsMobileMenuOpen(false);
+    }
+  });
+
+  const navLinks = [
+=======
+  const { scrollY } = useScroll();
+
+  useEffect(() => {
+    return scrollY.on("change", (latest) => {
+      setIsScrolled(latest > 50);
+      if (isMobileMenuOpen) {
+        setIsMobileMenuOpen(false);
+      }
+    });
+  }, [scrollY, isMobileMenuOpen]);
+
+  const navLinks = [
 import { useNavigate } from "react-router";
 import { Menu, X } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -14,20 +39,11 @@ export function Navbar() {
   const navigate = useNavigate();
   const { scrollY } = useScroll();
 
-  // Lock body scroll when mobile menu is open
-  useEffect(() => {
-    if (isMobileMenuOpen) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
-    return () => {
-      document.body.style.overflow = "unset";
-    };
-  }, [isMobileMenuOpen]);
-
   useMotionValueEvent(scrollY, "change", (latest) => {
     setIsScrolled(latest > 50);
+    if (isMobileMenuOpen) {
+      setIsMobileMenuOpen(false);
+    }
   });
 
   const navLinks = [
