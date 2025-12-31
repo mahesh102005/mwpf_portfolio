@@ -135,13 +135,13 @@ export function PhotoSection() {
   };
 
   return (
-    <section id="photo" className="py-24 px-4 bg-white relative overflow-hidden min-h-screen flex items-center justify-center">
+    <section id="photo" className="py-12 md:py-24 px-4 bg-white relative overflow-hidden min-h-[50vh] md:min-h-screen flex items-center justify-center">
       {/* Ambient Background */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-white via-zinc-50 to-zinc-100 opacity-80" />
       <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-primary/10 rounded-full blur-[128px] pointer-events-none" />
       <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-primary/5 rounded-full blur-[128px] pointer-events-none" />
 
-      <div className="relative z-10 w-full max-w-[90rem] mx-auto flex flex-col items-center gap-8 md:gap-12">
+      <div className="relative z-10 w-full max-w-[90rem] mx-auto flex flex-col items-center gap-4 md:gap-12">
         
         {/* Header */}
         <div className="text-center space-y-4">
