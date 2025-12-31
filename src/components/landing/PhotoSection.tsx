@@ -21,6 +21,36 @@ const photos = [
     src: "https://harmless-tapir-303.convex.cloud/api/storage/14f0092a-3750-4219-a36f-268d6177f7dc",
     category: "Portrait",
     title: "Romantic Gaze"
+  },
+  {
+    id: 4,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/1c3d2146-e798-4673-b8ec-219d28d8e452",
+    category: "Wedding",
+    title: "Eternal Love"
+  },
+  {
+    id: 5,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/799ae19a-6405-40d7-bfa9-f954d55954f9",
+    category: "Celebration",
+    title: "First Dance"
+  },
+  {
+    id: 6,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/8b315867-b08b-48cb-922c-ceb5b4e625fa",
+    category: "Portrait",
+    title: "Bridal Elegance"
+  },
+  {
+    id: 7,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/bee45cff-7831-4509-bd5b-62975b47bf82",
+    category: "Event",
+    title: "Festive Spirit"
+  },
+  {
+    id: 8,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/61f69825-eabb-444f-a949-66f845e000dc",
+    category: "Event",
+    title: "Joyous Celebration"
   }
 ];
 
