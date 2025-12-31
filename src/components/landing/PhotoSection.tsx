@@ -207,63 +207,64 @@ export function PhotoSection() {
               variant="ghost"
               size="icon"
               onClick={handleManualPrev}
-              className="h-12 w-12 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 pointer-events-auto transition-transform hover:scale-110 active:scale-95"
+              className="h-14 w-14 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 pointer-events-auto transition-transform hover:scale-110 active:scale-95"
             >
-              <ArrowLeft className="w-6 h-6" />
+              <ArrowLeft className="w-8 h-8" />
             </Button>
             <Button
               variant="ghost"
               size="icon"
               onClick={handleManualNext}
-              className="h-12 w-12 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 pointer-events-auto transition-transform hover:scale-110 active:scale-95"
+              className="h-14 w-14 rounded-full bg-black/20 hover:bg-black/40 text-white backdrop-blur-md border border-white/10 pointer-events-auto transition-transform hover:scale-110 active:scale-95"
             >
-              <ArrowRight className="w-6 h-6" />
+              <ArrowRight className="w-8 h-8" />
             </Button>
           </div>
 
           {/* Info Overlay */}
           <div className="absolute bottom-0 left-0 right-0 z-30 p-6 md:p-8 bg-gradient-to-t from-black/80 via-black/40 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
-            <div className="flex items-end justify-end">
-              <Button
+          </div>
+
+          {/* Explicit Bottom Right Full Screen Button */}
+          <div className="absolute bottom-6 right-6 z-40">
+             <Button
                 variant="ghost"
-                size="sm"
-                className="pointer-events-auto text-white/80 hover:text-white hover:bg-white/10 gap-2"
+                size="icon"
+                className="h-12 w-12 rounded-full bg-black/40 hover:bg-black/60 text-white backdrop-blur-md border border-white/20 pointer-events-auto transition-transform hover:scale-110 active:scale-95 shadow-lg"
                 onClick={handleImageClick}
               >
-                <Expand className="w-4 h-4" />
-                Full Screen
+                <Expand className="w-6 h-6" />
               </Button>
-            </div>
           </div>
         </motion.div>
 
         {/* Bottom Controls */}
-        <div className="flex items-center gap-4">
+        <div className="flex items-center gap-6">
           <Button
             variant="outline"
             size="icon"
-            className="h-12 w-12 rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm md:hidden"
+            className="h-16 w-16 rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm md:hidden"
             onClick={handleManualPrev}
           >
-            <ArrowLeft className="w-5 h-5" />
+            <ArrowLeft className="w-8 h-8" />
           </Button>
 
           <Button
             variant="outline"
-            className="h-12 px-8 rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm"
+            className="h-16 px-10 text-lg rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm"
             onClick={handleManualNext}
           >
-            <ImageIcon className="w-4 h-4 mr-2" />
+            <ImageIcon className="w-6 h-6 mr-3" />
             Change Photo
           </Button>
 
           <Button
             variant="outline"
             size="icon"
-            className="h-12 w-12 rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm md:hidden"
+            className="h-16 w-16 rounded-full bg-white/80 border-zinc-200 text-zinc-900 hover:bg-white hover:text-primary backdrop-blur-md transition-all hover:scale-105 shadow-sm md:hidden"
             onClick={handleManualNext}
           >
-            <ArrowRight className="w-5 h-5" />
+            <ArrowRight className="w-8 h-8" />
           </Button>
         </div>
 
