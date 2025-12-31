@@ -32,17 +32,19 @@ export function HeroSection() {
   const heroImages = isMobile ? mobileHeroImages : desktopHeroImages;
 
   useEffect(() => {
-    // Preload images for smoother transitions
-    heroImages.forEach((src) => {
-      const img = new Image();
-      img.src = src;
-    });
-
     const timer = setInterval(() => {
       setCurrentImage((prev) => (prev + 1) % heroImages.length);
     }, 3500);
     return () => clearInterval(timer);
   }, [heroImages]);
+
+  useEffect(() => {
+    // Optimize preloading: Only preload the NEXT image to save bandwidth
+    // This ensures the current image loads fastest
+    const nextIndex = (currentImage + 1) % heroImages.length;
+    const img = new Image();
+    img.src = heroImages[nextIndex];
+  }, [currentImage, heroImages]);
 
   return (
     <section id="home" className="relative h-screen w-full overflow-hidden bg-black">
@@ -62,6 +64,7 @@ export function HeroSection() {
             className="w-full h-full object-cover"
             fetchPriority="high"
             loading="eager"
+            decoding="async"
           />
         </motion.div>
       </AnimatePresence>
