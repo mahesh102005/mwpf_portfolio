@@ -399,6 +399,36 @@ const photos = [
     src: "https://harmless-tapir-303.convex.cloud/api/storage/4dab3f0e-093e-445b-8119-b8c59d6bbbd8",
     category: "Wedding",
     title: "Shared Joy"
+  },
+  {
+    id: 67,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/8ea6ebd0-c19f-4965-beb5-a91ec98d9122",
+    category: "Portrait",
+    title: "Candid Smile"
+  },
+  {
+    id: 68,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/92488557-f670-4caa-a929-ce9c811d1a18",
+    category: "Wedding",
+    title: "Tea Time"
+  },
+  {
+    id: 69,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/ee60c7a2-a190-4737-b7c2-2d4743e7c2c9",
+    category: "Portrait",
+    title: "Street Moment"
+  },
+  {
+    id: 70,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/c48ed6c5-709b-4d00-9634-c85cb2ec7f38",
+    category: "Wedding",
+    title: "Architectural Backdrop"
+  },
+  {
+    id: 71,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/5fe21f16-1113-417b-abe6-8100be6434e6",
+    category: "Portrait",
+    title: "Bridge Walk"
   }
 ];
 
