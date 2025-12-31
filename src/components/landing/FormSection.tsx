@@ -67,6 +67,7 @@ export function FormSection() {
 
     setIsSubmitting(true);
     try {
+      // 1. Submit to Convex (Database)
       await submitContact({
         name: formData.name,
         email: formData.email,
@@ -76,15 +77,44 @@ export function FormSection() {
         message: formData.message,
         type: "booking",
       });
-      toast.success("Request submitted successfully!");
-      setFormData({
-        name: "",
-        email: "",
-        phone: "",
-        service: "",
-        state: "",
-        message: "",
+
+      // 2. Submit to Web3Forms (Email)
+      const response = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Accept: "application/json",
+        },
+        body: JSON.stringify({
+          access_key: "21bc3102-255e-4051-a954-57fa6f74d9c4",
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          service: formData.service,
+          state: formData.state,
+          message: formData.message,
+          subject: `New Inquiry from ${formData.name} - MWP Glass`,
+          from_name: "MWP Glass Website",
+        }),
       });
+
+      const result = await response.json();
+
+      if (result.success) {
+        toast.success("Request submitted successfully!");
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          service: "",
+          state: "",
+          message: "",
+        });
+      } else {
+        console.error("Web3Forms error:", result);
+        // Still show success if DB save worked, but maybe warn or just log
+        toast.success("Request saved! (Email notification may be delayed)");
+      }
     } catch (error) {
       console.error(error);
       toast.error("Failed to submit request. Please try again.");
