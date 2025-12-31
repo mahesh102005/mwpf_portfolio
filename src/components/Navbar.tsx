@@ -77,7 +77,7 @@ export function Navbar() {
           variants={navVariants}
           className={`pointer-events-auto relative flex items-center justify-between px-6 md:px-8 py-4 w-full max-w-6xl transition-all duration-500 ${
             isScrolled 
-              ? "bg-white/80 backdrop-blur-xl shadow-2xl rounded-full border border-black/5" 
+              ? "bg-white/70 backdrop-blur-xl shadow-2xl rounded-full border border-white/20" 
               : "bg-black/20 backdrop-blur-md rounded-full border border-white/25 shadow-[0_0_15px_rgba(255,255,255,0.05)]"
           }`}
         >
@@ -175,14 +175,14 @@ export function Navbar() {
               exit="closed"
               variants={mobileMenuVariants}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white w-full max-w-[250px] rounded-[1.5rem] shadow-2xl overflow-hidden relative"
+              className="bg-white/80 backdrop-blur-xl border border-white/20 w-full max-w-[250px] rounded-[1.5rem] shadow-2xl overflow-hidden relative"
             >
               <div className="absolute top-4 right-4 z-10">
                 <Button
                   variant="ghost"
                   size="icon"
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className="h-8 w-8 rounded-full text-neutral-400 hover:text-neutral-900 hover:bg-neutral-100"
+                  className="h-8 w-8 rounded-full text-neutral-500 hover:text-neutral-900 hover:bg-black/5"
                 >
                   <X className="w-5 h-5" />
                 </Button>
@@ -197,7 +197,7 @@ export function Navbar() {
                       e.preventDefault();
                       scrollToSection(link.href);
                     }}
-                    className="text-sm font-medium text-neutral-600 hover:text-neutral-900 tracking-[0.2em] uppercase transition-colors"
+                    className="text-sm font-medium text-neutral-700 hover:text-black tracking-[0.2em] uppercase transition-colors"
                   >
                     {link.name}
                   </a>
