@@ -315,6 +315,30 @@ const photos = [
     src: "https://harmless-tapir-303.convex.cloud/api/storage/4fb4d701-773c-4976-85e9-9596df41b5f3",
     category: "Portrait",
     title: "Romantic Silhouette"
+  },
+  {
+    id: 53,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/925061f1-6d37-4148-8aae-e8886f210cde",
+    category: "Portrait",
+    title: "Traditional Beauty"
+  },
+  {
+    id: 54,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/54ed073d-201d-4a3b-8598-cc431414f9d8",
+    category: "Portrait",
+    title: "Elegant Smile"
+  },
+  {
+    id: 55,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/ed70faff-63dc-447b-a1e0-c6964462cc0c",
+    category: "Wedding",
+    title: "Royal Couple"
+  },
+  {
+    id: 56,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/85373785-15ca-4d47-930d-69a3804cf519",
+    category: "Detail",
+    title: "Intimate Details"
   }
 ];
 
