@@ -78,7 +78,7 @@ export function Navbar() {
           className={`pointer-events-auto relative flex items-center justify-between px-6 md:px-8 py-4 w-full max-w-6xl transition-all duration-500 ${
             isScrolled 
               ? "bg-white/80 backdrop-blur-xl shadow-2xl rounded-full border border-black/5" 
-              : "bg-transparent rounded-full"
+              : "bg-black/20 backdrop-blur-md rounded-full border border-white/25 shadow-[0_0_15px_rgba(255,255,255,0.05)]"
           }`}
         >
           {/* Logo */}
@@ -118,7 +118,7 @@ export function Navbar() {
                 {hoveredIndex === index && (
                   <motion.span
                     layoutId="nav-hover-bg"
-                    className={`absolute inset-0 rounded-full -z-10 border ${isScrolled ? "bg-black/5 border-black/5" : "bg-white/10 border-white/10"}`}
+                    className={`absolute inset-0 rounded-full -z-10 border ${isScrolled ? "bg-black/5 border-black/5" : "bg-white/5 border-white/30"}`}
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     exit={{ opacity: 0 }}
