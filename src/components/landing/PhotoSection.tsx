@@ -4,23 +4,6 @@ import { ArrowLeft, ArrowRight, Expand, Minimize, X } from "lucide-react";
 import { useEffect, useState, useCallback } from "react";
 import { photos } from "@/lib/landing-data";
 
-const FancySpinner = () => (
-  <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-    <div className="relative flex items-center justify-center">
-      <motion.div
-        className="absolute w-20 h-20 border-2 border-primary/20 rounded-full"
-        animate={{ scale: [1, 1.5, 1], opacity: [0.5, 0, 0.5] }}
-        transition={{ duration: 2, repeat: Infinity, ease: "easeInOut" }}
-      />
-      <motion.div
-        className="w-10 h-10 border-2 border-primary border-t-transparent rounded-full"
-        animate={{ rotate: 360 }}
-        transition={{ duration: 1, repeat: Infinity, ease: "linear" }}
-      />
-    </div>
-  </div>
-);
-
 export function PhotoSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -162,8 +145,7 @@ export function PhotoSection() {
           <div className="absolute inset-0 z-20 pointer-events-none shadow-[inset_0_0_100px_rgba(0,0,0,0.5)] rounded-[2rem]" />
           
           {/* Image Slider */}
-          <div className="absolute inset-0 overflow-hidden rounded-[2rem] bg-zinc-100">
-            <FancySpinner />
+          <div className="absolute inset-0 overflow-hidden rounded-[2rem]">
             <AnimatePresence initial={false} custom={direction}>
               <motion.img
                 key={currentIndex}
@@ -178,7 +160,7 @@ export function PhotoSection() {
                   opacity: { duration: 0.4 },
                   scale: { duration: 0.4 }
                 }}
-                className="absolute inset-0 w-full h-full object-cover cursor-pointer z-10"
+                className="absolute inset-0 w-full h-full object-cover cursor-pointer"
                 onClick={handleImageClick}
                 alt={photos[currentIndex].title}
                 loading="lazy"
@@ -268,8 +250,7 @@ export function PhotoSection() {
 
             {/* Main Image */}
             <div className="relative w-full h-full flex items-center justify-center p-4 md:p-12">
-              <div className="relative w-full h-full overflow-hidden flex items-center justify-center">
-                <FancySpinner />
+              <div className="relative w-full h-full overflow-hidden">
                 <AnimatePresence initial={false} custom={direction}>
                   <motion.img
                     key={currentIndex}
@@ -280,10 +261,10 @@ export function PhotoSection() {
                     animate="center"
                     exit="exit"
                     transition={{
-                      x: { type: "tween", ease: "circOut", duration: 0.7 },
-                      opacity: { duration: 0.4 }
+                      x: { type: "tween", ease: "easeInOut", duration: 0.5 },
+                      opacity: { duration: 0.3 }
                     }}
-                    className="absolute inset-0 w-full h-full object-contain shadow-2xl z-10"
+                    className="absolute inset-0 w-full h-full object-contain shadow-2xl"
                     decoding="async"
                     loading="eager"
                   />
