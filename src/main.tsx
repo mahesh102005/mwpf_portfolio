@@ -24,9 +24,9 @@ function RouteLoading() {
   );
 }
 
-const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
+const convexUrl = import.meta.env.VITE_CONVEX_URL as string;
 
-
+const convex = convexUrl ? new ConvexReactClient(convexUrl) : undefined;
 
 function RouteSyncer() {
   const location = useLocation();
@@ -66,20 +66,32 @@ createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <VlyToolbar />
     <InstrumentationProvider>
-      <ConvexAuthProvider client={convex}>
-        <BrowserRouter>
-          <RouteSyncer />
-          <Suspense fallback={<RouteLoading />}>
-            <Routes>
-              <Route path="/" element={<Landing />} />
-              <Route path="/auth" element={<AuthPage redirectAfterAuth="/dashboard" />} />
-              <Route path="/dashboard" element={<Dashboard />} />
-              <Route path="*" element={<NotFound />} />
-            </Routes>
-          </Suspense>
-        </BrowserRouter>
-        <Toaster />
-      </ConvexAuthProvider>
+      {convex ? (
+        <ConvexAuthProvider client={convex}>
+          <BrowserRouter>
+            <RouteSyncer />
+            <Suspense fallback={<RouteLoading />}>
+              <Routes>
+                <Route path="/" element={<Landing />} />
+                <Route path="/auth" element={<AuthPage redirectAfterAuth="/dashboard" />} />
+                <Route path="/dashboard" element={<Dashboard />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </Suspense>
+          </BrowserRouter>
+          <Toaster />
+        </ConvexAuthProvider>
+      ) : (
+        <div className="min-h-screen flex flex-col items-center justify-center bg-background p-4 text-center">
+          <h1 className="text-2xl font-bold text-destructive mb-4">Configuration Error</h1>
+          <p className="text-muted-foreground max-w-md">
+            The <code>VITE_CONVEX_URL</code> environment variable is missing.
+          </p>
+          <p className="text-muted-foreground max-w-md mt-2">
+            If you are viewing a deployed version (e.g., Netlify), please ensure you have added this environment variable in your deployment settings.
+          </p>
+        </div>
+      )}
     </InstrumentationProvider>
   </StrictMode>,
 );
