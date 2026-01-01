@@ -424,6 +424,36 @@ export const photos = [
     src: "https://harmless-tapir-303.convex.cloud/api/storage/d652c8a5-9571-4acf-9e1a-f31832e15bbe",
     category: "Wedding",
     title: "Joyful Connection"
+  },
+  {
+    id: 72,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/63ce4377-f443-4789-b532-ffab7fbd8aba",
+    category: "Pre-Wedding",
+    title: "Tea Time"
+  },
+  {
+    id: 73,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/489b47ef-2f31-4b45-b33b-414178578778",
+    category: "Pre-Wedding",
+    title: "Street Chai"
+  },
+  {
+    id: 74,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/b2ab80be-29b7-44a2-b8f1-28851cd42f10",
+    category: "Pre-Wedding",
+    title: "Candid Chai"
+  },
+  {
+    id: 75,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/a118337a-4366-4a6b-9a07-b7a7c83760ee",
+    category: "Pre-Wedding",
+    title: "Heritage Walk"
+  },
+  {
+    id: 76,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/06f38bbb-ced6-4682-a2e5-1ff364a242fd",
+    category: "Pre-Wedding",
+    title: "Scenic Walk"
   }
 ];
 
