@@ -4,6 +4,11 @@ import { ArrowLeft, ArrowRight, Expand, Minimize, X } from "lucide-react";
 import { useEffect, useState, useCallback } from "react";
 import { photos } from "@/lib/landing-data";
 
+const swipeConfidenceThreshold = 10000;
+const swipePower = (offset: number, velocity: number) => {
+  return Math.abs(offset) * velocity;
+};
+
 export function PhotoSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isFullScreen, setIsFullScreen] = useState(false);
@@ -87,7 +92,7 @@ export function PhotoSection() {
   const fullScreenVariants = {
     enter: (direction: number) => ({
       x: direction > 0 ? "100%" : "-100%",
-      opacity: 0,
+      opacity: 1,
     }),
     center: {
       zIndex: 1,
@@ -97,7 +102,7 @@ export function PhotoSection() {
     exit: (direction: number) => ({
       zIndex: 0,
       x: direction < 0 ? "100%" : "-100%",
-      opacity: 0,
+      opacity: 1,
     })
   };
 
@@ -261,8 +266,20 @@ export function PhotoSection() {
                     animate="center"
                     exit="exit"
                     transition={{
-                      x: { type: "tween", ease: "easeInOut", duration: 0.5 },
-                      opacity: { duration: 0.3 }
+                      x: { type: "spring", stiffness: 300, damping: 30 },
+                      opacity: { duration: 0.2 }
+                    }}
+                    drag="x"
+                    dragConstraints={{ left: 0, right: 0 }}
+                    dragElastic={1}
+                    onDragEnd={(e, { offset, velocity }) => {
+                      const swipe = swipePower(offset.x, velocity.x);
+
+                      if (swipe < -swipeConfidenceThreshold) {
+                        handleManualNext();
+                      } else if (swipe > swipeConfidenceThreshold) {
+                        handleManualPrev();
+                      }
                     }}
                     className="absolute inset-0 w-full h-full object-contain shadow-2xl"
                     decoding="async"
