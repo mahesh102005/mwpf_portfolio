@@ -190,7 +190,8 @@ export function PhotoSection() {
                 className="absolute inset-0 w-full h-full object-cover cursor-pointer"
                 onClick={handleImageClick}
                 alt={photos[currentIndex].title}
-                loading="lazy"
+                loading="eager"
+                decoding="async"
               />
             </AnimatePresence>
           </div>
