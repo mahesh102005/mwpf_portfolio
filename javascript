@@ -1,1 +1,5 @@
-const files = ["src/components/Navbar.tsx", "src/pages/Landing.tsx", "src/main.tsx"];
+const fs = require('fs');
+const https = require('https');
+const path = require('path');
+
+// ... rest of script using require ...
