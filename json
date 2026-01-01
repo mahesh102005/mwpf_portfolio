@@ -1,1 +1,1 @@
-{"file_paths":["public/manifest.webmanifest"]}
+{"type":"readFilesToContextTool","file_paths":["src/lib/landing-data.ts","src/components/landing/AboutSection.tsx","src/components/landing/PhotoSection.tsx","src/components/landing/VideoSection.tsx","src/components/landing/FormSection.tsx","src/components/landing/HeroSection.tsx","index.html","src/components/Navbar.tsx"],"replace_files_in_context":false}

@@ -1,1 +1,1 @@
-ls -F && cat package.json
+grep -r "convex.cloud" src index.html public
