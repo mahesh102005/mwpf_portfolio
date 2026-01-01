@@ -31,7 +31,7 @@ export function AboutSection() {
             transition={{ duration: 0.8, delay: 0.2 }}
             className="w-full md:w-1/2 text-center md:text-left"
           >
-            <h2 className="text-4xl md:text-5xl font-bold mb-6 text-primary tracking-tight">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-6 text-primary tracking-tight whitespace-nowrap">
               About <span className="text-primary">MWPF TEAM</span>
             </h2>
             <p className="text-muted-foreground text-lg mb-6 leading-relaxed font-light">
