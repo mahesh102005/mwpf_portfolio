@@ -18,6 +18,7 @@ import { toast } from "sonner";
 export function FormSection() {
   const submitContact = useMutation(api.contacts.submit);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [errors, setErrors] = useState<Record<string, string>>({});
   
   const [formData, setFormData] = useState({
     name: "",
@@ -28,13 +29,59 @@ export function FormSection() {
     message: "",
   });
 
+  const validate = () => {
+    const newErrors: Record<string, string> = {};
+    const name = formData.name.trim();
+    const email = formData.email.trim();
+    const phone = formData.phone.trim();
+
+    if (name.length < 2) {
+      newErrors.name = "Name must be at least 2 characters";
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(email)) {
+      newErrors.email = "Please enter a valid email address";
+    }
+
+    const phoneDigits = phone.replace(/\D/g, '');
+    if (phoneDigits.length < 10) {
+      newErrors.phone = "Phone number must be at least 10 digits";
+    }
+
+    if (!formData.service) {
+      newErrors.service = "Please select a service";
+    }
+
+    if (!formData.state) {
+      newErrors.state = "Please select a state";
+    }
+
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name]) {
+      setErrors((prev) => {
+        const newErrors = { ...prev };
+        delete newErrors[name];
+        return newErrors;
+      });
+    }
   };
 
   const handleSelectChange = (name: string, value: string) => {
     setFormData((prev) => ({ ...prev, [name]: value }));
+    if (errors[name]) {
+      setErrors((prev) => {
+        const newErrors = { ...prev };
+        delete newErrors[name];
+        return newErrors;
+      });
+    }
   };
 
   const indianStates = [
@@ -47,25 +94,8 @@ export function FormSection() {
   async function onSubmit(e: React.FormEvent) {
     e.preventDefault();
     
-    // Basic validation
-    if (!formData.name || formData.name.length < 2) {
-      toast.error("Please enter a valid name");
-      return;
-    }
-    if (!formData.email || !formData.email.includes("@")) {
-      toast.error("Please enter a valid email");
-      return;
-    }
-    if (!formData.phone || formData.phone.length < 10) {
-      toast.error("Please enter a valid phone number");
-      return;
-    }
-    if (!formData.service) {
-      toast.error("Please select a service");
-      return;
-    }
-    if (!formData.state) {
-      toast.error("Please select a state");
+    if (!validate()) {
+      toast.error("Please fix the errors in the form");
       return;
     }
 
@@ -73,12 +103,12 @@ export function FormSection() {
     try {
       // 1. Submit to Convex (Database)
       await submitContact({
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
+        name: formData.name.trim(),
+        email: formData.email.trim(),
+        phone: formData.phone.trim(),
         service: formData.service,
         state: formData.state,
-        message: formData.message,
+        message: formData.message.trim(),
         type: "booking",
       });
 
@@ -114,6 +144,7 @@ export function FormSection() {
           state: "",
           message: "",
         });
+        setErrors({});
       } else {
         console.error("Web3Forms error:", result);
         // Still show success if DB save worked, but maybe warn or just log
@@ -165,11 +196,12 @@ export function FormSection() {
                   id="name"
                   name="name"
                   placeholder="Enter your full name" 
-                  className="h-12 bg-white" 
+                  className={`h-12 bg-white ${errors.name ? "border-red-500 focus-visible:ring-red-500" : ""}`}
                   value={formData.name}
                   onChange={handleChange}
                   required
                 />
+                {errors.name && <p className="text-red-500 text-xs">{errors.name}</p>}
               </div>
 
               <div className="space-y-2">
@@ -179,11 +211,12 @@ export function FormSection() {
                   name="email"
                   type="email"
                   placeholder="Enter your email address" 
-                  className="h-12 bg-white" 
+                  className={`h-12 bg-white ${errors.email ? "border-red-500 focus-visible:ring-red-500" : ""}`}
                   value={formData.email}
                   onChange={handleChange}
                   required
                 />
+                {errors.email && <p className="text-red-500 text-xs">{errors.email}</p>}
               </div>
 
               <div className="space-y-2">
@@ -193,11 +226,12 @@ export function FormSection() {
                   name="phone"
                   type="tel"
                   placeholder="Enter your mobile number" 
-                  className="h-12 bg-white" 
+                  className={`h-12 bg-white ${errors.phone ? "border-red-500 focus-visible:ring-red-500" : ""}`}
                   value={formData.phone}
                   onChange={handleChange}
                   required
                 />
+                {errors.phone && <p className="text-red-500 text-xs">{errors.phone}</p>}
               </div>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -207,7 +241,7 @@ export function FormSection() {
                       value={formData.service} 
                       onValueChange={(val) => handleSelectChange("service", val)}
                     >
-                      <SelectTrigger className="h-12 bg-white">
+                      <SelectTrigger className={`h-12 bg-white ${errors.service ? "border-red-500 focus:ring-red-500" : ""}`}>
                         <SelectValue placeholder="Select a service" />
                       </SelectTrigger>
                       <SelectContent>
@@ -219,6 +253,7 @@ export function FormSection() {
                         <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
                     </Select>
+                    {errors.service && <p className="text-red-500 text-xs">{errors.service}</p>}
                   </div>
 
                   <div className="space-y-2">
@@ -227,7 +262,7 @@ export function FormSection() {
                       value={formData.state} 
                       onValueChange={(val) => handleSelectChange("state", val)}
                     >
-                      <SelectTrigger className="h-12 bg-white">
+                      <SelectTrigger className={`h-12 bg-white ${errors.state ? "border-red-500 focus:ring-red-500" : ""}`}>
                         <SelectValue placeholder="Select your state" />
                       </SelectTrigger>
                       <SelectContent className="max-h-[300px]">
@@ -239,6 +274,7 @@ export function FormSection() {
                         <SelectItem value="other">Other</SelectItem>
                       </SelectContent>
                     </Select>
+                    {errors.state && <p className="text-red-500 text-xs">{errors.state}</p>}
                   </div>
               </div>
               
