@@ -334,6 +334,36 @@ export const photos = [
     src: "https://harmless-tapir-303.convex.cloud/api/storage/85373785-15ca-4d47-930d-69a3804cf519",
     category: "Detail",
     title: "Intimate Details"
+  },
+  {
+    id: 57,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/b3b363d4-2709-4f86-937b-1a80aac2a787",
+    category: "Wedding",
+    title: "Traditional Walk"
+  },
+  {
+    id: 58,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/a6cca1a5-98ef-4816-bae9-0ba97a828d7f",
+    category: "Pre-Wedding",
+    title: "Joyful Run"
+  },
+  {
+    id: 59,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/37e98419-39bc-4d3b-b6df-e374a27939ce",
+    category: "Pre-Wedding",
+    title: "Chai Moments"
+  },
+  {
+    id: 60,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/b4879321-de83-429a-9f22-e2f8db90f371",
+    category: "Pre-Wedding",
+    title: "Candid Conversation"
+  },
+  {
+    id: 61,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/29aee823-6ecb-40ab-8bf3-20d32fda9be5",
+    category: "Pre-Wedding",
+    title: "Tea Break"
   }
 ];
 
