@@ -2,15 +2,72 @@ import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion } from "framer-motion";
 import { ArrowRight, Play, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
 import { useState, useCallback } from "react";
-import { videos } from "@/lib/videos";
-import { useIsMobile } from "@/hooks/use-mobile";
+
+const videos = [
+  {
+    id: 10,
+    title: "Pre-Wedding Moments",
+    category: "Love Stories",
+    videoUrl: "https://drive.google.com/file/d/1u-UpRp5clQdcBMU-e7jpqrg3X6aZcxm7/preview",
+    thumbnail: "https://harmless-tapir-303.convex.cloud/api/storage/8be1e8ba-b2e3-4cc9-a330-9d2f8bd759bd",
+  },
+  {
+    id: 9,
+    title: "Bridal Portrait",
+    category: "Wedding Films",
+    videoUrl: "https://drive.google.com/file/d/1eHK0AoXW6wQsxQfLpRHCTbVRtJ4w-PGt/preview",
+    thumbnail: "https://harmless-tapir-303.convex.cloud/api/storage/cc0e185d-7582-4976-a29c-2b0275e83e04",
+  },
+  {
+    id: 8,
+    title: "Wedding Celebration",
+    category: "Wedding Films",
+    videoUrl: "https://drive.google.com/file/d/1QkMyuahY0bwwxsgjjdFhCQacrGTZ0j1Q/preview",
+    thumbnail: "https://harmless-tapir-303.convex.cloud/api/storage/1273264c-8772-40fb-ab9d-3d4590d9c0f0",
+  },
+  {
+    id: 7,
+    title: "Cinematic Wedding Film",
+    category: "Wedding Films",
+    videoUrl: "https://drive.google.com/file/d/14hAFGnqlZlpDK2IKB2lLU_x8onHcv6u_/preview",
+    thumbnail: "https://harmless-tapir-303.convex.cloud/api/storage/81f8e825-61cf-429a-b5fa-716bb5cd047c",
+  },
+  {
+    id: 6,
+    title: "Cinematic Wedding Teaser",
+    category: "Wedding Films",
+    videoUrl: "https://drive.google.com/file/d/1Fv4GtfnnhosZg-eCr6hS0lg--92DGQgD/preview",
+    thumbnail: "https://harmless-tapir-303.convex.cloud/api/storage/6a5017bc-8141-4e1f-947c-3e85de2bb4e4",
+  },
+  {
+    id: 5,
+    title: "Suyog & Harshadha",
+    category: "Love Stories",
+    videoUrl: "https://drive.google.com/file/d/1ExeOlOFLF4VLHa4HZrH6VtHCjiAH1LAm/preview",
+    thumbnail: "https://harmless-tapir-303.convex.cloud/api/storage/2f6e34be-2ccd-4623-93db-c56554a62f98",
+  },
+  {
+    id: 4,
+    title: "Romantic Couple Shoot",
+    category: "Love Stories",
+    videoUrl: "https://drive.google.com/file/d/1xSvMyem27KRWuime9_dU86IpIy4gvzN9/preview",
+    thumbnail: "https://harmless-tapir-303.convex.cloud/api/storage/5c1e95e1-cdad-42c5-bc26-338ffbab24bb",
+  },
+  {
+    id: 1,
+    title: "Cinematic Wedding Highlights",
+    category: "Wedding Films",
+    // Using the Google Drive preview link for embedding
+    videoUrl: "https://drive.google.com/file/d/1zbV8NjOu8dlA_HhY_XFRKl7PJ7-MbHCz/preview",
+    thumbnail: "https://harmless-tapir-303.convex.cloud/api/storage/1f4f90b5-0f53-43c4-9662-c8378ed0a32b",
+  },
+];
 
 export function VideoSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isPlaying, setIsPlaying] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [direction, setDirection] = useState(0);
-  const isMobile = useIsMobile();
 
   const nextVideo = useCallback(() => {
     setDirection(1);
@@ -132,36 +189,31 @@ export function VideoSection() {
                       src={videos[currentIndex].thumbnail}
                       alt={videos[currentIndex].title}
                       className="w-full h-full object-cover opacity-80"
-                      loading="lazy"
                     />
                     
                     {/* Glass Play Button Overlay */}
                     <div className="absolute inset-0 flex items-center justify-center z-20">
                       <div className="flex items-center gap-3 md:gap-6">
-                        {/* Hide 'Click to Play' label on mobile to prevent multiple button confusion */}
-                        {!isMobile && (
-                          <motion.div 
-                            initial={{ opacity: 0, x: 10 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.5, duration: 0.5 }}
-                            className="flex items-center gap-2 bg-black/60 backdrop-blur-md text-white px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-white/10 shadow-lg pointer-events-none"
+                        <motion.div 
+                          initial={{ opacity: 0, x: 10 }}
+                          whileInView={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.5, duration: 0.5 }}
+                          className="flex items-center gap-2 bg-black/60 backdrop-blur-md text-white px-3 py-1.5 md:px-4 md:py-2 rounded-full border border-white/10 shadow-lg pointer-events-none"
+                        >
+                          <span className="text-xs md:text-sm font-medium">Click to Play</span>
+                          <motion.div
+                            animate={{ x: [0, 4, 0] }}
+                            transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
                           >
-                            <span className="text-xs md:text-sm font-medium">Click to Play</span>
-                            <motion.div
-                              animate={{ x: [0, 4, 0] }}
-                              transition={{ repeat: Infinity, duration: 1.5, ease: "easeInOut" }}
-                            >
-                              <ArrowRight className="w-3 h-3 md:w-4 md:h-4" />
-                            </motion.div>
+                            <ArrowRight className="w-3 h-3 md:w-4 md:h-4" />
                           </motion.div>
-                        )}
+                        </motion.div>
 
                         <motion.button
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.95 }}
                           onClick={handlePlay}
-                          className="group/play relative flex items-center justify-center w-16 h-16 md:w-24 md:h-24 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl transition-all duration-300 hover:bg-white/20 cursor-pointer z-30"
-                          aria-label="Play Video"
+                          className="group/play relative flex items-center justify-center w-16 h-16 md:w-24 md:h-24 rounded-full bg-white/10 backdrop-blur-md border border-white/20 shadow-2xl transition-all duration-300 hover:bg-white/20 cursor-pointer"
                         >
                           <Play className="w-6 h-6 md:w-10 md:h-10 text-white fill-white ml-1" />
                         </motion.button>
@@ -183,7 +235,7 @@ export function VideoSection() {
                     )}
                     <iframe
                       src={`${videos[currentIndex].videoUrl}`}
-                      className="absolute top-1/2 left-1/2 w-[108%] h-[108%] -translate-x-1/2 -translate-y-1/2 z-20"
+                      className="w-full h-full relative z-20"
                       allow="autoplay; fullscreen"
                       allowFullScreen
                       onLoad={handleIframeLoad}
