@@ -113,7 +113,7 @@ export function Navbar() {
   return (
     <>
       <motion.header
-        className="absolute top-0 left-0 right-0 z-50 flex justify-center pt-8 md:pt-12 px-4 pointer-events-none"
+        className="absolute top-0 left-0 right-0 z-50 flex justify-center pt-6 px-4 pointer-events-none"
       >
         <motion.nav
           initial="hidden"
