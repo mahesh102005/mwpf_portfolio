@@ -134,7 +134,7 @@ export function Navbar() {
           >
             <div className={`relative w-10 h-10 md:w-14 md:h-14 flex items-center justify-center rounded-full border overflow-hidden transition-colors ${isScrolled ? "bg-black/5 border-black/10 group-hover:border-primary/50" : "bg-white/10 border-white/20 group-hover:border-primary/50"}`}>
                <img 
-                 src="https://harmless-tapir-303.convex.cloud/api/storage/6d7aa915-5fdc-44c0-8a25-2caeff1f7828" 
+                 src="/assets/logo.png" 
                  alt="Mauli Photography Logo" 
                  className="w-full h-full object-contain p-0.5"
                />
