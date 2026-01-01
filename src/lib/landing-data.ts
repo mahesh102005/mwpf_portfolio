@@ -1,457 +1,457 @@
 export const photos = [
   {
     id: 1,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/500ff364-b20d-402f-8309-92abfe83df04",
+    src: "/assets/gallery/photo-1.jpg",
     category: "Wedding",
     title: "Ceremonial Bliss"
   },
   {
     id: 2,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/9cd0b89b-4198-4326-8c92-9b335417ec78",
+    src: "/assets/gallery/photo-2.jpg",
     category: "Celebration",
     title: "Joyful Moments"
   },
   {
     id: 3,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/14f0092a-3750-4219-a36f-268d6177f7dc",
+    src: "/assets/gallery/photo-3.jpg",
     category: "Portrait",
     title: "Romantic Gaze"
   },
   {
     id: 4,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/1c3d2146-e798-4673-b8ec-219d28d8e452",
+    src: "/assets/gallery/photo-4.jpg",
     category: "Wedding",
     title: "Eternal Love"
   },
   {
     id: 5,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/799ae19a-6405-40d7-bfa9-f954d55954f9",
+    src: "/assets/gallery/photo-5.jpg",
     category: "Celebration",
     title: "First Dance"
   },
   {
     id: 6,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/8b315867-b08b-48cb-922c-ceb5b4e625fa",
+    src: "/assets/gallery/photo-6.jpg",
     category: "Portrait",
     title: "Bridal Elegance"
   },
   {
     id: 7,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/bee45cff-7831-4509-bd5b-62975b47bf82",
+    src: "/assets/gallery/photo-7.jpg",
     category: "Event",
     title: "Festive Spirit"
   },
   {
     id: 8,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/61f69825-eabb-444f-a949-66f845e000dc",
+    src: "/assets/gallery/photo-8.jpg",
     category: "Event",
     title: "Joyous Celebration"
   },
   {
     id: 9,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/3bf386d5-3629-4a49-af82-b62819322d77",
+    src: "/assets/gallery/photo-9.jpg",
     category: "Wedding",
     title: "Traditional Elegance"
   },
   {
     id: 10,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/b46b6057-635b-44b7-878f-96f0a9ad1e04",
+    src: "/assets/gallery/photo-10.jpg",
     category: "Portrait",
     title: "Candid Moment"
   },
   {
     id: 11,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/659d6868-212b-41aa-9eb1-1b0a7fd1358f",
+    src: "/assets/gallery/photo-11.jpg",
     category: "Portrait",
     title: "Natural Beauty"
   },
   {
     id: 12,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/4319c1d5-d297-4736-9354-20ae9453d32d",
+    src: "/assets/gallery/photo-12.jpg",
     category: "Wedding",
     title: "Groom's Portrait"
   },
   {
     id: 13,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/92c7983d-8f02-4d8f-9538-6cfe66c19dbb",
+    src: "/assets/gallery/photo-13.jpg",
     category: "Wedding",
     title: "Couple's Joy"
   },
   {
     id: 14,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/70285e90-7108-4145-9119-7d6333338aec",
+    src: "/assets/gallery/photo-14.jpg",
     category: "Wedding",
     title: "Timeless Moment"
   },
   {
     id: 15,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/417629d8-cb25-463e-9534-0b380f2865e4",
+    src: "/assets/gallery/photo-15.jpg",
     category: "Wedding",
     title: "Ceremonial Joy"
   },
   {
     id: 16,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/5765e692-1a35-448d-99ea-06286638d7a1",
+    src: "/assets/gallery/photo-16.jpg",
     category: "Portrait",
     title: "Couple's Portrait"
   },
   {
     id: 17,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/352d8519-c6e7-420f-b925-0d931e032895",
+    src: "/assets/gallery/photo-17.jpg",
     category: "Wedding",
     title: "Intimate Moment"
   },
   {
     id: 18,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/21bdc6b9-6f08-4555-adac-4afe563df4eb",
+    src: "/assets/gallery/photo-18.jpg",
     category: "Portrait",
     title: "Groom's Style"
   },
   {
     id: 19,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/ceaedea7-f32b-4f66-815a-7306017f2c9b",
+    src: "/assets/gallery/photo-19.jpg",
     category: "Wedding",
     title: "Beach Romance"
   },
   {
     id: 20,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/cd09934d-f8eb-49cf-8497-0fab26403798",
+    src: "/assets/gallery/photo-20.jpg",
     category: "Wedding",
     title: "Seaside Joy"
   },
   {
     id: 21,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/9ac3b742-dbab-4c49-9988-ab8b57f0c9d2",
+    src: "/assets/gallery/photo-21.jpg",
     category: "Portrait",
     title: "Artistic Shadow"
   },
   {
     id: 22,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/b6c8f5ec-5c13-4850-a7b8-c25eecf18d08",
+    src: "/assets/gallery/photo-22.jpg",
     category: "Wedding",
     title: "Elegant Couple"
   },
   {
     id: 23,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/246afbec-b7a9-400f-b1d3-01163976b097",
+    src: "/assets/gallery/photo-23.jpg",
     category: "Wedding",
     title: "Intimate Moment"
   },
   {
     id: 24,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/6b496982-5ee4-40c8-afa2-d09aaf3c015b",
+    src: "/assets/gallery/photo-24.jpg",
     category: "Wedding",
     title: "Joyful Couple"
   },
   {
     id: 25,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/d1c9679b-77cb-45f0-ace8-105bc558d983",
+    src: "/assets/gallery/photo-25.jpg",
     category: "Wedding",
     title: "Traditional Moment"
   },
   {
     id: 26,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/11be9199-6ccc-468c-a319-017be442f177",
+    src: "/assets/gallery/photo-26.jpg",
     category: "Wedding",
     title: "Ceremonial Smile"
   },
   {
     id: 27,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/97c57884-bb2e-4424-8f41-5a4dc9bc057f",
+    src: "/assets/gallery/photo-27.jpg",
     category: "Portrait",
     title: "Beach Romance"
   },
   {
     id: 28,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/1cc374bc-424d-4241-9bad-a32bb0bf29d6",
+    src: "/assets/gallery/photo-28.jpg",
     category: "Portrait",
     title: "Seaside Walk"
   },
   {
     id: 29,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/efe55dcd-1703-4d61-b306-a63de30bd196",
+    src: "/assets/gallery/photo-29.jpg",
     category: "Wedding",
     title: "Romantic Gaze"
   },
   {
     id: 30,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/92b5380c-009e-4fb9-be40-939d416949e7",
+    src: "/assets/gallery/photo-30.jpg",
     category: "Wedding",
     title: "Loving Glance"
   },
   {
     id: 31,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/cb8f7625-4491-4694-8d51-1a40bc79b120",
+    src: "/assets/gallery/photo-31.jpg",
     category: "Wedding",
     title: "First Dance"
   },
   {
     id: 32,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/caf97ecb-08fe-47ff-9191-5e9ca7928fef",
+    src: "/assets/gallery/photo-32.jpg",
     category: "Portrait",
     title: "Close Embrace"
   },
   {
     id: 33,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/d15b2502-a9c6-4782-b9ad-9970d7a38ed5",
+    src: "/assets/gallery/photo-33.jpg",
     category: "Wedding",
     title: "Together Forever"
   },
   {
     id: 34,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/4cbc9760-eca0-4e9d-b0e5-9d8491adee3b",
+    src: "/assets/gallery/photo-34.jpg",
     category: "Wedding",
     title: "Captured Moment"
   },
   {
     id: 35,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/bd734005-6366-4148-bd99-979beeba239d",
+    src: "/assets/gallery/photo-35.jpg",
     category: "Portrait",
     title: "Timeless Memory"
   },
   {
     id: 36,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/c9e36912-2911-449d-9b47-c786d4cc99c7",
+    src: "/assets/gallery/photo-36.jpg",
     category: "Event",
     title: "Joyful Celebration"
   },
   {
     id: 37,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/0faf31a6-87c5-43dc-8360-174ca1456c6f",
+    src: "/assets/gallery/photo-37.jpg",
     category: "Wedding",
     title: "Elegant Detail"
   },
   {
     id: 38,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/c8488970-089d-4a67-93f4-0912ef717932",
+    src: "/assets/gallery/photo-38.jpg",
     category: "Portrait",
     title: "Beautiful Smile"
   },
   {
     id: 39,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/b1d8c8b7-0cbb-4c08-b9aa-093d5f6a2af8",
+    src: "/assets/gallery/photo-39.jpg",
     category: "Wedding",
     title: "Joyful Walk"
   },
   {
     id: 40,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/23bcd895-71fd-4651-9960-188095d618e0",
+    src: "/assets/gallery/photo-40.jpg",
     category: "Portrait",
     title: "Loving Gaze"
   },
   {
     id: 41,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/737b50a2-ceba-4090-b17c-d409b7980a2a",
+    src: "/assets/gallery/photo-41.jpg",
     category: "Wedding",
     title: "Couple's Portrait"
   },
   {
     id: 42,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/2715621d-2af0-4ef8-ba2e-e16f07e95ca8",
+    src: "/assets/gallery/photo-42.jpg",
     category: "Event",
     title: "Proposal Moment"
   },
   {
     id: 43,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/f8d9b8ed-49a1-44f6-ae6f-ad2cacdce612",
+    src: "/assets/gallery/photo-43.jpg",
     category: "Event",
     title: "She Said Yes"
   },
   {
     id: 44,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/e82ad24d-a3db-4335-b327-629a94d30f5d",
+    src: "/assets/gallery/photo-44.jpg",
     category: "Wedding",
     title: "Traditional Detail"
   },
   {
     id: 45,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/c492fee1-3795-4f86-836e-bac8c079ed51",
+    src: "/assets/gallery/photo-45.jpg",
     category: "Wedding",
     title: "Bridal Art"
   },
   {
     id: 46,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/8d770577-089f-4571-892a-9b5091c075c2",
+    src: "/assets/gallery/photo-46.jpg",
     category: "Wedding",
     title: "Ceremonial Art"
   },
   {
     id: 47,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/d146a52f-e76f-474f-a741-de88e705811c",
+    src: "/assets/gallery/photo-47.jpg",
     category: "Portrait",
     title: "Couple's Moment"
   },
   {
     id: 48,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/90c8a571-e121-484b-a72d-de0ddd135b70",
+    src: "/assets/gallery/photo-48.jpg",
     category: "Portrait",
     title: "Silhouette Love"
   },
   {
     id: 49,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/1bdba34c-a9ca-480f-8306-427a813fa15d",
+    src: "/assets/gallery/photo-49.jpg",
     category: "Portrait",
     title: "Silhouette Dance"
   },
   {
     id: 50,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/eafea26a-fc4e-42b9-8027-6f9a1adc4997",
+    src: "/assets/gallery/photo-50.jpg",
     category: "Portrait",
     title: "Sunset Walk"
   },
   {
     id: 51,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/81f665b8-a545-447a-ad2b-6808fff7b1e7",
+    src: "/assets/gallery/photo-51.jpg",
     category: "Portrait",
     title: "Golden Hour Connection"
   },
   {
     id: 52,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/4fb4d701-773c-4976-85e9-9596df41b5f3",
+    src: "/assets/gallery/photo-52.jpg",
     category: "Portrait",
     title: "Romantic Silhouette"
   },
   {
     id: 53,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/925061f1-6d37-4148-8aae-e8886f210cde",
+    src: "/assets/gallery/photo-53.jpg",
     category: "Portrait",
     title: "Traditional Beauty"
   },
   {
     id: 54,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/54ed073d-201d-4a3b-8598-cc431414f9d8",
+    src: "/assets/gallery/photo-54.jpg",
     category: "Portrait",
     title: "Elegant Smile"
   },
   {
     id: 55,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/ed70faff-63dc-447b-a1e0-c6964462cc0c",
+    src: "/assets/gallery/photo-55.jpg",
     category: "Wedding",
     title: "Royal Couple"
   },
   {
     id: 56,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/85373785-15ca-4d47-930d-69a3804cf519",
+    src: "/assets/gallery/photo-56.jpg",
     category: "Detail",
     title: "Intimate Details"
   },
   {
     id: 57,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/b3b363d4-2709-4f86-937b-1a80aac2a787",
+    src: "/assets/gallery/photo-57.jpg",
     category: "Wedding",
     title: "Traditional Walk"
   },
   {
     id: 58,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/a6cca1a5-98ef-4816-bae9-0ba97a828d7f",
+    src: "/assets/gallery/photo-58.jpg",
     category: "Pre-Wedding",
     title: "Joyful Run"
   },
   {
     id: 59,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/37e98419-39bc-4d3b-b6df-e374a27939ce",
+    src: "/assets/gallery/photo-59.jpg",
     category: "Pre-Wedding",
     title: "Chai Moments"
   },
   {
     id: 60,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/b4879321-de83-429a-9f22-e2f8db90f371",
+    src: "/assets/gallery/photo-60.jpg",
     category: "Pre-Wedding",
     title: "Candid Conversation"
   },
   {
     id: 61,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/29aee823-6ecb-40ab-8bf3-20d32fda9be5",
+    src: "/assets/gallery/photo-61.jpg",
     category: "Pre-Wedding",
     title: "Tea Break"
   },
   {
     id: 62,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/35cbfb08-e95c-464d-a450-4067f3bbaa29",
+    src: "/assets/gallery/photo-62.jpg",
     category: "Wedding",
     title: "Journey Together"
   },
   {
     id: 63,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/6b1fe483-7e61-4944-b366-a64021fb9dbb",
+    src: "/assets/gallery/photo-63.jpg",
     category: "Portrait",
     title: "Monochrome Love"
   },
   {
     id: 64,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/8a3b8512-9b8d-4d94-a53a-6ae981320726",
+    src: "/assets/gallery/photo-64.jpg",
     category: "Wedding",
     title: "Tender Moment"
   },
   {
     id: 65,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/726557d3-4245-4586-81b9-8c5109a11e71",
+    src: "/assets/gallery/photo-65.jpg",
     category: "Event",
     title: "Joyful Bonds"
   },
   {
     id: 66,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/85eb03b3-7376-47e6-96f9-a024137e0504",
+    src: "/assets/gallery/photo-66.jpg",
     category: "Event",
     title: "Family Celebration"
   },
   {
     id: 67,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/557229ff-7bb5-4c21-a54b-e4c5bc3bbece",
+    src: "/assets/gallery/photo-67.jpg",
     category: "Portrait",
     title: "Serene Togetherness"
   },
   {
     id: 68,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/39ee517e-7209-42af-a8ea-f92ac2d7b32c",
+    src: "/assets/gallery/photo-68.jpg",
     category: "Wedding",
     title: "Vibrant Journey"
   },
   {
     id: 69,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/028424a2-5dc4-4af9-ae5b-e228739d1ea7",
+    src: "/assets/gallery/photo-69.jpg",
     category: "Portrait",
     title: "Timeless Monochrome"
   },
   {
     id: 70,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/f8f0a042-2e00-461a-ac7d-0aeb8c3c8623",
+    src: "/assets/gallery/photo-70.jpg",
     category: "Wedding",
     title: "Urban Romance"
   },
   {
     id: 71,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/d652c8a5-9571-4acf-9e1a-f31832e15bbe",
+    src: "/assets/gallery/photo-71.jpg",
     category: "Wedding",
     title: "Joyful Connection"
   },
   {
     id: 72,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/63ce4377-f443-4789-b532-ffab7fbd8aba",
+    src: "/assets/gallery/photo-72.jpg",
     category: "Pre-Wedding",
     title: "Tea Time"
   },
   {
     id: 73,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/489b47ef-2f31-4b45-b33b-414178578778",
+    src: "/assets/gallery/photo-73.jpg",
     category: "Pre-Wedding",
     title: "Street Chai"
   },
   {
     id: 74,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/b2ab80be-29b7-44a2-b8f1-28851cd42f10",
+    src: "/assets/gallery/photo-74.jpg",
     category: "Pre-Wedding",
     title: "Candid Chai"
   },
   {
     id: 75,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/a118337a-4366-4a6b-9a07-b7a7c83760ee",
+    src: "/assets/gallery/photo-75.jpg",
     category: "Pre-Wedding",
     title: "Heritage Walk"
   },
   {
     id: 76,
-    src: "https://harmless-tapir-303.convex.cloud/api/storage/06f38bbb-ced6-4682-a2e5-1ff364a242fd",
+    src: "/assets/gallery/photo-76.jpg",
     category: "Pre-Wedding",
     title: "Scenic Walk"
   }
@@ -463,49 +463,49 @@ export const videos = [
     title: "Pre-Wedding Moments",
     category: "Love Stories",
     videoUrl: "https://drive.google.com/file/d/1u-UpRp5clQdcBMU-e7jpqrg3X6aZcxm7/preview",
-    thumbnail: "https://harmless-tapir-303.convex.cloud/api/storage/8be1e8ba-b2e3-4cc9-a330-9d2f8bd759bd",
+    thumbnail: "/assets/videos/thumb-10.jpg",
   },
   {
     id: 9,
     title: "Bridal Portrait",
     category: "Wedding Films",
     videoUrl: "https://drive.google.com/file/d/1eHK0AoXW6wQsxQfLpRHCTbVRtJ4w-PGt/preview",
-    thumbnail: "https://harmless-tapir-303.convex.cloud/api/storage/cc0e185d-7582-4976-a29c-2b0275e83e04",
+    thumbnail: "/assets/videos/thumb-9.jpg",
   },
   {
     id: 8,
     title: "Wedding Celebration",
     category: "Wedding Films",
     videoUrl: "https://drive.google.com/file/d/1QkMyuahY0bwwxsgjjdFhCQacrGTZ0j1Q/preview",
-    thumbnail: "https://harmless-tapir-303.convex.cloud/api/storage/1273264c-8772-40fb-ab9d-3d4590d9c0f0",
+    thumbnail: "/assets/videos/thumb-8.jpg",
   },
   {
     id: 7,
     title: "Cinematic Wedding Film",
     category: "Wedding Films",
     videoUrl: "https://drive.google.com/file/d/14hAFGnqlZlpDK2IKB2lLU_x8onHcv6u_/preview",
-    thumbnail: "https://harmless-tapir-303.convex.cloud/api/storage/81f8e825-61cf-429a-b5fa-716bb5cd047c",
+    thumbnail: "/assets/videos/thumb-7.jpg",
   },
   {
     id: 6,
     title: "Cinematic Wedding Teaser",
     category: "Wedding Films",
     videoUrl: "https://drive.google.com/file/d/1Fv4GtfnnhosZg-eCr6hS0lg--92DGQgD/preview",
-    thumbnail: "https://harmless-tapir-303.convex.cloud/api/storage/6a5017bc-8141-4e1f-947c-3e85de2bb4e4",
+    thumbnail: "/assets/videos/thumb-6.jpg",
   },
   {
     id: 5,
     title: "Suyog & Harshadha",
     category: "Love Stories",
     videoUrl: "https://drive.google.com/file/d/1ExeOlOFLF4VLHa4HZrH6VtHCjiAH1LAm/preview",
-    thumbnail: "https://harmless-tapir-303.convex.cloud/api/storage/2f6e34be-2ccd-4623-93db-c56554a62f98",
+    thumbnail: "/assets/videos/thumb-5.jpg",
   },
   {
     id: 4,
     title: "Romantic Couple Shoot",
     category: "Love Stories",
     videoUrl: "https://drive.google.com/file/d/1xSvMyem27KRWuime9_dU86IpIy4gvzN9/preview",
-    thumbnail: "https://harmless-tapir-303.convex.cloud/api/storage/5c1e95e1-cdad-42c5-bc26-338ffbab24bb",
+    thumbnail: "/assets/videos/thumb-4.jpg",
   },
   {
     id: 1,
@@ -513,6 +513,6 @@ export const videos = [
     category: "Wedding Films",
     // Using the Google Drive preview link for embedding
     videoUrl: "https://drive.google.com/file/d/1zbV8NjOu8dlA_HhY_XFRKl7PJ7-MbHCz/preview",
-    thumbnail: "https://harmless-tapir-303.convex.cloud/api/storage/1f4f90b5-0f53-43c4-9662-c8378ed0a32b",
+    thumbnail: "/assets/videos/thumb-1.jpg",
   },
 ];
