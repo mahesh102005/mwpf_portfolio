@@ -154,7 +154,7 @@ export function PhotoSection() {
           {/* Navigation Controls (Internal - Desktop Hover / Mobile Touch) */}
           <div className="absolute inset-0 z-30 flex items-center justify-between px-2 md:px-4 pointer-events-none">
              {/* Left Arrow */}
-             <div className="pointer-events-auto opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+             <div className="pointer-events-auto opacity-100 xl:opacity-0 xl:group-hover:opacity-100 transition-opacity duration-300">
                 <Button
                   variant="ghost"
                   size="icon"
@@ -166,7 +166,7 @@ export function PhotoSection() {
              </div>
 
              {/* Right Arrow */}
-             <div className="pointer-events-auto opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity duration-300">
+             <div className="pointer-events-auto opacity-100 xl:opacity-0 xl:group-hover:opacity-100 transition-opacity duration-300">
                 <Button
                   variant="ghost"
                   size="icon"
