@@ -1,1 +1,1 @@
-node scripts/download_assets.js
+ls -F && cat package.json

@@ -15,7 +15,7 @@ export function AboutSection() {
           >
             <div className="relative aspect-[3/4] w-full max-w-md mx-auto overflow-hidden rounded-2xl border border-black/10 group">
               <img 
-                src="/assets/about/team.jpg" 
+                src="https://harmless-tapir-303.convex.cloud/api/storage/d448a866-375a-46e2-b8d1-6bc30de4a26a" 
                 alt="MWPF Team" 
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
               />

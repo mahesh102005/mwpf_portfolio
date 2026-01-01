@@ -6,25 +6,25 @@ import { useIsMobile } from "@/hooks/use-mobile";
 import { Spinner } from "@/components/ui/spinner";
 
 const desktopHeroImages = [
-  "/assets/hero/desktop-1.jpg",
-  "/assets/hero/desktop-2.jpg",
-  "/assets/hero/desktop-3.jpg",
-  "/assets/hero/desktop-4.jpg",
-  "/assets/hero/desktop-5.jpg",
-  "/assets/hero/desktop-6.jpg",
-  "/assets/hero/desktop-7.jpg",
-  "/assets/hero/desktop-8.jpg",
+  "https://harmless-tapir-303.convex.cloud/api/storage/bc728afb-a2f0-4ea3-9a74-94b7ad89c432",
+  "https://harmless-tapir-303.convex.cloud/api/storage/b122d7c1-8a08-4e81-b598-563793135485",
+  "https://harmless-tapir-303.convex.cloud/api/storage/168a96d0-77e6-4dce-8f09-dd6604b7957e",
+  "https://harmless-tapir-303.convex.cloud/api/storage/f52829a0-e7ae-459e-abbb-af9e238c3141",
+  "https://harmless-tapir-303.convex.cloud/api/storage/28e9b1f2-db2d-4c4d-9581-e98758916547",
+  "https://harmless-tapir-303.convex.cloud/api/storage/4c267195-2f30-40a9-b4f9-967172ed94c6",
+  "https://harmless-tapir-303.convex.cloud/api/storage/9220dfa0-c67a-4c34-91be-e61c6b978e31",
+  "https://harmless-tapir-303.convex.cloud/api/storage/fe493285-4bb8-42a7-91da-7756fa9cb679",
 ];
 
 const mobileHeroImages = [
-  "/assets/hero/mobile-1.jpg",
-  "/assets/hero/mobile-2.jpg",
-  "/assets/hero/mobile-3.jpg",
-  "/assets/hero/mobile-4.jpg",
-  "/assets/hero/mobile-5.jpg",
-  "/assets/hero/mobile-6.jpg",
-  "/assets/hero/mobile-7.jpg",
-  "/assets/hero/mobile-8.jpg",
+  "https://harmless-tapir-303.convex.cloud/api/storage/07b5732b-3754-4805-9018-b663d5dd6958",
+  "https://harmless-tapir-303.convex.cloud/api/storage/c1ec3c88-42a1-4c08-8f28-0fb711d12cc2",
+  "https://harmless-tapir-303.convex.cloud/api/storage/a5443f3f-a551-4eeb-b243-9dfa1fed9805",
+  "https://harmless-tapir-303.convex.cloud/api/storage/60a45ed4-4631-4503-a971-2b756b3988c0",
+  "https://harmless-tapir-303.convex.cloud/api/storage/d5ba003b-c798-4573-a4a3-31c7df1176d8",
+  "https://harmless-tapir-303.convex.cloud/api/storage/4a898f25-d7a3-4207-8dd9-713912281ca2",
+  "https://harmless-tapir-303.convex.cloud/api/storage/21474769-7eb6-44b5-9d5b-a67a67f80e86",
+  "https://harmless-tapir-303.convex.cloud/api/storage/c76a9d10-d523-455a-8108-43da912dd63b",
 ];
 
 export function HeroSection() {
