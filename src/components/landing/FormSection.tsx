@@ -112,7 +112,29 @@ export function FormSection() {
         type: "booking",
       });
 
-      // 2. Submit to Web3Forms (Email)
+      // 2. Submit to Google Sheets
+      try {
+        const scriptURL = "https://script.google.com/macros/s/AKfycbwoXcISAweX3ulhzR85ln7btfkTuzFvGLaRGqE9kXZawUtxf06WiCAR0wGxbO1cGNIOTw/exec";
+        const googleFormData = new FormData();
+        googleFormData.append("name", formData.name);
+        googleFormData.append("email", formData.email);
+        googleFormData.append("phone", formData.phone);
+        googleFormData.append("service", formData.service);
+        googleFormData.append("state", formData.state);
+        googleFormData.append("message", formData.message);
+        googleFormData.append("date", new Date().toLocaleString());
+
+        await fetch(scriptURL, {
+          method: "POST",
+          body: googleFormData,
+          mode: "no-cors" // Required for Google Apps Script webhooks
+        });
+      } catch (sheetError) {
+        console.error("Google Sheets submission failed:", sheetError);
+        // Continue execution even if sheets fails
+      }
+
+      // 3. Submit to Web3Forms (Email)
       const response = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: {
