@@ -1,1 +1,4 @@
-const files = ["src/components/Navbar.tsx", "src/pages/Landing.tsx", "src/main.tsx"];
+const { readFilesToContextTool } = default_api;
+const file_paths = ["src/components/landing/VideoSection.tsx"];
+const replace_files_in_context = false;
+await readFilesToContextTool({ file_paths, replace_files_in_context });
