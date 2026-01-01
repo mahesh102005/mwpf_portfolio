@@ -394,6 +394,36 @@ export const photos = [
     src: "https://harmless-tapir-303.convex.cloud/api/storage/85eb03b3-7376-47e6-96f9-a024137e0504",
     category: "Event",
     title: "Family Celebration"
+  },
+  {
+    id: 67,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/557229ff-7bb5-4c21-a54b-e4c5bc3bbece",
+    category: "Portrait",
+    title: "Serene Togetherness"
+  },
+  {
+    id: 68,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/39ee517e-7209-42af-a8ea-f92ac2d7b32c",
+    category: "Wedding",
+    title: "Vibrant Journey"
+  },
+  {
+    id: 69,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/028424a2-5dc4-4af9-ae5b-e228739d1ea7",
+    category: "Portrait",
+    title: "Timeless Monochrome"
+  },
+  {
+    id: 70,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/f8f0a042-2e00-461a-ac7d-0aeb8c3c8623",
+    category: "Wedding",
+    title: "Urban Romance"
+  },
+  {
+    id: 71,
+    src: "https://harmless-tapir-303.convex.cloud/api/storage/d652c8a5-9571-4acf-9e1a-f31832e15bbe",
+    category: "Wedding",
+    title: "Joyful Connection"
   }
 ];
 
