@@ -139,14 +139,14 @@ export function Navbar() {
                  className="w-full h-full object-contain p-0.5"
                />
             </div>
-            <div className="flex flex-col">
-              <span className={`text-sm font-bold tracking-[0.2em] leading-none transition-colors ${isScrolled ? "text-foreground group-hover:text-primary" : "text-white group-hover:text-primary"}`}>MAULI</span>
-              <span className={`text-[8px] tracking-[0.3em] uppercase ${isScrolled ? "text-muted-foreground" : "text-white/60"}`}>Wedding Photography & Film's</span>
+            <div className="flex flex-col whitespace-nowrap">
+              <span className={`text-sm md:text-lg font-bold tracking-[0.2em] leading-none transition-colors ${isScrolled ? "text-foreground group-hover:text-primary" : "text-white group-hover:text-primary"}`}>MAULI</span>
+              <span className={`text-[8px] md:text-[10px] tracking-[0.3em] uppercase ${isScrolled ? "text-muted-foreground" : "text-white/60"}`}>Wedding Photography & Film's</span>
             </div>
           </motion.div>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center gap-1 ml-auto">
+          <div className="hidden lg:flex items-center gap-1 ml-auto">
             {navLinks.map((link, index) => (
               <motion.a
                 key={link.name}
@@ -190,7 +190,7 @@ export function Navbar() {
           </div>
 
           {/* Mobile Menu Toggle */}
-          <div className="md:hidden ml-auto">
+          <div className="lg:hidden ml-auto">
             <Button
               variant="ghost"
               size="icon"
@@ -210,7 +210,7 @@ export function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-transparent md:hidden flex items-start justify-end p-4 pt-28 touch-none"
+            className="fixed inset-0 z-[60] bg-transparent lg:hidden flex items-start justify-end p-4 pt-28 touch-none"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             <motion.div
