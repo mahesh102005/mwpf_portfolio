@@ -7,7 +7,8 @@ import {
   TrendingUp,
   MessageSquare,
   Image as ImageIcon,
-  Menu
+  Menu,
+  Download
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -22,6 +23,37 @@ export default function Dashboard() {
   const { user, signOut, isAuthenticated, isLoading } = useAuth();
   const contacts = useQuery(api.contacts.get);
   const navigate = useNavigate();
+
+  const handleExport = () => {
+    if (!contacts) return;
+
+    const headers = ["Name", "Email", "Phone", "Service", "State", "Message", "Type", "Date"];
+    const csvContent = [
+      headers.join(","),
+      ...contacts.map(contact => [
+        `"${contact.name.replace(/"/g, '""')}"`,
+        `"${contact.email.replace(/"/g, '""')}"`,
+        `"${(contact.phone || "").replace(/"/g, '""')}"`,
+        `"${(contact.service || "").replace(/"/g, '""')}"`,
+        `"${(contact.state || "").replace(/"/g, '""')}"`,
+        `"${contact.message.replace(/"/g, '""')}"`,
+        `"${contact.type}"`,
+        `"${new Date(contact._creationTime).toLocaleString()}"`
+      ].join(","))
+    ].join("\n");
+
+    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+    const link = document.createElement("a");
+    if (link.download !== undefined) {
+      const url = URL.createObjectURL(blob);
+      link.setAttribute("href", url);
+      link.setAttribute("download", `inquiries_export_${new Date().toISOString().split('T')[0]}.csv`);
+      link.style.visibility = "hidden";
+      document.body.appendChild(link);
+      link.click();
+      document.body.removeChild(link);
+    }
+  };
 
   useEffect(() => {
     if (!isLoading && !isAuthenticated) {
@@ -152,8 +184,17 @@ export default function Dashboard() {
           <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
             <div className="lg:col-span-2">
               <Card className="bg-white/5 border-white/10 backdrop-blur-sm h-full">
-                <CardHeader>
+                <CardHeader className="flex flex-row items-center justify-between">
                   <CardTitle className="text-xl text-white">Recent Inquiries</CardTitle>
+                  <Button 
+                    variant="outline" 
+                    size="sm" 
+                    onClick={handleExport}
+                    className="gap-2 bg-white/5 border-white/10 text-white hover:bg-white/10 hover:text-white"
+                  >
+                    <Download className="w-4 h-4" />
+                    Export to Excel
+                  </Button>
                 </CardHeader>
                 <CardContent>
                   <ScrollArea className="h-[400px] pr-4">
