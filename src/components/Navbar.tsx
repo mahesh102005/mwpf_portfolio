@@ -146,7 +146,7 @@ export function Navbar() {
           </motion.div>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-1 ml-auto">
+          <div className="hidden xl:flex items-center gap-1 ml-auto">
             {navLinks.map((link, index) => (
               <motion.a
                 key={link.name}
@@ -190,7 +190,7 @@ export function Navbar() {
           </div>
 
           {/* Mobile Menu Toggle */}
-          <div className="lg:hidden ml-auto">
+          <div className="xl:hidden ml-auto">
             <Button
               variant="ghost"
               size="icon"
@@ -210,7 +210,7 @@ export function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-transparent lg:hidden flex items-start justify-end p-4 pt-28 touch-none"
+            className="fixed inset-0 z-[60] bg-transparent xl:hidden flex items-start justify-end p-4 pt-28 touch-none"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             <motion.div
