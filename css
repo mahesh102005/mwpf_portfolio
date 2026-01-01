@@ -1,0 +1,6 @@
+  --animate-spinner-leaf: spinner-leaf 1.2s linear infinite;
+  
+  @keyframes spinner-leaf {
+    0% { opacity: 1; }
+    100% { opacity: 0.15; }
+  }

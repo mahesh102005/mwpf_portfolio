@@ -12,7 +12,42 @@
 </head>
 
 
-<body style="background-color: black;">
+<body style="background-color: black; margin: 0; overflow: hidden;">
+  <!-- Initial Loader -->
+  <div id="initial-loader" style="position: fixed; inset: 0; z-index: 9999; background-color: #000; display: flex; align-items: center; justify-content: center; transition: opacity 0.5s ease-out;">
+    <div style="position: relative; width: 48px; height: 48px;">
+      <style>
+        .spinner-leaf {
+          position: absolute;
+          top: 37.5%;
+          left: 45%;
+          width: 10%;
+          height: 25%;
+          background-color: #fff;
+          border-radius: 9999px;
+          animation: spinner-leaf 1.2s linear infinite;
+        }
+        @keyframes spinner-leaf {
+          0% { opacity: 1; }
+          100% { opacity: 0.15; }
+        }
+      </style>
+      <!-- 12 leaves generated manually for no-JS fallback/immediate render -->
+      <div class="spinner-leaf" style="transform: rotate(0deg) translate(0, -150%); animation-delay: -1.2s;"></div>
+      <div class="spinner-leaf" style="transform: rotate(30deg) translate(0, -150%); animation-delay: -1.1s;"></div>
+      <div class="spinner-leaf" style="transform: rotate(60deg) translate(0, -150%); animation-delay: -1.0s;"></div>
+      <div class="spinner-leaf" style="transform: rotate(90deg) translate(0, -150%); animation-delay: -0.9s;"></div>
+      <div class="spinner-leaf" style="transform: rotate(120deg) translate(0, -150%); animation-delay: -0.8s;"></div>
+      <div class="spinner-leaf" style="transform: rotate(150deg) translate(0, -150%); animation-delay: -0.7s;"></div>
+      <div class="spinner-leaf" style="transform: rotate(180deg) translate(0, -150%); animation-delay: -0.6s;"></div>
+      <div class="spinner-leaf" style="transform: rotate(210deg) translate(0, -150%); animation-delay: -0.5s;"></div>
+      <div class="spinner-leaf" style="transform: rotate(240deg) translate(0, -150%); animation-delay: -0.4s;"></div>
+      <div class="spinner-leaf" style="transform: rotate(270deg) translate(0, -150%); animation-delay: -0.3s;"></div>
+      <div class="spinner-leaf" style="transform: rotate(300deg) translate(0, -150%); animation-delay: -0.2s;"></div>
+      <div class="spinner-leaf" style="transform: rotate(330deg) translate(0, -150%); animation-delay: -0.1s;"></div>
+    </div>
+  </div>
+
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
 </body>

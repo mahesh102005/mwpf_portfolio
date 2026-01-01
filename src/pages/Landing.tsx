@@ -1,6 +1,7 @@
 import { Navbar } from "@/components/Navbar";
 import { HeroSection } from "@/components/landing/HeroSection";
 import { Suspense, lazy } from "react";
+import { Spinner } from "@/components/ui/spinner";
 
 // Lazy load below-the-fold sections to improve initial load time
 const AboutSection = lazy(() => import("@/components/landing/AboutSection").then(module => ({ default: module.AboutSection })));
@@ -16,23 +17,23 @@ export default function Landing() {
 
       <HeroSection />
 
-      <Suspense fallback={<div className="h-screen w-full bg-white md:bg-black" />}>
+      <Suspense fallback={<div className="h-screen w-full bg-white md:bg-black flex items-center justify-center"><Spinner size="lg" /></div>}>
         <PhotoSection />
       </Suspense>
 
-      <Suspense fallback={<div className="h-screen w-full bg-white md:bg-black" />}>
+      <Suspense fallback={<div className="h-screen w-full bg-white md:bg-black flex items-center justify-center"><Spinner size="lg" /></div>}>
         <VideoSection />
       </Suspense>
 
-      <Suspense fallback={<div className="min-h-[50vh] w-full bg-white md:bg-black" />}>
+      <Suspense fallback={<div className="min-h-[50vh] w-full bg-white md:bg-black flex items-center justify-center"><Spinner /></div>}>
         <AboutSection />
       </Suspense>
 
-      <Suspense fallback={<div className="min-h-[50vh] w-full bg-white md:bg-black" />}>
+      <Suspense fallback={<div className="min-h-[50vh] w-full bg-white md:bg-black flex items-center justify-center"><Spinner /></div>}>
         <FormSection />
       </Suspense>
 
-      <Suspense fallback={<div className="min-h-[20vh] w-full bg-white md:bg-black" />}>
+      <Suspense fallback={<div className="min-h-[20vh] w-full bg-white md:bg-black flex items-center justify-center"><Spinner /></div>}>
         <ContactSection />
       </Suspense>
     </div>
