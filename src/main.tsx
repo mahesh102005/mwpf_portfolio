@@ -6,7 +6,7 @@ import { ConvexReactClient } from "convex/react";
 import { StrictMode, useEffect, lazy, Suspense } from "react";
 import { createRoot } from "react-dom/client";
 import { BrowserRouter, Route, Routes, useLocation } from "react-router";
-import { Loader2 } from "lucide-react";
+import { Spinner } from "@/components/ui/spinner";
 import "./index.css";
 
 // Lazy load route components for better code splitting
@@ -19,7 +19,7 @@ const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 function RouteLoading() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">
-      <Loader2 className="h-12 w-12 animate-spin text-primary" />
+      <Spinner size="lg" className="text-primary" />
     </div>
   );
 }

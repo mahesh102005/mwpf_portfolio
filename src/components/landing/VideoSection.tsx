@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, Play, ChevronLeft, ChevronRight, Loader2 } from "lucide-react";
+import { ArrowRight, Play, ChevronLeft, ChevronRight } from "lucide-react";
+import { Spinner } from "@/components/ui/spinner";
 import { useState, useCallback } from "react";
 import { videos } from "@/lib/landing-data";
 
@@ -171,7 +172,7 @@ export function VideoSection() {
                   <div className="w-full h-full relative bg-black">
                     {isLoading && (
                       <div className="absolute inset-0 flex items-center justify-center z-10">
-                        <Loader2 className="w-12 h-12 text-white animate-spin" />
+                        <Spinner size="lg" light />
                       </div>
                     )}
                     <iframe

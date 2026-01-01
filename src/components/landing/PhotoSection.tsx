@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Expand, Minimize, X, Loader2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, Expand, Minimize, X } from "lucide-react";
+import { Spinner } from "@/components/ui/spinner";
 import { useEffect, useState, useCallback } from "react";
 import { photos } from "@/lib/landing-data";
 
@@ -166,7 +167,7 @@ export function PhotoSection() {
           {/* Loading Spinner */}
           {isLoading && (
             <div className="absolute inset-0 flex items-center justify-center z-10">
-              <Loader2 className="w-10 h-10 text-primary animate-spin" />
+              <Spinner size="lg" className="text-primary" />
             </div>
           )}
 
@@ -280,7 +281,7 @@ export function PhotoSection() {
             <div className="relative w-full h-full flex items-center justify-center p-4 md:p-12">
               {isLoading && (
                 <div className="absolute inset-0 flex items-center justify-center z-10">
-                  <Loader2 className="w-12 h-12 text-primary animate-spin" />
+                  <Spinner size="lg" className="text-primary" />
                 </div>
               )}
               <div className="relative w-full h-full overflow-hidden">
