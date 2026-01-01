@@ -127,21 +127,21 @@ export function Navbar() {
         >
           {/* Logo */}
           <motion.div 
-            className="flex items-center gap-3 cursor-pointer group shrink-0"
+            className="flex items-center gap-3 cursor-pointer group"
             onClick={() => navigate("/")}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
           >
-            <div className={`relative w-10 h-10 md:w-16 md:h-16 lg:w-14 lg:h-14 shrink-0 flex items-center justify-center rounded-full border overflow-hidden transition-colors ${isScrolled ? "bg-black/5 border-black/10 group-hover:border-primary/50" : "bg-white/10 border-white/20 group-hover:border-primary/50"}`}>
+            <div className={`relative w-10 h-10 md:w-14 md:h-14 flex items-center justify-center rounded-full border overflow-hidden transition-colors ${isScrolled ? "bg-black/5 border-black/10 group-hover:border-primary/50" : "bg-white/10 border-white/20 group-hover:border-primary/50"}`}>
                <img 
                  src="https://harmless-tapir-303.convex.cloud/api/storage/2c18c70f-4dfb-4399-b2c8-a9ebf3589d8e" 
                  alt="Mauli Photography Logo" 
                  className="w-full h-full object-contain p-0.5"
                />
             </div>
-            <div className="flex flex-col shrink-0">
-              <span className={`text-sm md:text-lg lg:text-sm font-bold tracking-[0.2em] leading-none transition-colors whitespace-nowrap ${isScrolled ? "text-foreground group-hover:text-primary" : "text-white group-hover:text-primary"}`}>MAULI</span>
-              <span className={`text-[8px] md:text-[10px] lg:text-[8px] tracking-[0.3em] uppercase whitespace-nowrap ${isScrolled ? "text-muted-foreground" : "text-white/60"}`}>Wedding Photography & Film's</span>
+            <div className="flex flex-col">
+              <span className={`text-sm font-bold tracking-[0.2em] leading-none transition-colors ${isScrolled ? "text-foreground group-hover:text-primary" : "text-white group-hover:text-primary"}`}>MAULI</span>
+              <span className={`text-[8px] tracking-[0.3em] uppercase ${isScrolled ? "text-muted-foreground" : "text-white/60"}`}>Wedding Photography & Film's</span>
             </div>
           </motion.div>
 
