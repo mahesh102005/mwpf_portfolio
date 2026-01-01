@@ -128,7 +128,16 @@
   html, body {
     background-color: #000000;
     @apply text-foreground;
+    /* Hide scrollbar for IE, Edge and Firefox */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
   }
+  
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  ::-webkit-scrollbar {
+    display: none;
+  }
+
   button:not([disabled]),
   [role="button"]:not([disabled]) {
     cursor: pointer;
