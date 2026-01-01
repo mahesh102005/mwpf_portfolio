@@ -173,7 +173,7 @@ export function FormSection() {
             <div className="relative z-10 flex flex-col items-center">
               <div className="w-16 h-16 bg-white/10 rounded-full flex items-center justify-center mb-4 backdrop-blur-sm border border-white/20">
                  <img 
-                    src="https://harmless-tapir-303.convex.cloud/api/storage/12f3af3e-9161-4b2f-bfd5-081de370261e" 
+                    src="/assets/logo-form.png" 
                     alt="MWP Logo" 
                     className="w-10 h-10 object-contain"
                  />
