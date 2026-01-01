@@ -26,11 +26,14 @@ export function Navbar() {
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
     } else {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     }
     return () => {
       document.body.style.overflow = "";
+      document.documentElement.style.overflow = "";
     };
   }, [isMobileMenuOpen]);
 
@@ -207,7 +210,7 @@ export function Navbar() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-[60] bg-transparent md:hidden flex items-start justify-end p-4 pt-28"
+            className="fixed inset-0 z-[60] bg-transparent md:hidden flex items-start justify-end p-4 pt-28 touch-none"
             onClick={() => setIsMobileMenuOpen(false)}
           >
             <motion.div
@@ -216,7 +219,7 @@ export function Navbar() {
               exit="closed"
               variants={mobileMenuVariants}
               onClick={(e) => e.stopPropagation()}
-              className="bg-white/20 backdrop-blur-lg border border-white/20 w-full max-w-[250px] rounded-[1.5rem] shadow-2xl overflow-hidden relative"
+              className="bg-white/20 backdrop-blur-lg border border-white/20 w-full max-w-[250px] rounded-[1.5rem] shadow-2xl overflow-hidden relative touch-auto"
             >
               <div className="absolute top-4 right-4 z-10">
                 <Button
