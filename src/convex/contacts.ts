@@ -26,6 +26,6 @@ export const submit = mutation({
 
 export const get = query({
   handler: async (ctx) => {
-    return await ctx.db.query("contacts").order("desc").take(100);
+    return await ctx.db.query("contacts").order("desc").take(200);
   },
 });

@@ -18,6 +18,7 @@ import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useNavigate } from "react-router";
 import { useEffect } from "react";
 import { SidebarContent } from "@/components/dashboard/SidebarContent";
+import { toast } from "sonner";
 
 export default function Dashboard() {
   const { user, signOut, isAuthenticated, isLoading } = useAuth();
@@ -25,33 +26,48 @@ export default function Dashboard() {
   const navigate = useNavigate();
 
   const handleExport = () => {
-    if (!contacts) return;
+    if (!contacts) {
+      toast.error("No data available to export");
+      return;
+    }
 
-    const headers = ["Name", "Email", "Phone", "Service", "State", "Message", "Type", "Date"];
-    const csvContent = [
-      headers.join(","),
-      ...contacts.map(contact => [
-        `"${contact.name.replace(/"/g, '""')}"`,
-        `"${contact.email.replace(/"/g, '""')}"`,
-        `"${(contact.phone || "").replace(/"/g, '""')}"`,
-        `"${(contact.service || "").replace(/"/g, '""')}"`,
-        `"${(contact.state || "").replace(/"/g, '""')}"`,
-        `"${contact.message.replace(/"/g, '""')}"`,
-        `"${contact.type}"`,
-        `"${new Date(contact._creationTime).toLocaleString()}"`
-      ].join(","))
-    ].join("\n");
+    try {
+      const headers = ["Name", "Email", "Phone", "Service", "State", "Message", "Type", "Date"];
+      const csvContent = [
+        headers.join(","),
+        ...contacts.map(contact => [
+          `"${contact.name.replace(/"/g, '""')}"`,
+          `"${contact.email.replace(/"/g, '""')}"`,
+          `"${(contact.phone || "").replace(/"/g, '""')}"`,
+          `"${(contact.service || "").replace(/"/g, '""')}"`,
+          `"${(contact.state || "").replace(/"/g, '""')}"`,
+          `"${contact.message.replace(/"/g, '""')}"`,
+          `"${contact.type}"`,
+          `"${new Date(contact._creationTime).toLocaleString()}"`
+        ].join(","))
+      ].join("\n");
 
-    const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
-    const link = document.createElement("a");
-    if (link.download !== undefined) {
-      const url = URL.createObjectURL(blob);
-      link.setAttribute("href", url);
-      link.setAttribute("download", `inquiries_export_${new Date().toISOString().split('T')[0]}.csv`);
-      link.style.visibility = "hidden";
-      document.body.appendChild(link);
-      link.click();
-      document.body.removeChild(link);
+      const blob = new Blob([csvContent], { type: "text/csv;charset=utf-8;" });
+      const link = document.createElement("a");
+      if (link.download !== undefined) {
+        const url = URL.createObjectURL(blob);
+        link.setAttribute("href", url);
+        
+        // Add timestamp to filename to prevent caching/overwriting issues
+        const date = new Date();
+        const timestamp = date.toISOString().replace(/[:.]/g, '-');
+        link.setAttribute("download", `inquiries_export_${timestamp}.csv`);
+        
+        link.style.visibility = "hidden";
+        document.body.appendChild(link);
+        link.click();
+        document.body.removeChild(link);
+        
+        toast.success("Export downloaded successfully");
+      }
+    } catch (error) {
+      console.error("Export failed:", error);
+      toast.error("Failed to generate export");
     }
   };
 
