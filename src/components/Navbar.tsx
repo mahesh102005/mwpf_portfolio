@@ -40,10 +40,6 @@ export function Navbar() {
   useEffect(() => {
     return scrollY.on("change", (latest) => {
       setIsScrolled(latest > 50);
-      // Close mobile menu on scroll if it's open
-      // if (isMobileMenuOpenRef.current) {
-      //   setIsMobileMenuOpen(false);
-      // }
     });
   }, [scrollY]);
 
@@ -145,7 +141,7 @@ export function Navbar() {
             </div>
           </motion.div>
 
-          {/* Desktop Nav */}
+          {/* Desktop Nav - Hidden on Mobile and Tablet (up to xl) */}
           <div className="hidden xl:flex items-center gap-1 ml-auto">
             {navLinks.map((link, index) => (
               <motion.a
@@ -189,7 +185,7 @@ export function Navbar() {
             )}
           </div>
 
-          {/* Mobile Menu Toggle */}
+          {/* Mobile Menu Toggle - Visible on Mobile and Tablet (up to xl) */}
           <div className="xl:hidden ml-auto">
             <Button
               variant="ghost"
