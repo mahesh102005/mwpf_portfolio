@@ -114,20 +114,25 @@ export function FormSection() {
 
       // 2. Submit to Google Sheets
       try {
-        const scriptURL = "https://script.google.com/macros/s/AKfycbwoXcISAweX3ulhzR85ln7btfkTuzFvGLaRGqE9kXZawUtxf06WiCAR0wGxbO1cGNIOTw/exec";
-        const googleFormData = new FormData();
-        googleFormData.append("name", formData.name);
-        googleFormData.append("email", formData.email);
-        googleFormData.append("phone", formData.phone);
-        googleFormData.append("service", formData.service);
-        googleFormData.append("state", formData.state);
-        googleFormData.append("message", formData.message);
-        googleFormData.append("date", new Date().toLocaleString());
+        const scriptURL = "https://script.google.com/macros/s/AKfycbwpJK0SR4EUJ4Zybdjr8y2WFLDT6cn5V_h0Oy6rGMvxafjj8apPjxxlhlGCiR97T9jvbg/exec";
+        
+        // The script expects a JSON string in the body with specific keys
+        const sheetData = {
+          fullname: formData.name,
+          email: formData.email,
+          mobile: formData.phone,
+          service: formData.service,
+          state: formData.state,
+          message: formData.message
+        };
 
         await fetch(scriptURL, {
           method: "POST",
-          body: googleFormData,
-          mode: "no-cors" // Required for Google Apps Script webhooks
+          body: JSON.stringify(sheetData),
+          mode: "no-cors", // Required for Google Apps Script webhooks to avoid CORS errors
+          headers: {
+            "Content-Type": "text/plain;charset=utf-8", // Send as text to avoid preflight, script parses JSON
+          },
         });
       } catch (sheetError) {
         console.error("Google Sheets submission failed:", sheetError);
