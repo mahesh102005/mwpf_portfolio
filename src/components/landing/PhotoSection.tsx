@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowLeft, ArrowRight, Expand, Minimize, X } from "lucide-react";
+import { ArrowLeft, ArrowRight, Expand, Minimize, X, Loader2 } from "lucide-react";
 import { useEffect, useState, useCallback } from "react";
 import { photos } from "@/lib/landing-data";
 
@@ -15,6 +15,7 @@ export function PhotoSection() {
   const [isAutoPlaying, setIsAutoPlaying] = useState(true);
   const [userStopped, setUserStopped] = useState(false);
   const [direction, setDirection] = useState(0);
+  const [isLoading, setIsLoading] = useState(true);
 
   const nextPhoto = useCallback(() => {
     setDirection(1);
@@ -69,6 +70,19 @@ export function PhotoSection() {
     return () => window.removeEventListener("keydown", handleKeyDown);
   }, [nextPhoto, prevPhoto]);
 
+  // Preload images and handle loading state
+  useEffect(() => {
+    setIsLoading(true);
+    const nextIndex = (currentIndex + 1) % photos.length;
+    const prevIndex = (currentIndex - 1 + photos.length) % photos.length;
+    
+    const imgNext = new Image();
+    imgNext.src = photos[nextIndex].src;
+    
+    const imgPrev = new Image();
+    imgPrev.src = photos[prevIndex].src;
+  }, [currentIndex]);
+
   const variants = {
     enter: (direction: number) => ({
       x: direction > 0 ? "100%" : "-100%",
@@ -92,7 +106,7 @@ export function PhotoSection() {
   const fullScreenVariants = {
     enter: (direction: number) => ({
       x: direction > 0 ? "100%" : "-100%",
-      opacity: 1,
+      opacity: 0,
     }),
     center: {
       zIndex: 1,
@@ -102,7 +116,7 @@ export function PhotoSection() {
     exit: (direction: number) => ({
       zIndex: 0,
       x: direction < 0 ? "100%" : "-100%",
-      opacity: 1,
+      opacity: 0,
     })
   };
 
@@ -149,6 +163,13 @@ export function PhotoSection() {
           {/* Glass Overlay & Vignette */}
           <div className="absolute inset-0 z-20 pointer-events-none shadow-[inset_0_0_100px_rgba(0,0,0,0.5)] rounded-[2rem]" />
           
+          {/* Loading Spinner */}
+          {isLoading && (
+            <div className="absolute inset-0 flex items-center justify-center z-10">
+              <Loader2 className="w-10 h-10 text-primary animate-spin" />
+            </div>
+          )}
+
           {/* Image Slider */}
           <div className="absolute inset-0 overflow-hidden rounded-[2rem]">
             <AnimatePresence initial={false} custom={direction}>
@@ -160,6 +181,7 @@ export function PhotoSection() {
                 initial="enter"
                 animate="center"
                 exit="exit"
+                onLoad={() => setIsLoading(false)}
                 transition={{
                   x: { type: "spring", stiffness: 300, damping: 30 },
                   opacity: { duration: 0.4 },
@@ -255,6 +277,11 @@ export function PhotoSection() {
 
             {/* Main Image */}
             <div className="relative w-full h-full flex items-center justify-center p-4 md:p-12">
+              {isLoading && (
+                <div className="absolute inset-0 flex items-center justify-center z-10">
+                  <Loader2 className="w-12 h-12 text-primary animate-spin" />
+                </div>
+              )}
               <div className="relative w-full h-full overflow-hidden">
                 <AnimatePresence initial={false} custom={direction}>
                   <motion.img
@@ -265,9 +292,10 @@ export function PhotoSection() {
                     initial="enter"
                     animate="center"
                     exit="exit"
+                    onLoad={() => setIsLoading(false)}
                     transition={{
-                      x: { type: "spring", stiffness: 300, damping: 30 },
-                      opacity: { duration: 0.2 }
+                      x: { type: "spring", stiffness: 250, damping: 30 },
+                      opacity: { duration: 0.3 }
                     }}
                     drag="x"
                     dragConstraints={{ left: 0, right: 0 }}
