@@ -26,9 +26,9 @@ export function Navbar() {
     return scrollY.on("change", (latest) => {
       setIsScrolled(latest > 50);
       // Close mobile menu on scroll if it's open
-      if (isMobileMenuOpenRef.current) {
-        setIsMobileMenuOpen(false);
-      }
+      // if (isMobileMenuOpenRef.current) {
+      //   setIsMobileMenuOpen(false);
+      // }
     });
   }, [scrollY]);
 
@@ -98,7 +98,7 @@ export function Navbar() {
   return (
     <>
       <motion.header
-        className="absolute top-0 left-0 right-0 z-50 flex justify-center pt-6 px-4 pointer-events-none"
+        className="fixed top-0 left-0 right-0 z-50 flex justify-center pt-6 px-4 pointer-events-none"
       >
         <motion.nav
           initial="hidden"
