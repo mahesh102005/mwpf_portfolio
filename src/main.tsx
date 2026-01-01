@@ -19,7 +19,6 @@ const NotFound = lazy(() => import("./pages/NotFound.tsx"));
 function RouteLoading() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-background">
-      <Loader2 className="h-12 w-12 animate-spin text-primary" />
     </div>
   );
 }
@@ -30,15 +29,6 @@ const convex = new ConvexReactClient(import.meta.env.VITE_CONVEX_URL as string);
 
 function RouteSyncer() {
   const location = useLocation();
-
-  useEffect(() => {
-    // Remove the initial loader when the app mounts
-    const loader = document.getElementById("initial-loader");
-    if (loader) {
-      loader.style.opacity = "0";
-      setTimeout(() => loader.remove(), 500);
-    }
-  }, []);
 
   useEffect(() => {
     window.parent.postMessage(
