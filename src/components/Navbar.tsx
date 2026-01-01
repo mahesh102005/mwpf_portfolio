@@ -195,9 +195,9 @@ export function Navbar() {
               variant="ghost"
               size="icon"
               onClick={() => setIsMobileMenuOpen(true)}
-              className={`rounded-full ${isScrolled ? "text-foreground hover:bg-black/5" : "text-white hover:bg-white/10"}`}
+              className={`rounded-full w-12 h-12 ${isScrolled ? "text-foreground hover:bg-black/5" : "text-white hover:bg-white/10"}`}
             >
-              <Menu className="w-6 h-6" />
+              <Menu className="w-7 h-7" />
             </Button>
           </div>
         </motion.nav>
