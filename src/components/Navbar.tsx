@@ -127,7 +127,7 @@ export function Navbar() {
         >
           {/* Logo */}
           <motion.div 
-            className="flex items-center gap-3 cursor-pointer group shrink-0"
+            className="flex items-center gap-3 cursor-pointer group"
             onClick={() => navigate("/")}
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
@@ -139,7 +139,7 @@ export function Navbar() {
                  className="w-full h-full object-contain p-0.5"
                />
             </div>
-            <div className="hidden lg:flex flex-col whitespace-nowrap">
+            <div className="flex flex-col whitespace-nowrap">
               <span className={`text-sm md:text-lg font-bold tracking-[0.2em] leading-none transition-colors ${isScrolled ? "text-foreground group-hover:text-primary" : "text-white group-hover:text-primary"}`}>MAULI</span>
               <span className={`text-[8px] md:text-[10px] tracking-[0.3em] uppercase ${isScrolled ? "text-muted-foreground" : "text-white/60"}`}>Wedding Photography & Film's</span>
             </div>
