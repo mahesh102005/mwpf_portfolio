@@ -112,11 +112,11 @@ export function HeroSection() {
             <h1 className="text-5xl md:text-7xl lg:text-9xl font-bold text-transparent [-webkit-text-stroke:1px_white] md:[-webkit-text-stroke:2px_white] tracking-tighter mb-4 drop-shadow-2xl">
               CAPTURING
             </h1>
-            <h2 className="text-4xl md:text-6xl lg:text-8xl font-serif text-transparent [-webkit-text-stroke:1px_var(--color-primary)] md:[-webkit-text-stroke:2px_var(--color-primary)] italic -mt-2 md:-mt-6 mb-8 drop-shadow-lg">
+            <h2 className="text-4xl md:text-6xl lg:text-8xl font-serif font-bold text-transparent [-webkit-text-stroke:1px_var(--color-primary)] md:[-webkit-text-stroke:2px_var(--color-primary)] italic -mt-2 md:-mt-6 mb-8 drop-shadow-lg">
               moments
             </h2>
             
-            <p className="text-sm md:text-lg text-white/80 max-w-xl mb-12 font-light tracking-[0.2em] uppercase border-t border-b border-white/10 py-4">
+            <p className="text-sm md:text-lg text-white/80 max-w-xl mb-12 font-bold tracking-[0.2em] uppercase border-t border-b border-white/10 py-4">
               Luxury Wedding Photography & Films
             </p>
 
