@@ -39,15 +39,7 @@ export function HeroSection() {
     img.src = heroImages[0];
     img.onload = () => {
       setIsLoaded(true);
-      // Remove initial loader if it exists
-      const loader = document.getElementById('initial-loader');
-      if (loader) {
-        loader.style.opacity = '0';
-        setTimeout(() => {
-          loader.remove();
-          document.body.style.overflow = ''; // Restore scrolling
-        }, 500);
-      }
+      document.body.style.overflow = ''; // Restore scrolling
     };
   }, [heroImages]);
 
@@ -70,13 +62,6 @@ export function HeroSection() {
 
   return (
     <section id="home" className="relative h-dvh w-full overflow-hidden bg-black">
-      {/* Loading State for React Component (fallback) */}
-      {!isLoaded && (
-        <div className="absolute inset-0 z-50 flex items-center justify-center bg-black">
-          <Spinner size="lg" light />
-        </div>
-      )}
-
       {/* Background Slideshow */}
       <AnimatePresence mode="popLayout">
         {isLoaded && (
