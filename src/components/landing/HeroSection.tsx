@@ -82,8 +82,8 @@ export function HeroSection() {
         {isLoaded && (
           <motion.div
             key={`${isMobile ? 'mobile' : 'desktop'}-${currentImage}`}
-            initial={{ opacity: 0, scale: isMobile ? 1.25 : 1.1, filter: "blur(10px)" }}
-            animate={{ opacity: 1, scale: isMobile ? 1.15 : 1, filter: "blur(0px)" }}
+            initial={{ opacity: 0, filter: "blur(10px)" }}
+            animate={{ opacity: 1, filter: "blur(0px)" }}
             exit={{ opacity: 0, filter: "blur(10px)" }}
             transition={{ duration: 1.0, ease: "easeInOut" }}
             className="absolute inset-0 z-0"
