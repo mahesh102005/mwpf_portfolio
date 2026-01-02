@@ -242,7 +242,7 @@ export function Navbar() {
                       e.preventDefault();
                       scrollToSection(link.href);
                     }}
-                    className="text-sm font-medium text-neutral-700 hover:text-black tracking-[0.2em] uppercase transition-colors"
+                    className="text-sm font-bold text-neutral-700 hover:text-black tracking-[0.2em] uppercase transition-colors"
                   >
                     {link.name}
                   </motion.a>
