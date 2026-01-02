@@ -109,10 +109,10 @@ export function HeroSection() {
             transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
             className="flex flex-col items-center"
           >
-            <h1 className="text-5xl md:text-7xl lg:text-9xl font-extrabold text-transparent [-webkit-text-stroke:1px_white] md:[-webkit-text-stroke:2px_white] tracking-tighter mb-4 drop-shadow-2xl">
+            <h1 className="text-4xl md:text-6xl lg:text-8xl font-black text-white tracking-tighter mb-2 drop-shadow-2xl">
               CAPTURING
             </h1>
-            <h2 className="text-4xl md:text-6xl lg:text-8xl font-serif font-extrabold text-transparent [-webkit-text-stroke:1px_var(--color-primary)] md:[-webkit-text-stroke:2px_var(--color-primary)] italic -mt-2 md:-mt-6 mb-8 drop-shadow-lg">
+            <h2 className="text-4xl md:text-6xl lg:text-8xl font-serif font-black text-primary italic -mt-2 md:-mt-4 mb-8 drop-shadow-lg">
               moments
             </h2>
             
