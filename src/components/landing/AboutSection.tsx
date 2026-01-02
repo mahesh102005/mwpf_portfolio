@@ -47,7 +47,7 @@ export function AboutSection() {
                 <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Years Experience</p>
               </div>
               <div className="p-6 rounded-xl bg-secondary/30 border border-black/5 backdrop-blur-sm hover:border-primary/30 transition-colors">
-                <h3 className="text-4xl font-bold text-primary mb-2">100+</h3>
+                <h3 className="text-4xl font-bold text-primary mb-2">200+</h3>
                 <p className="text-xs uppercase tracking-[0.2em] text-muted-foreground">Projects Completed</p>
               </div>
             </div>
