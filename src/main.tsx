@@ -61,6 +61,24 @@ function RouteSyncer() {
   return null;
 }
 
+// Prevent zoom events
+if (typeof window !== 'undefined') {
+  document.addEventListener('keydown', function(event) {
+    if ((event.ctrlKey || event.metaKey) && (event.key === '+' || event.key === '-' || event.key === '=')) {
+      event.preventDefault();
+    }
+  }, { passive: false });
+
+  document.addEventListener('wheel', function(event) {
+    if (event.ctrlKey) {
+      event.preventDefault();
+    }
+  }, { passive: false });
+
+  document.addEventListener('gesturestart', function(e) {
+    e.preventDefault();
+  });
+}
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
