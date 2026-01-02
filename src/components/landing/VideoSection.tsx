@@ -140,9 +140,15 @@ export function VideoSection() {
                           initial={{ opacity: 0, x: 20 }}
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.2 }}
-                          className="absolute right-full mr-6 hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white text-sm font-medium whitespace-nowrap"
+                          className="absolute right-full mr-3 md:mr-6 flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white text-xs md:text-sm font-medium whitespace-nowrap"
                         >
-                          Click to Play <ArrowRight className="w-4 h-4" />
+                          Click to Play 
+                          <motion.div
+                            animate={{ x: [0, 4, 0] }}
+                            transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                          >
+                            <ArrowRight className="w-3 h-3 md:w-4 md:h-4" />
+                          </motion.div>
                         </motion.div>
 
                         <motion.button
