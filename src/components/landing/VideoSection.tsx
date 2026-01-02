@@ -135,7 +135,16 @@ export function VideoSection() {
                     
                     {/* Glass Play Button Overlay */}
                     <div className="absolute inset-0 flex items-center justify-center z-20">
-                      <div className="flex items-center gap-3 md:gap-6">
+                      <div className="relative flex items-center justify-center">
+                        <motion.div
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.2 }}
+                          className="absolute right-full mr-6 hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white text-sm font-medium whitespace-nowrap"
+                        >
+                          Click to Play <ArrowRight className="w-4 h-4" />
+                        </motion.div>
+
                         <motion.button
                           whileHover={{ scale: 1.1 }}
                           whileTap={{ scale: 0.95 }}
