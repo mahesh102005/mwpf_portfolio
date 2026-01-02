@@ -132,18 +132,21 @@ export default function Dashboard() {
   ];
 
   return (
-    <div className="min-h-[100dvh] w-full bg-black flex dark text-foreground selection:bg-primary/30 overflow-x-hidden relative">
+    <div
+      className="min-h-[100dvh] w-full bg-black flex dark text-foreground selection:bg-primary/30 overflow-x-hidden relative"
+      style={{ zoom: "90%" }}
+    >
       {/* Sidebar */}
       <motion.div
         initial={{ x: -100, opacity: 0 }}
         animate={{ x: 0, opacity: 1 }}
-        className="w-64 bg-black/40 backdrop-blur-xl border-r border-white/10 hidden md:flex flex-col p-6 fixed h-full z-20"
+        className="w-64 bg-black/40 backdrop-blur-xl border-r border-white/10 hidden md:flex flex-col p-6 sticky top-0 h-screen z-20 shrink-0"
       >
         <SidebarContent />
       </motion.div>
 
       {/* Main Content */}
-      <div className="flex-1 md:ml-64 p-4 md:p-8 w-full max-w-[100vw] relative z-10">
+      <div className="flex-1 p-4 md:p-8 w-full min-w-0 relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
