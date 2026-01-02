@@ -81,7 +81,7 @@ export function HeroSection() {
             animate={{ opacity: 1, scale: isMobile ? 1.15 : 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="absolute inset-0 z-0"
+            className="absolute inset-0 z-0 will-change-transform"
           >
             <img
               src={heroImages[currentImage]}
@@ -98,8 +98,8 @@ export function HeroSection() {
       {/* Content - Render immediately to prevent layout shift and improve LCP */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
         <motion.div
-          initial={{ opacity: 0, y: 30, filter: "blur(5px)" }}
-          animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.8, ease: "easeOut" }}
           className="flex flex-col items-center"
         >

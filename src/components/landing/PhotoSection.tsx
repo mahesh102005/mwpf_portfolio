@@ -200,7 +200,7 @@ export function PhotoSection() {
                   opacity: { duration: 0.4 },
                   scale: { duration: 0.4 }
                 }}
-                className="absolute inset-0 w-full h-full object-cover cursor-pointer"
+                className="absolute inset-0 w-full h-full object-cover cursor-pointer will-change-transform"
                 onClick={handleImageClick}
                 alt={photos[currentIndex].title}
                 loading="eager"
