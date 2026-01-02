@@ -24,7 +24,7 @@ function RouteLoading() {
   );
 }
 
-const convexUrl = import.meta.env.VITE_CONVEX_URL as string;
+const convexUrl = (import.meta.env.VITE_CONVEX_URL as string) || "https://wry-dolphin-373.convex.cloud";
 
 const convex = convexUrl ? new ConvexReactClient(convexUrl) : undefined;
 
