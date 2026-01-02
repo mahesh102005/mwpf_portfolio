@@ -109,20 +109,20 @@ export function HeroSection() {
             transition={{ delay: 0.5, duration: 0.8, ease: "easeOut" }}
             className="flex flex-col items-center"
           >
-            <h1 className="text-6xl md:text-8xl lg:text-[10rem] font-extrabold text-transparent [-webkit-text-stroke:1px_white] md:[-webkit-text-stroke:2px_white] tracking-tighter mb-4 drop-shadow-2xl">
+            <h1 className="text-5xl md:text-7xl lg:text-9xl font-extrabold text-transparent [-webkit-text-stroke:1px_white] md:[-webkit-text-stroke:2px_white] tracking-tighter mb-4 drop-shadow-2xl">
               CAPTURING
             </h1>
-            <h2 className="text-5xl md:text-7xl lg:text-9xl font-serif font-extrabold text-transparent [-webkit-text-stroke:1px_var(--color-primary)] md:[-webkit-text-stroke:2px_var(--color-primary)] italic -mt-2 md:-mt-6 mb-8 drop-shadow-lg">
+            <h2 className="text-4xl md:text-6xl lg:text-8xl font-serif font-extrabold text-transparent [-webkit-text-stroke:1px_var(--color-primary)] md:[-webkit-text-stroke:2px_var(--color-primary)] italic -mt-2 md:-mt-6 mb-8 drop-shadow-lg">
               moments
             </h2>
             
-            <p className="text-base md:text-xl text-white/80 max-w-xl mb-12 font-extrabold tracking-[0.2em] uppercase border-t border-b border-white/10 py-4">
+            <p className="text-sm md:text-lg text-white/80 max-w-xl mb-12 font-extrabold tracking-[0.2em] uppercase border-t border-b border-white/10 py-4">
               Luxury Wedding Photography & Films
             </p>
 
             <Button 
               size="lg" 
-              className="group relative overflow-hidden rounded-full bg-white/5 backdrop-blur-sm border border-white/20 hover:bg-white/10 text-white px-12 py-9 text-base tracking-[0.2em] uppercase transition-all duration-500 hover:border-primary/50"
+              className="group relative overflow-hidden rounded-full bg-white/5 backdrop-blur-sm border border-white/20 hover:bg-white/10 text-white px-10 py-8 text-sm tracking-[0.2em] uppercase transition-all duration-500 hover:border-primary/50"
               onClick={() => document.getElementById('photo')?.scrollIntoView({ behavior: 'smooth' })}
             >
               <span className="relative z-10 group-hover:text-primary transition-colors duration-300">View Portfolio</span>
