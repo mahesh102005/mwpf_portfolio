@@ -74,14 +74,26 @@ export function PhotoSection() {
   // Preload images and handle loading state
   useEffect(() => {
     setIsLoading(true);
-    const nextIndex = (currentIndex + 1) % photos.length;
-    const prevIndex = (currentIndex - 1 + photos.length) % photos.length;
     
-    const imgNext = new Image();
-    imgNext.src = photos[nextIndex].src;
-    
-    const imgPrev = new Image();
-    imgPrev.src = photos[prevIndex].src;
+    const preloadImages = () => {
+      const nextIndex = (currentIndex + 1) % photos.length;
+      const prevIndex = (currentIndex - 1 + photos.length) % photos.length;
+      
+      const imgNext = new Image();
+      imgNext.src = photos[nextIndex].src;
+      
+      const imgPrev = new Image();
+      imgPrev.src = photos[prevIndex].src;
+    };
+
+    // Use requestIdleCallback to avoid blocking main thread during transitions
+    if ('requestIdleCallback' in window) {
+      // @ts-ignore
+      window.requestIdleCallback(preloadImages);
+    } else {
+      setTimeout(preloadImages, 50);
+    }
+
   }, [currentIndex]);
 
   const variants = {
