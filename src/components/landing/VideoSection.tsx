@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { AnimatePresence, motion } from "framer-motion";
-import { ArrowRight, Play, ChevronLeft, ChevronRight, ArrowDown } from "lucide-react";
+import { ArrowRight, Play, ChevronLeft, ChevronRight } from "lucide-react";
 import { Spinner } from "@/components/ui/spinner";
 import { useState, useCallback } from "react";
 import { videos } from "@/lib/landing-data";
@@ -136,26 +136,16 @@ export function VideoSection() {
                     {/* Glass Play Button Overlay */}
                     <div className="absolute inset-0 flex items-center justify-center z-20">
                       <div className="relative flex items-center justify-center">
-                        <div className="absolute bottom-full mb-4 left-1/2 -translate-x-1/2 md:bottom-auto md:mb-0 md:top-auto md:mt-0 md:left-auto md:translate-x-0 md:right-full md:mr-6">
+                        <div className="absolute top-full mt-4 left-1/2 -translate-x-1/2 md:top-auto md:mt-0 md:left-auto md:translate-x-0 md:right-full md:mr-6">
                           <motion.div
-                            initial={{ opacity: 0, scale: 0.9 }}
-                            animate={{ opacity: 1, scale: 1 }}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
                             transition={{ delay: 0.2 }}
-                            className="flex flex-col md:flex-row items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white text-xs md:text-sm font-medium whitespace-nowrap"
+                            className="flex items-center gap-2 px-3 py-1.5 md:px-4 md:py-2 rounded-full bg-black/40 backdrop-blur-md border border-white/10 text-white text-xs md:text-sm font-medium whitespace-nowrap"
                           >
                             <span className="md:hidden">Tap to Play</span>
                             <span className="hidden md:inline">Click to Play</span>
-                            
                             <motion.div
-                              className="md:hidden"
-                              animate={{ y: [0, 4, 0] }}
-                              transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                            >
-                              <ArrowDown className="w-3 h-3" />
-                            </motion.div>
-
-                            <motion.div
-                              className="hidden md:block"
                               animate={{ x: [0, 4, 0] }}
                               transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
                             >
