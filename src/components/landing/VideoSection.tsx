@@ -135,8 +135,8 @@ export function VideoSection() {
                     
                     {/* Glass Play Button Overlay */}
                     <div className="absolute inset-0 flex items-center justify-center z-20">
-                      <div className="relative flex items-center justify-center translate-x-8 md:translate-x-12">
-                        <div className="absolute right-full mr-3 md:mr-6 top-1/2 -translate-y-1/2">
+                      <div className="relative flex items-center justify-center translate-x-12 md:translate-x-20">
+                        <div className="absolute right-full mr-4 md:mr-8 top-1/2 -translate-y-1/2">
                           <motion.div
                             initial={{ opacity: 0, x: 10 }}
                             animate={{ opacity: 1, x: 0 }}
