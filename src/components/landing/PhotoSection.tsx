@@ -81,9 +81,14 @@ export function PhotoSection() {
       
       const imgNext = new Image();
       imgNext.src = photos[nextIndex].src;
+      // Set low priority for preloaded images to prioritize main content
+      // @ts-ignore
+      imgNext.fetchPriority = "low";
       
       const imgPrev = new Image();
       imgPrev.src = photos[prevIndex].src;
+      // @ts-ignore
+      imgPrev.fetchPriority = "low";
     };
 
     // Use requestIdleCallback to avoid blocking main thread during transitions
