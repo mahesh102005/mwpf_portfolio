@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { ProgressiveImage } from "@/components/ui/progressive-image";
 
 export function AboutSection() {
   return (
@@ -14,12 +15,13 @@ export function AboutSection() {
             className="w-full md:w-1/2"
           >
             <div className="relative aspect-[3/4] w-full max-w-md mx-auto overflow-hidden rounded-2xl border border-black/10 group">
-              <img 
-                src="/assets/about/team.jpg" 
-                alt="MWPF Team" 
+              <ProgressiveImage
+                src="/assets/about/team.jpg"
+                alt="MWPF Team"
                 loading="lazy"
                 decoding="async"
                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                placeholderColor="bg-zinc-200"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-60" />
             </div>

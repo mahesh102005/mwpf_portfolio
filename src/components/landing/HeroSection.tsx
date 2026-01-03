@@ -1,9 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
 import { useIsMobile } from "@/hooks/use-mobile";
-import { Spinner } from "@/components/ui/spinner";
 
 const desktopHeroImages = [
   "/assets/hero/desktop-1.jpg",
@@ -31,35 +29,38 @@ export function HeroSection() {
   const [currentImage, setCurrentImage] = useState(0);
   const [isBgLoaded, setIsBgLoaded] = useState(false);
   const isMobile = useIsMobile();
-  const heroImages = isMobile ? mobileHeroImages : desktopHeroImages;
+  
+  // Use the appropriate array for preloading logic, but render both via picture tag
+  const activeImages = isMobile ? mobileHeroImages : desktopHeroImages;
 
   useEffect(() => {
-    // Preload the first image immediately
+    // Preload the first image immediately based on device type
     const img = new Image();
-    img.src = heroImages[0];
+    img.src = activeImages[0];
     img.onload = () => {
       setIsBgLoaded(true);
     };
-  }, [heroImages]);
+  }, [isMobile]); // Re-run if device type detection changes
 
   useEffect(() => {
     if (!isBgLoaded) return;
     
     const timer = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % heroImages.length);
+      setCurrentImage((prev) => (prev + 1) % desktopHeroImages.length);
     }, 3500);
     return () => clearInterval(timer);
-  }, [heroImages, isBgLoaded]);
+  }, [isBgLoaded]);
 
   useEffect(() => {
     if (!isBgLoaded) return;
 
     // Optimize preloading: Only preload the NEXT image to save bandwidth
-    // Use requestIdleCallback if available to avoid blocking main thread
     const preloadNext = () => {
-      const nextIndex = (currentImage + 1) % heroImages.length;
+      const nextIndex = (currentImage + 1) % desktopHeroImages.length;
+      
+      // Preload the version relevant to the user's device
       const img = new Image();
-      img.src = heroImages[nextIndex];
+      img.src = activeImages[nextIndex];
     };
 
     if ('requestIdleCallback' in window) {
@@ -68,7 +69,7 @@ export function HeroSection() {
     } else {
       setTimeout(preloadNext, 100);
     }
-  }, [currentImage, heroImages, isBgLoaded]);
+  }, [currentImage, isBgLoaded, activeImages]);
 
   return (
     <section id="home" className="relative h-dvh w-full overflow-hidden bg-black">
@@ -76,24 +77,43 @@ export function HeroSection() {
       <AnimatePresence mode="popLayout">
         {isBgLoaded && (
           <motion.div
-            key={`${isMobile ? 'mobile' : 'desktop'}-${currentImage}`}
-            initial={{ opacity: 0, scale: isMobile ? 1.25 : 1.1 }}
-            animate={{ opacity: 1, scale: isMobile ? 1.15 : 1 }}
+            key={currentImage}
+            initial={{ opacity: 0, scale: 1.1 }}
+            animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 1.5, ease: "easeInOut" }}
             className="absolute inset-0 z-0 will-change-transform"
           >
-            <img
-              src={heroImages[currentImage]}
-              alt="Cinematic Photography"
-              className="w-full h-full object-cover"
-              fetchPriority="high"
-              loading="eager"
-              decoding="async"
-            />
+            {/* Responsive Image Handling using picture tag */}
+            <picture className="w-full h-full block">
+              <source 
+                media="(max-width: 768px)" 
+                srcSet={mobileHeroImages[currentImage]} 
+              />
+              <source 
+                media="(min-width: 769px)" 
+                srcSet={desktopHeroImages[currentImage]} 
+              />
+              <img
+                src={desktopHeroImages[currentImage]}
+                alt="Cinematic Photography"
+                className="w-full h-full object-cover"
+                fetchPriority="high"
+                loading="eager"
+                decoding="async"
+              />
+            </picture>
+            
+            {/* Gradient Overlay for better text readability */}
+            <div className="absolute inset-0 bg-black/20" />
           </motion.div>
         )}
       </AnimatePresence>
+
+      {/* Placeholder Gradient while loading */}
+      {!isBgLoaded && (
+        <div className="absolute inset-0 bg-gradient-to-b from-zinc-900 to-black z-0" />
+      )}
 
       {/* Content - Render immediately to prevent layout shift and improve LCP */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
