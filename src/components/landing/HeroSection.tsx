@@ -30,18 +30,10 @@ export function HeroSection() {
   const [isBgLoaded, setIsBgLoaded] = useState(false);
   const isMobile = useIsMobile();
   
-  // Use the appropriate array for preloading logic, but render both via picture tag
+  // Use the appropriate array for preloading logic
   const activeImages = isMobile ? mobileHeroImages : desktopHeroImages;
 
-  useEffect(() => {
-    // Preload the first image immediately based on device type
-    const img = new Image();
-    img.src = activeImages[0];
-    img.onload = () => {
-      setIsBgLoaded(true);
-    };
-  }, [isMobile]); // Re-run if device type detection changes
-
+  // Start slideshow only after the first image has loaded
   useEffect(() => {
     if (!isBgLoaded) return;
     
@@ -51,10 +43,10 @@ export function HeroSection() {
     return () => clearInterval(timer);
   }, [isBgLoaded]);
 
+  // Optimize preloading: Only preload the NEXT image to save bandwidth
   useEffect(() => {
     if (!isBgLoaded) return;
 
-    // Optimize preloading: Only preload the NEXT image to save bandwidth
     const preloadNext = () => {
       const nextIndex = (currentImage + 1) % desktopHeroImages.length;
       
@@ -75,45 +67,44 @@ export function HeroSection() {
     <section id="home" className="relative h-dvh w-full overflow-hidden bg-black">
       {/* Background Slideshow */}
       <AnimatePresence mode="popLayout">
-        {isBgLoaded && (
-          <motion.div
-            key={currentImage}
-            initial={{ opacity: 0, scale: 1.1 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0 }}
-            transition={{ duration: 1.5, ease: "easeInOut" }}
-            className="absolute inset-0 z-0 will-change-transform"
-          >
-            {/* Responsive Image Handling using picture tag */}
-            <picture className="w-full h-full block">
-              <source 
-                media="(max-width: 768px)" 
-                srcSet={mobileHeroImages[currentImage]} 
-              />
-              <source 
-                media="(min-width: 769px)" 
-                srcSet={desktopHeroImages[currentImage]} 
-              />
-              <img
-                src={desktopHeroImages[currentImage]}
-                alt="Cinematic Photography"
-                className="w-full h-full object-cover"
-                fetchPriority="high"
-                loading="eager"
-                decoding="async"
-              />
-            </picture>
-            
-            {/* Gradient Overlay for better text readability */}
-            <div className="absolute inset-0 bg-black/20" />
-          </motion.div>
-        )}
+        <motion.div
+          key={currentImage}
+          initial={{ opacity: 0, scale: 1.1 }}
+          animate={{ opacity: isBgLoaded ? 1 : 0, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
+          className="absolute inset-0 z-0 will-change-transform"
+        >
+          {/* Responsive Image Handling using picture tag */}
+          <picture className="w-full h-full block">
+            <source 
+              media="(max-width: 768px)" 
+              srcSet={mobileHeroImages[currentImage]} 
+            />
+            <source 
+              media="(min-width: 769px)" 
+              srcSet={desktopHeroImages[currentImage]} 
+            />
+            <img
+              src={desktopHeroImages[currentImage]}
+              alt="Cinematic Photography"
+              className="w-full h-full object-cover"
+              fetchPriority="high"
+              loading="eager"
+              decoding="async"
+              onLoad={() => setIsBgLoaded(true)}
+            />
+          </picture>
+          
+          {/* Gradient Overlay for better text readability */}
+          <div className="absolute inset-0 bg-black/20" />
+        </motion.div>
       </AnimatePresence>
 
       {/* Placeholder Gradient while loading */}
-      {!isBgLoaded && (
-        <div className="absolute inset-0 bg-gradient-to-b from-zinc-900 to-black z-0" />
-      )}
+      <div 
+        className={`absolute inset-0 bg-gradient-to-b from-zinc-900 to-black z-0 transition-opacity duration-1000 ${isBgLoaded ? 'opacity-0' : 'opacity-100'}`} 
+      />
 
       {/* Content - Render immediately to prevent layout shift and improve LCP */}
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center px-4">
