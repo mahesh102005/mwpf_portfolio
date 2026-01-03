@@ -1,6 +1,10 @@
 import { Button } from "@/components/ui/button";
 import { motion, AnimatePresence } from "framer-motion";
+import { ChevronDown } from "lucide-react";
 import { useState, useEffect } from "react";
+import { useIsMobile } from "@/hooks/use-mobile";
+import { Spinner } from "@/components/ui/spinner";
+
 const desktopHeroImages = [
   "/assets/hero/desktop-1.jpg",
   "/assets/hero/desktop-2.jpg",
@@ -25,32 +29,37 @@ const mobileHeroImages = [
 
 export function HeroSection() {
   const [currentImage, setCurrentImage] = useState(0);
-  const [isSlideshowActive, setIsSlideshowActive] = useState(false);
+  const [isBgLoaded, setIsBgLoaded] = useState(false);
+  const isMobile = useIsMobile();
+  const heroImages = isMobile ? mobileHeroImages : desktopHeroImages;
 
-  // Start slideshow only after the first image has loaded
   useEffect(() => {
-    if (!isSlideshowActive) return;
+    // Preload the first image immediately
+    const img = new Image();
+    img.src = heroImages[0];
+    img.onload = () => {
+      setIsBgLoaded(true);
+    };
+  }, [heroImages]);
+
+  useEffect(() => {
+    if (!isBgLoaded) return;
     
     const timer = setInterval(() => {
-      setCurrentImage((prev) => (prev + 1) % desktopHeroImages.length);
+      setCurrentImage((prev) => (prev + 1) % heroImages.length);
     }, 3500);
     return () => clearInterval(timer);
-  }, [isSlideshowActive]);
+  }, [heroImages, isBgLoaded]);
 
-  // Optimize preloading: Only preload the NEXT image
   useEffect(() => {
-    if (!isSlideshowActive) return;
+    if (!isBgLoaded) return;
 
+    // Optimize preloading: Only preload the NEXT image to save bandwidth
+    // Use requestIdleCallback if available to avoid blocking main thread
     const preloadNext = () => {
-      const nextIndex = (currentImage + 1) % desktopHeroImages.length;
-      
-      // Preload both desktop and mobile versions for the next slide
-      // to ensure smooth transition regardless of viewport changes
-      const imgDesktop = new Image();
-      imgDesktop.src = desktopHeroImages[nextIndex];
-      
-      const imgMobile = new Image();
-      imgMobile.src = mobileHeroImages[nextIndex];
+      const nextIndex = (currentImage + 1) % heroImages.length;
+      const img = new Image();
+      img.src = heroImages[nextIndex];
     };
 
     if ('requestIdleCallback' in window) {
@@ -59,39 +68,31 @@ export function HeroSection() {
     } else {
       setTimeout(preloadNext, 100);
     }
-  }, [currentImage, isSlideshowActive]);
+  }, [currentImage, heroImages, isBgLoaded]);
 
   return (
     <section id="home" className="relative h-dvh w-full overflow-hidden bg-black">
       {/* Background Slideshow */}
       <AnimatePresence mode="popLayout">
-        <motion.div
-          key={currentImage}
-          // Instant appearance for the first image (LCP optimization), fade in for subsequent slides
-          initial={currentImage === 0 && !isSlideshowActive ? { opacity: 1, scale: 1.1 } : { opacity: 0, scale: 1.2 }}
-          animate={{ opacity: 1, scale: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
-          className="absolute inset-0 z-0 will-change-transform"
-        >
-          {/* Use picture tag for native responsive image switching - fastest possible load */}
-          <picture className="w-full h-full block">
-            <source media="(max-width: 768px)" srcSet={mobileHeroImages[currentImage]} />
+        {isBgLoaded && (
+          <motion.div
+            key={`${isMobile ? 'mobile' : 'desktop'}-${currentImage}`}
+            initial={{ opacity: 0, scale: isMobile ? 1.25 : 1.1 }}
+            animate={{ opacity: 1, scale: isMobile ? 1.15 : 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+            className="absolute inset-0 z-0 will-change-transform"
+          >
             <img
-              src={desktopHeroImages[currentImage]}
+              src={heroImages[currentImage]}
               alt="Cinematic Photography"
-              className="w-full h-full object-cover opacity-80"
-              fetchPriority={currentImage === 0 ? "high" : "auto"}
-              loading={currentImage === 0 ? "eager" : "lazy"}
+              className="w-full h-full object-cover"
+              fetchPriority="high"
+              loading="eager"
               decoding="async"
-              onLoad={() => {
-                if (currentImage === 0) setIsSlideshowActive(true);
-              }}
             />
-          </picture>
-          {/* Dark overlay for text readability */}
-          <div className="absolute inset-0 bg-black/20" />
-        </motion.div>
+          </motion.div>
+        )}
       </AnimatePresence>
 
       {/* Content - Render immediately to prevent layout shift and improve LCP */}
