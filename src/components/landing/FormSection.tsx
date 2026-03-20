@@ -114,7 +114,7 @@ export function FormSection() {
 
       // 2. Submit to Google Sheets
       try {
-        const scriptURL = "https://script.google.com/macros/s/AKfycbwpJK0SR4EUJ4Zybdjr8y2WFLDT6cn5V_h0Oy6rGMvxafjj8apPjxxlhlGCiR97T9jvbg/exec";
+        const scriptURL = "scrip";
         
         // The script expects a JSON string in the body with specific keys
         const sheetData = {
