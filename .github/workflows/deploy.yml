@@ -1,0 +1,41 @@
+name: React CI/CD Deploy
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Build Docker Image
+        run: docker build -t react-app .
+
+      - name: Save Image
+        run: docker save react-app > react-app.tar
+
+      - name: Copy to EC2
+        uses: appleboy/scp-action@v0.1.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          source: "react-app.tar"
+          target: "/home/ubuntu"
+
+      - name: Deploy on EC2
+        uses: appleboy/ssh-action@v0.1.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USER }}
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            docker stop react-app || true
+            docker rm react-app || true
+            docker load < react-app.tar
+            docker run -d -p 80:80 --name react-app react-app
