@@ -13,21 +13,6 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v3
 
-      - name: Build Docker Image
-        run: docker build -t react-app .
-
-      - name: Save Image
-        run: docker save react-app > react-app.tar
-
-      - name: Copy to EC2
-        uses: appleboy/scp-action@v0.1.0
-        with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_KEY }}
-          source: "react-app.tar"
-          target: "/home/ubuntu"
-
       - name: Deploy on EC2
         uses: appleboy/ssh-action@v0.1.0
         with:
@@ -35,7 +20,11 @@ jobs:
           username: ${{ secrets.EC2_USER }}
           key: ${{ secrets.EC2_KEY }}
           script: |
+            cd /home/ubuntu
+            rm -rf mwpf_portfolio
+            git clone https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME.git mwpf_portfolio
+            cd mwpf_portfolio
             docker stop react-app || true
             docker rm react-app || true
-            docker load < react-app.tar
+            docker build -t react-app .
             docker run -d -p 80:80 --name react-app react-app
