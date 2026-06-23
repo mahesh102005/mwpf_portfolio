@@ -1,30 +1,79 @@
-name: React CI/CD Deploy
+name: Deploy to EC2
 
 on:
   push:
     branches:
-      - main
+      - main   # change this if your default branch is "master"
+
+env:
+  CONTAINER_NAME: mwpf-portfolio
+  IMAGE_NAME: mwpf-portfolio
+  APP_PORT: 3000             # <-- change if your app listens on a different port
+  REPO_DIR: ~/mwpf_portfolio # <-- folder name on EC2 where the repo will live
 
 jobs:
   deploy:
+    name: Pull, Build & Deploy on EC2
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v3
-
-      - name: Deploy on EC2
-        uses: appleboy/ssh-action@v0.1.0
+      - name: Deploy over SSH
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.EC2_HOST }}
           username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_KEY }}
+          key: ${{ secrets.EC2_SSH_KEY }}
           script: |
-            cd /home/ubuntu
-            rm -rf mwpf_portfolio
-            git clone https://github.com/YOUR_GITHUB_USERNAME/YOUR_REPO_NAME.git mwpf_portfolio
-            cd mwpf_portfolio
-            docker stop react-app || true
-            docker rm react-app || true
-            docker build -t react-app .
-            docker run -d -p 80:80 --name react-app react-app
+            set -e
+
+            REPO_URL="https://github.com/${{ github.repository }}.git"
+            REPO_DIR="${{ env.REPO_DIR }}"
+            IMAGE_NAME="${{ env.IMAGE_NAME }}"
+            CONTAINER_NAME="${{ env.CONTAINER_NAME }}"
+            APP_PORT="${{ env.APP_PORT }}"
+
+            # Install Docker if missing
+            if ! command -v docker &> /dev/null; then
+              echo "Docker not found. Installing..."
+              sudo apt-get update -y
+              sudo apt-get install -y ca-certificates curl gnupg git
+              sudo install -m 0755 -d /etc/apt/keyrings
+              curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+              sudo chmod a+r /etc/apt/keyrings/docker.gpg
+              echo \
+                "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
+                $(. /etc/os-release && echo \"$VERSION_CODENAME\") stable" | \
+                sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
+              sudo apt-get update -y
+              sudo apt-get install -y docker-ce docker-ce-cli containerd.io
+              sudo usermod -aG docker $USER
+            fi
+
+            # Clone the repo if it doesn't exist yet, otherwise pull latest
+            if [ -d "$REPO_DIR/.git" ]; then
+              echo "Repo exists. Pulling latest changes..."
+              cd "$REPO_DIR"
+              git fetch origin
+              git reset --hard origin/main
+            else
+              echo "Cloning repo for the first time..."
+              git clone "$REPO_URL" "$REPO_DIR"
+              cd "$REPO_DIR"
+            fi
+
+            # Build the Docker image locally on EC2
+            sudo docker build -t "$IMAGE_NAME:latest" .
+
+            # Stop & remove old container if running
+            sudo docker stop "$CONTAINER_NAME" || true
+            sudo docker rm "$CONTAINER_NAME" || true
+
+            # Run the new container
+            sudo docker run -d \
+              --name "$CONTAINER_NAME" \
+              --restart unless-stopped \
+              -p 80:"$APP_PORT" \
+              "$IMAGE_NAME:latest"
+
+            # Clean up old dangling images to save disk space
+            sudo docker image prune -f
