@@ -2,78 +2,53 @@ name: Deploy to EC2
 
 on:
   push:
-    branches:
-      - main   # change this if your default branch is "master"
-
-env:
-  CONTAINER_NAME: mwpf-portfolio
-  IMAGE_NAME: mwpf-portfolio
-  APP_PORT: 3000             # <-- change if your app listens on a different port
-  REPO_DIR: ~/mwpf_portfolio # <-- folder name on EC2 where the repo will live
+    branches: [main]
+  workflow_dispatch: {}
 
 jobs:
-  deploy:
-    name: Pull, Build & Deploy on EC2
+  build-and-deploy:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Deploy over SSH
-        uses: appleboy/ssh-action@v1.0.3
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
         with:
-          host: ${{ secrets.EC2_HOST }}
-          username: ${{ secrets.EC2_USER }}
-          key: ${{ secrets.EC2_SSH_KEY }}
-          script: |
-            set -e
+          node-version: '20'
 
-            REPO_URL="https://github.com/${{ github.repository }}.git"
-            REPO_DIR="${{ env.REPO_DIR }}"
-            IMAGE_NAME="${{ env.IMAGE_NAME }}"
-            CONTAINER_NAME="${{ env.CONTAINER_NAME }}"
-            APP_PORT="${{ env.APP_PORT }}"
+      - name: Install pnpm
+        run: npm install -g pnpm
 
-            # Install Docker if missing
-            if ! command -v docker &> /dev/null; then
-              echo "Docker not found. Installing..."
-              sudo apt-get update -y
-              sudo apt-get install -y ca-certificates curl gnupg git
-              sudo install -m 0755 -d /etc/apt/keyrings
-              curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo gpg --dearmor -o /etc/apt/keyrings/docker.gpg
-              sudo chmod a+r /etc/apt/keyrings/docker.gpg
-              echo \
-                "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/ubuntu \
-                $(. /etc/os-release && echo \"$VERSION_CODENAME\") stable" | \
-                sudo tee /etc/apt/sources.list.d/docker.list > /dev/null
-              sudo apt-get update -y
-              sudo apt-get install -y docker-ce docker-ce-cli containerd.io
-              sudo usermod -aG docker $USER
-            fi
+      - name: Install dependencies
+        run: pnpm install --frozen-lockfile
 
-            # Clone the repo if it doesn't exist yet, otherwise pull latest
-            if [ -d "$REPO_DIR/.git" ]; then
-              echo "Repo exists. Pulling latest changes..."
-              cd "$REPO_DIR"
-              git fetch origin
-              git reset --hard origin/main
-            else
-              echo "Cloning repo for the first time..."
-              git clone "$REPO_URL" "$REPO_DIR"
-              cd "$REPO_DIR"
-            fi
+      - name: Build (runs on the GitHub runner, NOT on the EC2 box)
+        run: pnpm run build
 
-            # Build the Docker image locally on EC2
-            sudo docker build -t "$IMAGE_NAME:latest" .
+      - name: Add EC2 host key
+        run: |
+          mkdir -p ~/.ssh
+          ssh-keyscan -H ${{ secrets.EC2_HOST }} >> ~/.ssh/known_hosts
 
-            # Stop & remove old container if running
-            sudo docker stop "$CONTAINER_NAME" || true
-            sudo docker rm "$CONTAINER_NAME" || true
+      - name: Setup SSH key
+        run: |
+          echo "${{ secrets.EC2_SSH_KEY }}" > ec2_key.pem
+          chmod 600 ec2_key.pem
 
-            # Run the new container
-            sudo docker run -d \
-              --name "$CONTAINER_NAME" \
-              --restart unless-stopped \
-              -p 80:"$APP_PORT" \
-              "$IMAGE_NAME:latest"
+      - name: Deploy dist/ to EC2 via rsync
+        run: |
+          rsync -avz --delete \
+            -e "ssh -i ec2_key.pem -o StrictHostKeyChecking=no" \
+            dist/ ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }}:/var/www/mwpf-portfolio/
 
-            # Clean up old dangling images to save disk space
-            sudo docker image prune -f
+      - name: Reload Nginx
+        run: |
+          ssh -i ec2_key.pem -o StrictHostKeyChecking=no \
+            ${{ secrets.EC2_USER }}@${{ secrets.EC2_HOST }} \
+            "sudo systemctl reload nginx"
+
+      - name: Cleanup key
+        if: always()
+        run: rm -f ec2_key.pem
